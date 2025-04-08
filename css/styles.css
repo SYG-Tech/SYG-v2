@@ -12,9 +12,9 @@
 
 /* Global Styles */
 :root {
-  --primary: #2C7BBE;
-  --secondary: #4CAF50;
-  --accent: #FF9800;
+  --primary: #0092FF;
+  --secondary: #000000;
+  --accent: #41e731;
   --background: #F5F5F5;
   --text: #333333;
   --white: #FFFFFF;
@@ -196,11 +196,28 @@ a:hover {
 
 /* Hero Section */
 .hero {
-  background-color: var(--primary);
+  background: 
+    radial-gradient(circle, rgba(15, 82, 226, 0.2), rgba(26, 41, 73, 0.3)), /* Gradient with opacity */
+    url('../images/hero section banner.jpg') center/cover no-repeat; /* Image */
+  background-size: 150% 150%; /* Optional: for animated background */
+  animation: pulseGradient 6s ease infinite; /* Gradient animation */
+
   color: var(--white);
   padding: 5rem 0;
   position: relative;
   overflow: hidden;
+}
+
+@keyframes pulseGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .hero-content {
