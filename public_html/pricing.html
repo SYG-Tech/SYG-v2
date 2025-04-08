@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing & Estimator | SellYourGadgets.com</title>
+    <meta name="description" content="Get an instant price estimate for your used electronics. Our buyback calculator provides accurate values for iPhones, Samsung Galaxy, MacBooks, iPads and more.">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .estimator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+        }
+        
+        .estimator-step {
+            margin-bottom: 2rem;
+        }
+        
+        .estimator-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .estimator-step h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .option-card {
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .option-card.selected {
+            border-color: var(--primary);
+            background-color: rgba(44, 123, 190, 0.1);
+        }
+        
+        .option-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .condition-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .condition-option {
+            flex: 1;
+            min-width: 150px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .condition-option:hover {
+            border-color: var(--primary);
+        }
+        
+        .condition-option.selected {
+            border-color: var(--primary);
+            background-color: rgba(44, 123, 190, 0.1);
+        }
+        
+        .condition-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .estimate-result {
+            background-color: var(--background);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .estimate-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 1rem 0;
+        }
+        
+        .price-range {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .factors-section {
+            background-color: var(--background);
+            padding: 3rem 0;
+        }
+        
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .factor-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+        }
+        
+        .factor-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .price-match {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .price-match-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .select-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .select-container select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 4px;
+            background-color: var(--white);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            appearance: none;
+        }
+        
+        .select-container::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        
+        .select-container select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Price Estimator</h1>
+                <p>Get an instant estimate for your used electronics. Our calculator provides accurate values based on device type, model, and condition.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Estimator Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Calculate Your Device Value</h2>
+            </div>
+            
+            <div class="estimator-container">
+                <div class="estimator-step">
+                    <h3>Step 1: Select Device Type</h3>
+                    <div class="option-grid">
+                        <div class="option-card selected" id="device-smartphone">
+                            <div class="option-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4>Smartphone</h4>
+                        </div>
+                        <div class="option-card" id="device-tablet">
+                            <div class="option-icon">
+                                <i class="fas fa-tablet-alt"></i>
+                            </div>
+                            <h4>Tablet</h4>
+                        </div>
+                        <div class="option-card" id="device-laptop">
+                            <div class="option-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <h4>Laptop</h4>
+                        </div>
+                        <div class="option-card" id="device-gaming">
+                            <div class="option-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h4>Gaming Console</h4>
+                        </div>
+                        <div class="option-card" id="device-drone">
+                            <div class="option-icon">
+                                <i class="fas fa-drone"></i>
+                            </div>
+                            <h4>Drone</h4>
+                        </div>
+                        <div class="option-card" id="device-tools">
+                            <div class="option-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h4>Power Tools</h4>
+                        </div>
+                        <div class="option-card" id="device-camera">
+                            <div class="option-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <h4>Camera</h4>
+                        </div>
+                        <div class="option-card" id="device-audio">
+                            <div class="option-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <h4>Audio</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="estimator-step">
+                    <h3>Step 2: Select Brand</h3>
+                    <div class="select-container">
+                        <select id="brand-select">
+                            <option value="">Select Brand</option>
+                            <!-- Smartphone Brands -->
+                            <optgroup label="Smartphones">
+                                <option value="apple">Apple</option>
+                                <option value="samsung">Samsung</option>
+                                <option value="google">Google</option>
+                                <option value="oneplus">OnePlus</option>
+                                <option value="motorola">Motorola</option>
+                                <option value="lg">LG</option>
+                                <option value="sony-phone">Sony</option>
+                            </optgroup>
+                            <!-- Tablet Brands -->
+                            <optgroup label="Tablets">
+                                <option value="apple-tablet">Apple</option>
+                                <option value="samsung-tablet">Samsung</option>
+                                <option value="microsoft">Microsoft</option>
+                                <option value="lenovo">Lenovo</option>
+                                <option value="amazon">Amazon</option>
+                            </optgroup>
+                            <!-- Laptop Brands -->
+                            <optgroup label="Laptops">
+                                <option value="apple-laptop">Apple</option>
+                                <option value="dell">Dell</option>
+                                <option value="hp">HP</option>
+                                <option value="lenovo-laptop">Lenovo</option>
+                                <option value="asus">Asus</option>
+                                <option value="acer">Acer</option>
+                                <option value="microsoft-laptop">Microsoft</option>
+                            </optgroup>
+                            <!-- Gaming Console Brands -->
+                            <optgroup label="Gaming Consoles">
+                                <option value="sony-gaming">Sony</option>
+                                <option value="microsoft-gaming">Microsoft</option>
+                                <option value="nintendo">Nintendo</option>
+                            </optgroup>
+                            <!-- Drone Brands -->
+                            <optgroup label="Drones">
+                                <option value="dji">DJI</option>
+                                <option value="autel">Autel</option>
+                                <option value="skydio">Skydio</option>
+                                <option value="parrot">Parrot</option>
+                            </optgroup>
+                            <!-- Power Tool Brands -->
+                            <optgroup label="Power Tools">
+                                <option value="dewalt">DeWalt</option>
+                                <option value="milwaukee">Milwaukee</option>
+                                <option value="makita">Makita</option>
+                                <option value="bosch">Bosch</option>
+                                <option value="ryobi">Ryobi</option>
+                            </optgroup>
+                            <!-- Camera Brands -->
+                            <optgroup label="Cameras">
+                                <option value="canon">Canon</option>
+                                <option value="nikon">Nikon</option>
+                                <option value="sony-camera">Sony</option>
+                                <option value="fujifilm">Fujifilm</option>
+                                <option value="gopro">GoPro</option>
+                            </optgroup>
+                            <!-- Audio Brands -->
+                            <optgroup label="Audio">
+                                <option value="bose">Bose</option>
+                                <option value="sony-audio">Sony</option>
+                                <option value="apple-audio">Apple</option>
+                                <option value="samsung-audio">Samsung</option>
+                                <option value="jbl">JBL</option>
+                                <option value="sennheiser">Sennheiser</option>
+                            </optgroup>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="estimator-step">
+                    <h3>Step 3: Select Model</h3>
+                    <div class="select-container">
+                        <select id="model-select">
+                            <option value="">Select Model</option>
+                            <option value="iphone15promax">iPhone 15 Pro Max</option>
+                            <option value="iphone15pro">iPhone 15 Pro</option>
+                            <option value="iphone15">iPhone 15</option>
+                            <option value="iphone14promax">iPhone 14 Pro Max</option>
+                            <option value="iphone14pro">iPhone 14 Pro</option>
+                            <option value="iphone14">iPhone 14</option>
+                            <option value="iphone13promax">iPhone 13 Pro Max</option>
+                            <option value="iphone13pro">iPhone 13 Pro</option>
+                            <option value="iphone13">iPhone 13</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="estimator-step">
+                    <h3>Step 4: Select Storage Capacity</h3>
+                    <div class="select-container">
+                        <select id="storage-select">
+                            <option value="">Select Storage</option>
+                            <option value="64">64GB</option>
+                            <option value="128">128GB</option>
+                            <option value="256">256GB</option>
+                            <option value="512">512GB</option>
+                            <option value="1tb">1TB</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="estimator-step">
+                    <h3>Step 5: Select Condition</h3>
+                    <div class="condition-options">
+                        <div class="condition-option" id="condition-new">
+                            <div class="condition-icon">
+                                <i class="fas fa-box-open" style="color: #3498db;"></i>
+                            </div>
+                            <h4>New</h4>
+                            <p>Brand new or like-new</p>
+                        </div>
+                        <div class="condition-option" id="condition-excellent">
+                            <div class="condition-icon">
+                                <i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                            </div>
+                            <h4>Excellent</h4>
+                            <p>Like new, no scratches</p>
+                        </div>
+                        <div class="condition-option" id="condition-good">
+                            <div class="condition-icon">
+                                <i class="fas fa-thumbs-up" style="color: #4CAF50;"></i>
+                            </div>
+                            <h4>Good</h4>
+                            <p>Minor wear and tear</p>
+                        </div>
+                        <div class="condition-option" id="condition-fair">
+                            <div class="condition-icon">
+                                <i class="fas fa-wrench" style="color: #FF9800;"></i>
+                            </div>
+                            <h4>Fair</h4>
+                            <p>Noticeable scratches</p>
+                        </div>
+                        <div class="condition-option" id="condition-poor">
+                            <div class="condition-icon">
+                                <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i>
+                            </div>
+                            <h4>Poor</h4>
+                            <p>Significant damage</p>
+                        </div>
+                        <div class="condition-option" id="condition-broken">
+                            <div class="condition-icon">
+                                <i class="fas fa-tools" style="color: #95a5a6;"></i>
+                            </div>
+                            <h4>Broken/Parts</h4>
+                            <p>Non-functional</p>
+                        </div>
+                    </div>
+                    <div class="alert-box" style="background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 0.75rem; border-radius: 4px; margin-top: 1rem; font-size: 0.9rem; text-align: center;">
+                        <i class="fas fa-exclamation-circle" style="margin-right: 0.5rem;"></i>
+                        We cannot accept devices with iCloud lock or other account restrictions.
+                    </div>
+                </div>
+                
+                <div class="estimate-result">
+                    <h3>Estimated Value</h3>
+                    <div class="estimate-price">$750</div>
+                    <div class="price-range">Price range: $700 - $800</div>
+                    <p>This is an estimated price range. Lock in this quote for up to 30 days or visit one of our stores for an exact quote.</p>
+                    <button id="lock-quote-btn" class="btn btn-primary">Lock This Quote</button>
+                    
+                    <form id="lock-quote-form" style="display: none; margin-top: 2rem; padding: 1.5rem; background-color: var(--background); border-radius: 8px; box-shadow: var(--shadow);">
+                        <h4>Lock In Your Quote</h4>
+                        <p>Your quote will be guaranteed for the period you select. We'll send you a confirmation with a unique quote code.</p>
+                        
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="email-input">Email Address</label>
+                            <input type="email" id="email-input" required placeholder="your@email.com" style="width: 100%; padding: 0.75rem; border-radius: 4px; border: 1px solid #ddd;">
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="phone-input">Phone Number</label>
+                            <input type="tel" id="phone-input" required placeholder="(123) 456-7890" style="width: 100%; padding: 0.75rem; border-radius: 4px; border: 1px solid #ddd;">
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label for="quote-validity">Quote Valid For</label>
+                            <select id="quote-validity" style="width: 100%; padding: 0.75rem; border-radius: 4px; border: 1px solid #ddd;">
+                                <option value="14">14 Days</option>
+                                <option value="30" selected>30 Days</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Get Binding Quote</button>
+                    </form>
+                    
+                    <div id="binding-quote-result" style="display: none; margin-top: 2rem; padding: 1.5rem; background-color: var(--secondary-light); border-radius: 8px; box-shadow: var(--shadow); text-align: center;">
+                        <div style="font-size: 4rem; color: var(--secondary); margin-bottom: 1rem;">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Your Quote is Locked!</h4>
+                        <p>We've sent a confirmation to your email with all the details.</p>
+                        
+                        <div style="background-color: var(--white); padding: 1rem; border-radius: 4px; margin: 1.5rem 0; font-family: monospace; font-size: 1.5rem; letter-spacing: 2px;">
+                            <span id="quote-code">ABC12345</span>
+                        </div>
+                        
+                        <p>Your quote is valid until: <strong id="quote-expiry">May 5, 2025</strong></p>
+                        <p>Present this code when selling your device in-store or include it with your mail-in package.</p>
+                        
+                        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
+                            <a href="locations" class="btn btn-primary">Find a Store</a>
+                            <a href="mail-in" class="btn btn-secondary">Mail It In</a>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
+                        <a href="locations" class="btn btn-primary">Find a Store</a>
+                        <a href="mail-in" class="btn btn-secondary">Mail It In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Factors Section -->
+    <section class="factors-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Factors That Affect Buyback Value</h2>
+            </div>
+            
+            <div class="factors-grid">
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Age & Model</h3>
+                    <p>Newer models typically have higher buyback values. The release of new models can affect the value of older ones.</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Condition</h3>
+                    <p>Devices in better condition receive higher offers. Scratches, dents, and functional issues can lower the value.</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Storage Capacity</h3>
+                    <p>Higher storage capacity models (e.g., 256GB vs. 64GB) typically have higher buyback values.</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3>Battery Health</h3>
+                    <p>Devices with better battery health receive higher offers. Significant battery wear can lower the value.</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <h3>Carrier Lock Status</h3>
+                    <p>Unlocked devices typically have higher values than carrier-locked ones.</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Accessories</h3>
+                    <p>Including original accessories and packaging can slightly increase the buyback value.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Match Section -->
+    <section class="price-match">
+        <div class="container">
+            <div class="price-match-content">
+                <h2>Price Match Guarantee</h2>
+                <p style="margin-bottom: 1.5rem;">Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%.</p>
+                <a href="about.html#price-match" class="btn btn-cta">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Devices Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Devices We Buy</h2>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div>
+                    <h3><img src="images/brands/apple.svg" alt="Apple" style="width: 30px; height: 30px; margin-right: 0.5rem; vertical-align: middle;">Apple Devices</h3>
+                    <ul style="list-style-type: none; padding-left: 1rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;"><a href="items/iphone" style="color: var(--primary);">iPhone (All Models)</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="items/ipad" style="color: var(--primary);">iPad (All Models)</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="items/macbook" style="color: var(--primary);">MacBook (All Models)</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--primary);">Apple Watch</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--primary);">iMac & Mac Mini</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3><img src="images/brands/samsung.svg" alt="Samsung" style="width: 30px; height: 30px; margin-right: 0.5rem; vertical-align: middle;">Samsung Devices</h3>
+                    <ul style="list-style-type: none; padding-left: 1rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;"><a href="items/samsung" style="color: var(--primary);">Galaxy S Series</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--primary);">Galaxy Note Series</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--primary);">Galaxy Tab Series</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--primary);">Galaxy Watch</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--primary);">Galaxy Book</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3><img src="images/gaming.svg" alt="Gaming" style="width: 30px; height: 30px; margin-right: 0.5rem; vertical-align: middle;">Gaming Consoles</h3>
+                    <ul style="list-style-type: none; padding-left: 1rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;"><a href="items/playstation" style="color: var(--primary);">PlayStation 5 & 4</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="items/xbox" style="color: var(--primary);">Xbox Series X/S & One</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--primary);">Nintendo Switch</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--primary);">Steam Deck</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--primary);">VR Headsets</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section cta" style="background-color: var(--primary); color: var(--white); text-align: center;">
+        <div class="container">
+            <h2>Ready to Sell Your Electronics?</h2>
+            <p style="margin-bottom: 2rem;">Choose the option that works best for you.</p>
+            <div class="hero-buttons" style="justify-content: center;">
+                <a href="locations" class="btn btn-cta">Find a Store</a>
+                <a href="mail-in" class="btn btn-secondary">Mail It In</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>We offer the best prices for your used electronics. Fast, easy, and environmentally responsible.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index">Home</a></li>
+                        <li class="footer-link"><a href="how-it-works">How It Works</a></li>
+                        <li class="footer-link"><a href="accepted-items">What We Buy</a></li>
+                        <li class="footer-link"><a href="pricing">Pricing</a></li>
+                        <li class="footer-link"><a href="locations">Locations</a></li>
+                        <li class="footer-link"><a href="mail-in">Mail-In Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Items</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="items/iphone">Sell iPhone</a></li>
+                        <li class="footer-link"><a href="items/samsung">Sell Samsung Galaxy</a></li>
+                        <li class="footer-link"><a href="items/macbook">Sell MacBook</a></li>
+                        <li class="footer-link"><a href="items/ipad">Sell iPad</a></li>
+                        <li class="footer-link"><a href="items/playstation">Sell PlayStation</a></li>
+                        <li class="footer-link"><a href="items/xbox">Sell Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-phone"></i> (800) 555-CASH</li>
+                        <li class="footer-link"><i class="fas fa-envelope"></i> info@electronicsbuyback.com</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Locations Nationwide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // Simple estimator functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Device type selection
+            const deviceCards = document.querySelectorAll('.option-card');
+            deviceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    deviceCards.forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    updateEstimate();
+                });
+            });
+            
+            // Condition selection
+            const conditionOptions = document.querySelectorAll('.condition-option');
+            conditionOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    conditionOptions.forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    updateEstimate();
+                });
+            });
+            
+            // Dropdowns
+            const brandSelect = document.getElementById('brand-select');
+            const modelSelect = document.getElementById('model-select');
+            const storageSelect = document.getElementById('storage-select');
+            
+            brandSelect.addEventListener('change', updateEstimate);
+            modelSelect.addEventListener('change', updateEstimate);
+            storageSelect.addEventListener('change', updateEstimate);
+            
+            // Initial selection
+            deviceCards[0].classList.add('selected');
+            
+            function updateEstimate() {
+                // This is a simplified version - in a real implementation, 
+                // this would use actual data and calculations
+                const estimatePrice = document.querySelector('.estimate-price');
+                const priceRange = document.querySelector('.price-range');
+                
+                // Get selected model
+                const model = modelSelect.value;
+                
+                // Base prices for demonstration
+                let basePrice = 500;
+                let minRange = 450;
+                let maxRange = 550;
+                
+                // Adjust based on model
+                if (model.includes('15pro')) {
+                    basePrice = 750;
+                    minRange = 700;
+                    maxRange = 800;
+                } else if (model.includes('14pro')) {
+                    basePrice = 650;
+                    minRange = 600;
+                    maxRange = 700;
+                } else if (model.includes('13pro')) {
+                    basePrice = 550;
+                    minRange = 500;
+                    maxRange = 600;
+                }
+                
+                // Adjust based on condition
+                const selectedCondition = document.querySelector('.condition-option.selected');
+                if (selectedCondition) {
+                    if (selectedCondition.id === 'condition-excellent') {
+                        basePrice = basePrice;
+                    } else if (selectedCondition.id === 'condition-good') {
+                        basePrice = Math.round(basePrice * 0.85);
+                        minRange = Math.round(minRange * 0.85);
+                        maxRange = Math.round(maxRange * 0.85);
+                    } else if (selectedCondition.id === 'condition-fair') {
+                        basePrice = Math.round(basePrice * 0.7);
+                        minRange = Math.round(minRange * 0.7);
+                        maxRange = Math.round(maxRange * 0.7);
+                    } else if (selectedCondition.id === 'condition-poor') {
+                        basePrice = Math.round(basePrice * 0.5);
+                        minRange = Math.round(minRange * 0.5);
+                        maxRange = Math.round(maxRange * 0.5);
+                    }
+                }
+                
+                // Adjust based on storage
+                const storage = storageSelect.value;
+                if (storage === '256') {
+                    basePrice += 50;
+                    minRange += 50;
+                    maxRange += 50;
+                } else if (storage === '512') {
+                    basePrice += 100;
+                    minRange += 100;
+                    maxRange += 100;
+                } else if (storage === '1tb') {
+                    basePrice += 150;
+                    minRange += 150;
+                    maxRange += 150;
+                }
+                
+                // Update display
+                estimatePrice.textContent = '$' + basePrice;
+                priceRange.textContent = 'Price range: $' + minRange + ' - $' + maxRange;
+            }
+        });
+    </script>
+    <script src="js/enhanced-estimator.js"></script>
+</body>
+</html>

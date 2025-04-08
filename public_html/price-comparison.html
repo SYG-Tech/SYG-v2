@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Comparison - SellYourGadgets.com</title>
+    <meta name="description" content="Compare our buyback prices with competitors. We offer the best prices for your used electronics guaranteed.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/location-emphasis.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .comparison-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .comparison-form {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        .our-price {
+            background-color: rgba(var(--primary-rgb), 0.1) !important;
+            font-weight: 600;
+        }
+        
+        .best-price-badge {
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            font-weight: normal;
+        }
+        
+        .price-difference {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .alert-box {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .competitor-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            gap: 1rem;
+        }
+        
+        .competitor-logo {
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+            height: 60px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            opacity: 0.7;
+        }
+        
+        .our-logo {
+            opacity: 1;
+            border: 2px solid var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Price Comparison</h1>
+                <p>See how our prices compare to competitors. We're confident we offer the best value for your electronics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Comparison Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Compare Our Prices</h2>
+                <p>Select your device to see how much more you'll get with SellYourGadgets.com</p>
+            </div>
+            
+            <div class="comparison-container">
+                <div class="comparison-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="comparison-category">Device Category</label>
+                            <select id="comparison-category">
+                                <option value="">Select Category</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="comparison-model">Model</label>
+                            <select id="comparison-model">
+                                <option value="">Select Model</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="comparison-storage">Storage/Version</label>
+                            <select id="comparison-storage">
+                                <option value="">Select Storage/Version</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="compare-prices-btn" class="btn btn-primary">Compare Prices</button>
+                </div>
+                
+                <div id="comparison-results">
+                    <!-- Results will be displayed here -->
+                </div>
+                
+                <div class="competitor-logos">
+                    <div class="competitor-logo our-logo">
+                        <strong>SellYourGadgets.com</strong>
+                    </div>
+                    <div class="competitor-logo">
+                        Competitor 1
+                    </div>
+                    <div class="competitor-logo">
+                        Competitor 2
+                    </div>
+                    <div class="competitor-logo">
+                        Competitor 3
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Why We Offer Better Prices</h3>
+                    <p>At SellYourGadgets.com, we're committed to offering the best possible prices for your used electronics. Here's how we do it:</p>
+                    <ul>
+                        <li><strong>Lower Overhead:</strong> Our efficient operations allow us to pass more value to you</li>
+                        <li><strong>Direct Sales Channels:</strong> We cut out middlemen to maximize your payout</li>
+                        <li><strong>Price Match Guarantee:</strong> We'll match any legitimate competitor's price and add an extra 5%</li>
+                        <li><strong>Transparent Pricing:</strong> No hidden fees or last-minute reductions</li>
+                    </ul>
+                </div>
+                
+                <div class="location-finder-box">
+                    <h3><i class="fas fa-map-marker-alt"></i> Visit Us for Immediate Payment</h3>
+                    <p>Come to our store for an instant quote and same-day cash payment. No waiting, no shipping hassles!</p>
+                    <a href="locations" class="btn btn-primary">Find Nearest Store</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>Get the best value for your used electronics. Visit our stores or mail in your devices for free.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index">Home</a></li>
+                        <li><a href="how-it-works">How It Works</a></li>
+                        <li><a href="accepted-items">What We Buy</a></li>
+                        <li><a href="pricing">Pricing</a></li>
+                        <li><a href="locations">Locations</a></li>
+                        <li><a href="mail-in">Mail-In</a></li>
+                        <li><a href="about">About/FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Items</h3>
+                    <ul>
+                        <li><a href="items/iphone">iPhone</a></li>
+                        <li><a href="items/samsung">Samsung Galaxy</a></li>
+                        <li><a href="items/macbook">MacBook</a></li>
+                        <li><a href="items/ipad">iPad</a></li>
+                        <li><a href="items/playstation">PlayStation</a></li>
+                        <li><a href="items/xbox">Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 211 Broad Street, Elizabeth, NJ</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@sellyourgadgets.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/price-comparison.js"></script>
+</body>
+</html>

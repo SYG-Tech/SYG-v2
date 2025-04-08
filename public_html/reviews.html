@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews | SellYourGadgets.com</title>
+    <meta name="description" content="Read verified customer reviews about our electronics buyback service. Real experiences from real customers who have sold their devices to us.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/reviews.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Customer Reviews</h1>
+                <p>Read authentic experiences from our verified customers. We're proud of our reputation for fair pricing, excellent service, and satisfied customers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Stats Section -->
+    <section class="section">
+        <div class="container reviews-container">
+            <div class="reviews-stats">
+                <div class="stat-card">
+                    <div class="stat-number">4.8</div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>Average Rating</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,250+</div>
+                    <p>Verified Reviews</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <p>Satisfaction Rate</p>
+                </div>
+            </div>
+            
+            <!-- Review Summary -->
+            <div class="review-summary">
+                <div class="summary-header">
+                    <div class="average-rating">4.8</div>
+                    <div class="rating-breakdown">
+                        <div class="rating-bar">
+                            <div class="rating-label">
+                                <i class="fas fa-star"></i> 5
+                            </div>
+                            <div class="rating-progress">
+                                <div class="rating-progress-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="rating-count">850</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">
+                                <i class="fas fa-star"></i> 4
+                            </div>
+                            <div class="rating-progress">
+                                <div class="rating-progress-fill" style="width: 12%;"></div>
+                            </div>
+                            <div class="rating-count">120</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">
+                                <i class="fas fa-star"></i> 3
+                            </div>
+                            <div class="rating-progress">
+                                <div class="rating-progress-fill" style="width: 2%;"></div>
+                            </div>
+                            <div class="rating-count">20</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">
+                                <i class="fas fa-star"></i> 2
+                            </div>
+                            <div class="rating-progress">
+                                <div class="rating-progress-fill" style="width: 0.5%;"></div>
+                            </div>
+                            <div class="rating-count">5</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">
+                                <i class="fas fa-star"></i> 1
+                            </div>
+                            <div class="rating-progress">
+                                <div class="rating-progress-fill" style="width: 0.5%;"></div>
+                            </div>
+                            <div class="rating-count">5</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-cta">
+                    <a href="#write-review" class="btn btn-primary">Write a Review</a>
+                </div>
+            </div>
+            
+            <!-- Review Filter -->
+            <div class="reviews-filter">
+                <h3>Filter Reviews</h3>
+                <form id="review-filter-form">
+                    <input type="hidden" id="rating-filter" value="">
+                    <div class="filter-controls">
+                        <div class="filter-group">
+                            <label for="location-filter">Location</label>
+                            <select id="location-filter">
+                                <option value="">All Locations</option>
+                                <option value="newyork">New York City</option>
+                                <option value="losangeles">Los Angeles</option>
+                                <option value="chicago">Chicago</option>
+                                <option value="miami">Miami</option>
+                                <option value="online">Online/Mail-In</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="product-filter">Product Type</label>
+                            <select id="product-filter">
+                                <option value="">All Products</option>
+                                <option value="iphone">iPhone</option>
+                                <option value="samsung">Samsung Galaxy</option>
+                                <option value="laptop">Laptops</option>
+                                <option value="tablet">Tablets</option>
+                                <option value="gaming">Gaming Consoles</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="sort-filter">Sort By</label>
+                            <select id="sort-filter">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="highest">Highest Rated</option>
+                                <option value="lowest">Lowest Rated</option>
+                                <option value="helpful">Most Helpful</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="search-filter">Search Reviews</label>
+                            <input type="text" id="search-filter" placeholder="Search by keyword...">
+                        </div>
+                    </div>
+                    
+                    <div class="star-filter">
+                        <div class="star-option" data-rating="5">
+                            <i class="fas fa-star"></i> 5
+                        </div>
+                        <div class="star-option" data-rating="4">
+                            <i class="fas fa-star"></i> 4
+                        </div>
+                        <div class="star-option" data-rating="3">
+                            <i class="fas fa-star"></i> 3
+                        </div>
+                        <div class="star-option" data-rating="2">
+                            <i class="fas fa-star"></i> 2
+                        </div>
+                        <div class="star-option" data-rating="1">
+                            <i class="fas fa-star"></i> 1
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Reviews Grid -->
+            <div class="reviews-grid">
+                <!-- Review Card 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">
+                            <img src="images/avatars/avatar1.jpg" alt="Reviewer">
+                        </div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Customer 1001</div>
+                            <div class="review-date">March 15, 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="review-verified">
+                        <i class="fas fa-check-circle"></i> Verified Purchase
+                    </div>
+                    <div class="review-content">
+                        <p>Great service and fair price for my device. The process was quick and painless. I was able to get an instant quote online and the in-store experience matched exactly what was promised.</p>
+                        <p><strong>Product:</strong> iPhone 15 Pro</p>
+                        <p><strong>Location:</strong> New York City</p>
+                    </div>
+                    <div class="review-photos">
+                        <div class="review-photo">
+                            <img src="images/reviews/review1_1.jpg" alt="Review Photo">
+                        </div>
+                        <div class="review-photo">
+                            <img src="images/reviews/review1_2.jpg" alt="Review Photo">
+                        </div>
+                    </div>
+                    <div class="review-footer">
+                        <div class="review-helpful">
+                            <button class="helpful-button">
+                                <i class="far fa-thumbs-up"></i> Helpful
+                            </button>
+                            <span class="helpful-count">12</span>
+                        </div>
+                        <div class="review-source">
+                            <img src="images/google-logo.png" alt="Google">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review Card 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">
+                            <img src="images/avatars/avatar2.jpg" alt="Reviewer">
+                        </div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Customer 1002</div>
+                            <div class="review-date">March 10, 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="review-verified">
+                        <i class="fas fa-check-circle"></i> Verified Purchase
+                    </div>
+                    <div class="review-content">
+                        <p>I was skeptical at first, but they offered more than other buyback services. Very satisfied! The staff was knowledgeable and explained everything clearly.</p>
+                        <p><strong>Product:</strong> Samsung Galaxy S23</p>
+                        <p><strong>Location:</strong> Los Angeles</p>
+                    </div>
+                    <div class="review-footer">
+                        <div class="review-helpful">
+                            <button class="helpful-button">
+                                <i class="far fa-thumbs-up"></i> Helpful
+                            </button>
+                            <span class="helpful-count">8</span>
+                        </div>
+                        <div class="review-source">
+                            <img src="images/yelp-logo.png" alt="Yelp">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review Card 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">
+                            <img src="images/avatars/avatar3.jpg" alt="Reviewer">
+                        </div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Customer 1003</div>
+                            <div class="review-date">March 5, 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="review-verified">
+                        <i class="fas fa-check-circle"></i> Verified Purchase
+                    </div>
+                    <div class="review-content">
+                        <p>Quick and easy process. The online quote matched what I received in-store. Would have given 5 stars but I had to wait a bit longer than expected.</p>
+                        <p><strong>Product:</strong> MacBook Pro</p>
+                        <p><strong>Location:</strong> Chicago</p>
+                    </div>
+                    <div class="review-photos">
+                        <div class="review-photo">
+                            <img src="images/reviews/review3_1.jpg" alt="Review Photo">
+                        </div>
+                    </div>
+                    <div class="review-footer">
+                        <div class="review-helpful">
+                            <button class="helpful-button">
+                                <i class="far fa-thumbs-up"></i> Helpful
+                            </button>
+                            <span class="helpful-count">5</span>
+                        </div>
+                        <div class="review-source">
+                            <img src="images/google-logo.png" alt="Google">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review Card 4 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">
+                            <img src="images/avatars/avatar4.jpg" alt="Reviewer">
+                        </div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Customer 1004</div>
+                            <div class="review-date">February 28, 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="review-verified">
+                        <i class="fas fa-check-circle"></i> Verified Purchase
+                    </div>
+                    <div class="review-content">
+                        <p>I've sold multiple devices here and always had a positive experience. The staff is friendly and the prices are competitive. Highly recommend!</p>
+                        <p><strong>Product:</strong> iPad Air</p>
+                        <p><strong>Location:</strong> Online/Mail-In</p>
+                    </div>
+                    <div class="review-footer">
+                        <div class="review-helpful">
+                            <button class="helpful-button">
+                                <i class="far fa-thumbs-up"></i> Helpful
+                            </button>
+                            <span class="helpful-count">15</span>
+                        </div>
+                        <div class="review-source">
+                            <img src="images/google-logo.png" alt="Google">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review Card 5 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">
+                            <img src="images/avatars/avatar5.jpg" alt="Reviewer">
+                        </div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Customer 1005</div>
+                            <div class="review-date">February 20, 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="review-verified">
+                        <i class="fas fa-check-circle"></i> Verified Purchase
+                    </div>
+                    <div class="review-content">
+                        <p>The service was okay but I expected a higher offer for my device. The staff was professional though and the process was efficient.</p>
+                        <p><strong>Product:</strong> Xbox Series X</p>
+                        <p><strong>Location:</strong> Miami</p>
+                    </div>
+                    <div class="review-footer">
+                        <div class="review-helpful">
+                            <button class="helpful-button">
+                                <i class="far fa-thumbs-up"></i> Helpful
+                            </button>
+                            <span class="helpful-count">3</span>
+                        </div>
+                        <div class="review-source">
+                            <img src="images/yelp-logo.png" alt="Yelp">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review Card 6 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">
+                            <img src="images/avatars/avatar6.jpg" alt="Reviewer">
+                        </div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Customer 1006</div>
+                            <div class="review-date">February 15, 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="review-verified">
+                        <i class="fas fa-check-circle"></i> Verified Purchase
+                    </div>
+                    <div class="review-content">
+                        <p>They offered a competitive price and the payment was instant. The mail-in process was straightforward and I received my payment within 2 days of them receiving my device.</p>
+                        <p><strong>Product:</strong> Google Pixel 7</p>
+                        <p><strong>Location:</strong> Online/Mail-In</p>
+                    </div>
+                    <div class="review-photos">
+                        <div class="review-photo">
+                            <img src="images/reviews/review6_1.jpg" alt="Review Photo">
+                        </div>
+                    </div>
+                    <div class="review-footer">
+                        <div class="review-helpful">
+                            <button class="helpful-button">
+                                <i class="far fa-thumbs-up"></i> Helpful
+                            </button>
+                            <span class="helpful-count">9</span>
+                        </div>
+                        <div class="review-source">
+                            <img src="images/google-logo.png" alt="Google">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="pagination-item disabled">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="pagination-item active">1</div>
+                <div class="pagination-item">2</div>
+                <div class="pagination-item">3</div>
+                <div class="pagination-item">4</div>
+                <div class="pagination-item">5</div>
+                <div class="pagination-item">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Write a Review Section -->
+    <section class="section" id="write-review">
+        <div class="container">
+            <div class="section-title">
+                <h2>Write a Review</h2>
+                <p>Share your experience with our electronics buyback service.</p>
+            </div>
+            
+            <div class="review-form-container">
+                <div class="form-header">
+                    <h3>Your Feedback Matters</h3>
+                    <p>Your honest review helps us improve and helps other customers make informed decisions.</p>
+                </div>
+                
+                <form id="review-submission-form">
+                    <div class="rating-select">
+                        <label>How would you rate your overall experience?</label>
+                        <div class="rating-stars">
+                            <i class="rating-star far fa-star" data-rating="1"></i>
+                            <i class="rating-star far fa-star" data-rating="2"></i>
+                            <i class="rating-star far fa-star" data-rating="3"></i>
+                            <i class="rating-star far fa-star" data-rating="4"></i>
+                            <i class="rating-star far fa-star" data-rating="5"></i>
+                        </div>
+                        <input type="hidden" id="rating-input" value="">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="review-text">Your Review</label>
+                        <textarea id="review-text" placeholder="Tell us about your experience..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="review-title">Review Title</label>
+                        <input type="text" id="review-title" placeholder="Summarize your experience">
+                    </div>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                        <div class="form-group" style="flex: 1; min-width: 250px;">
+                            <label for="product-sold">Product Sold</label>
+                            <select id="product-sold">
+                                <option value="">Select Product</option>
+                                <option value="iphone">iPhone</option>
+                                <option value="samsung">Samsung Galaxy</option>
+                                <option value="pixel">Google Pixel</option>
+                                <option value="macbook">MacBook</option>
+                                <option value="ipad">iPad</option>
+                                <option value="xbox">Xbox</option>
+                                <option value="playstation">PlayStation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex: 1; min-width: 250px;">
+                            <label for="location-visited">Location</label>
+                            <select id="location-visited">
+                                <option value="">Select Location</option>
+                                <option value="newyork">New York City</option>
+                                <option value="losangeles">Los Angeles</option>
+                                <option value="chicago">Chicago</option>
+                                <option value="miami">Miami</option>
+                                <option value="online">Online/Mail-In</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="photo-upload">
+                        <label for="photo-upload">Add Photos (Optional)</label>
+                        <p style="font-size: 0.875rem; color: var(--dark-gray); margin-bottom: 0.5rem;">Share photos of your experience or the product you sold (max 5 photos)</p>
+                        <input type="file" id="photo-upload" accept="image/*" multiple>
+                        <div class="upload-preview"></div>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <div class="review-terms">
+                            By submitting this review, you agree to our review guidelines and confirm this is your honest opinion based on your personal experience.
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Guidelines Section -->
+    <section class="section" style="background-color: var(--background);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Review Guidelines</h2>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="background-color: var(--white); border-radius: 8px; box-shadow: var(--shadow); padding: 2rem; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">What makes a helpful review?</h3>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;">Be specific about your experience</li>
+                        <li style="margin-bottom: 0.5rem;">Mention the product you sold and its condition</li>
+                        <li style="margin-bottom: 0.5rem;">Share details about the price offered and the process</li>
+                        <li style="margin-bottom: 0.5rem;">Include photos if possible</li>
+                        <li style="margin-bottom: 0.5rem;">Be honest and constructive</li>
+                    </ul>
+                    
+                    <h3 style="margin-bottom: 1rem;">What to avoid in reviews</h3>
+                    <ul style="margin-left: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;">Personal information (phone numbers, email addresses)</li>
+                        <li style="margin-bottom: 0.5rem;">Offensive or inappropriate language</li>
+                        <li style="margin-bottom: 0.5rem;">Promotional content or spam</li>
+                        <li style="margin-bottom: 0.5rem;">Reviews for products or services not purchased from us</li>
+                        <li style="margin-bottom: 0.5rem;">False or misleading information</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-size: 0.875rem; color: var(--dark-gray);">
+                    All reviews are moderated and typically appear within 24-48 hours after submission. We reserve the right to remove reviews that violate our guidelines.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>We offer the best prices for your used electronics. Fast, easy, and environmentally responsible.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index">Home</a></li>
+                        <li class="footer-link"><a href="how-it-works">How It Works</a></li>
+                        <li class="footer-link"><a href="accepted-items">What We Buy</a></li>
+                        <li class="footer-link"><a href="pricing">Pricing</a></li>
+                        <li class="footer-link"><a href="price-comparison">Price Comparison</a></li>
+                        <li class="footer-link"><a href="loyalty-program">Loyalty Program</a></li>
+                        <li class="footer-link"><a href="locations">Locations</a></li>
+                        <li class="footer-link"><a href="mail-in">Mail-In Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Items</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="items/iphone">Sell iPhone</a></li>
+                        <li class="footer-link"><a href="items/samsung">Sell Samsung Galaxy</a></li>
+                        <li class="footer-link"><a href="items/macbook">Sell MacBook</a></li>
+                        <li class="footer-link"><a href="items/ipad">Sell iPad</a></li>
+                        <li class="footer-link"><a href="items/playstation">Sell PlayStation</a></li>
+                        <li class="footer-link"><a href="items/xbox">Sell Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-phone"></i> (800) 555-CASH</li>
+                        <li class="footer-link"><i class="fas fa-envelope"></i> info@sellyourgadgets.com</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Locations Nationwide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/reviews.js"></script>
+</body>
+</html>

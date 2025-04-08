@@ -1,0 +1,67 @@
+/* Price Match Guarantee Banner Styles */
+.price-match-banner {
+    background: linear-gradient(to right, #ff8c00, #ff6347);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.price-match-banner::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(30deg);
+    animation: shimmer 3s infinite linear;
+    pointer-events: none;
+}
+
+.price-match-banner a {
+    color: white;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+
+.price-match-banner a:hover {
+    color: #f0f0f0;
+}
+
+.price-match-icon {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+@keyframes shimmer {
+    from {
+        transform: translateX(-100%) rotate(30deg);
+    }
+    to {
+        transform: translateX(100%) rotate(30deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .price-match-banner {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .price-match-banner {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

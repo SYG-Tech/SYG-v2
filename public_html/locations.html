@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Locations | SellYourGadgets.com</title>
+    <meta name="description" content="Find a SellYourGadgets.com location near you. Visit our stores to sell your used electronics for cash instantly.">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .location-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .location-image {
+            height: 200px;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            font-style: italic;
+        }
+        
+        .location-content {
+            padding: 1.5rem;
+        }
+        
+        .location-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .location-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .location-info p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .location-info i {
+            color: var(--primary);
+            margin-right: 0.75rem;
+            min-width: 16px;
+            margin-top: 4px;
+        }
+        
+        .location-hours {
+            margin-bottom: 1.5rem;
+        }
+        
+        .location-hours h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .search-box {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid var(--light-gray);
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .search-button {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            padding: 0 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background-color: #236aa6;
+        }
+        
+        .map-container {
+            height: 500px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Store Locations</h1>
+                <p>Visit any of our store locations to sell your electronics for cash on the spot. No appointment necessary!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Find a Location Near You</h2>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Enter your zip code or city">
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <p style="text-align: center; color: var(--dark-gray);">Enter your zip code or city to find the nearest SellYourGadgets.com location</p>
+            </div>
+            
+            <div class="map-container">
+                <div>Interactive map would be displayed here using Google Maps or similar API</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations List Section -->
+    <section class="section" style="background-color: var(--background);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Locations</h2>
+            </div>
+            
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-image">
+                        <div>Chicago Downtown Store Image</div>
+                    </div>
+                    <div class="location-content">
+                        <h3>Chicago Downtown</h3>
+                        <div class="location-info">
+                            <p><i class="fas fa-map-marker-alt"></i> 123 Michigan Ave, Chicago, IL 60601</p>
+                            <p><i class="fas fa-phone"></i> (312) 555-1234</p>
+                            <p><i class="fas fa-envelope"></i> chicago@electronicsbuyback.com</p>
+                        </div>
+                        <div class="location-hours">
+                            <h4>Hours of Operation</h4>
+                            <p>Monday - Friday: 10am - 8pm</p>
+                            <p>Saturday: 10am - 6pm</p>
+                            <p>Sunday: 12pm - 5pm</p>
+                        </div>
+                        <a href="https://maps.google.com/?q=123+Michigan+Ave,+Chicago,+IL+60601" target="_blank" class="btn btn-primary">Get Directions</a>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-image">
+                        <div>New York Manhattan Store Image</div>
+                    </div>
+                    <div class="location-content">
+                        <h3>New York - Manhattan</h3>
+                        <div class="location-info">
+                            <p><i class="fas fa-map-marker-alt"></i> 789 5th Avenue, New York, NY 10022</p>
+                            <p><i class="fas fa-phone"></i> (212) 555-9012</p>
+                            <p><i class="fas fa-envelope"></i> newyork@electronicsbuyback.com</p>
+                        </div>
+                        <div class="location-hours">
+                            <h4>Hours of Operation</h4>
+                            <p>Monday - Friday: 9am - 8pm</p>
+                            <p>Saturday: 10am - 7pm</p>
+                            <p>Sunday: 11am - 6pm</p>
+                        </div>
+                        <a href="https://maps.google.com/?q=789+5th+Avenue,+New+York,+NY+10022" target="_blank" class="btn btn-primary">Get Directions</a>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-image">
+                        <div>Los Angeles Beverly Hills Store Image</div>
+                    </div>
+                    <div class="location-content">
+                        <h3>Los Angeles - Beverly Hills</h3>
+                        <div class="location-info">
+                            <p><i class="fas fa-map-marker-alt"></i> 456 Rodeo Dr, Beverly Hills, CA 90210</p>
+                            <p><i class="fas fa-phone"></i> (310) 555-5678</p>
+                            <p><i class="fas fa-envelope"></i> la@electronicsbuyback.com</p>
+                        </div>
+                        <div class="location-hours">
+                            <h4>Hours of Operation</h4>
+                            <p>Monday - Friday: 10am - 8pm</p>
+                            <p>Saturday: 10am - 7pm</p>
+                            <p>Sunday: 11am - 6pm</p>
+                        </div>
+                        <a href="https://maps.google.com/?q=456+Rodeo+Dr,+Beverly+Hills,+CA+90210" target="_blank" class="btn btn-primary">Get Directions</a>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-image">
+                        <div>Miami South Beach Store Image</div>
+                    </div>
+                    <div class="location-content">
+                        <h3>Miami - South Beach</h3>
+                        <div class="location-info">
+                            <p><i class="fas fa-map-marker-alt"></i> 1000 Ocean Drive, Miami Beach, FL 33139</p>
+                            <p><i class="fas fa-phone"></i> (305) 555-3456</p>
+                            <p><i class="fas fa-envelope"></i> miami@electronicsbuyback.com</p>
+                        </div>
+                        <div class="location-hours">
+                            <h4>Hours of Operation</h4>
+                            <p>Monday - Friday: 10am - 8pm</p>
+                            <p>Saturday: 10am - 7pm</p>
+                            <p>Sunday: 12pm - 6pm</p>
+                        </div>
+                        <a href="https://maps.google.com/?q=1000+Ocean+Drive,+Miami+Beach,+FL+33139" target="_blank" class="btn btn-primary">Get Directions</a>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-image">
+                        <div>Seattle Downtown Store Image</div>
+                    </div>
+                    <div class="location-content">
+                        <h3>Seattle - Downtown</h3>
+                        <div class="location-info">
+                            <p><i class="fas fa-map-marker-alt"></i> 500 Pine Street, Seattle, WA 98101</p>
+                            <p><i class="fas fa-phone"></i> (206) 555-7890</p>
+                            <p><i class="fas fa-envelope"></i> seattle@electronicsbuyback.com</p>
+                        </div>
+                        <div class="location-hours">
+                            <h4>Hours of Operation</h4>
+                            <p>Monday - Friday: 10am - 8pm</p>
+                            <p>Saturday: 10am - 7pm</p>
+                            <p>Sunday: 11am - 5pm</p>
+                        </div>
+                        <a href="https://maps.google.com/?q=500+Pine+Street,+Seattle,+WA+98101" target="_blank" class="btn btn-primary">Get Directions</a>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-image">
+                        <div>Austin Downtown Store Image</div>
+                    </div>
+                    <div class="location-content">
+                        <h3>Austin - Downtown</h3>
+                        <div class="location-info">
+                            <p><i class="fas fa-map-marker-alt"></i> 600 Congress Ave, Austin, TX 78701</p>
+                            <p><i class="fas fa-phone"></i> (512) 555-2345</p>
+                            <p><i class="fas fa-envelope"></i> austin@electronicsbuyback.com</p>
+                        </div>
+                        <div class="location-hours">
+                            <h4>Hours of Operation</h4>
+                            <p>Monday - Friday: 10am - 8pm</p>
+                            <p>Saturday: 10am - 7pm</p>
+                            <p>Sunday: 12pm - 5pm</p>
+                        </div>
+                        <a href="https://maps.google.com/?q=600+Congress+Ave,+Austin,+TX+78701" target="_blank" class="btn btn-primary">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Bring Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What to Bring</h2>
+            </div>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3><i class="fas fa-mobile-alt" style="color: var(--primary); margin-right: 0.5rem;"></i> Your Device</h3>
+                    <p>Bring the device(s) you want to sell. Make sure to remove any personal data by performing a factory reset.</p>
+                    
+                    <h3 style="margin-top: 1.5rem;"><i class="fas fa-battery-full" style="color: var(--primary); margin-right: 0.5rem;"></i> Accessories (Optional)</h3>
+                    <p>Including chargers, cables, and original packaging can increase your device's value, but they're not required.</p>
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <h3><i class="fas fa-id-card" style="color: var(--primary); margin-right: 0.5rem;"></i> Valid ID</h3>
+                    <p>You must present a valid government-issued photo ID (driver's license, passport, etc.) to complete the transaction.</p>
+                    
+                    <h3 style="margin-top: 1.5rem;"><i class="fas fa-unlock" style="color: var(--primary); margin-right: 0.5rem;"></i> Device Passwords</h3>
+                    <p>Make sure you know your device passwords and have removed any activation locks (like iCloud for Apple devices).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mail-In Option Section -->
+    <section class="section" style="background-color: var(--background);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Can't Visit a Store?</h2>
+            </div>
+            
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="margin-bottom: 2rem;">If you can't visit one of our store locations, our mail-in service is a convenient alternative. Get a free shipping label, send us your device, and receive payment within 2 business days of device receipt.</p>
+                <a href="mail-in" class="btn btn-primary">Learn About Mail-In Service</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>We offer the best prices for your used electronics. Fast, easy, and environmentally responsible.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index">Home</a></li>
+                        <li class="footer-link"><a href="how-it-works">How It Works</a></li>
+                        <li class="footer-link"><a href="accepted-items">What We Buy</a></li>
+                        <li class="footer-link"><a href="pricing">Pricing</a></li>
+                        <li class="footer-link"><a href="locations">Locations</a></li>
+                        <li class="footer-link"><a href="mail-in">Mail-In Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Items</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="items/iphone">Sell iPhone</a></li>
+                        <li class="footer-link"><a href="items/samsung">Sell Samsung Galaxy</a></li>
+                        <li class="footer-link"><a href="items/macbook">Sell MacBook</a></li>
+                        <li class="footer-link"><a href="items/ipad">Sell iPad</a></li>
+                        <li class="footer-link"><a href="items/playstation">Sell PlayStation</a></li>
+                        <li class="footer-link"><a href="items/xbox">Sell Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-phone"></i> (800) 555-CASH</li>
+                        <li class="footer-link"><i class="fas fa-envelope"></i> info@electronicsbuyback.com</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Locations Nationwide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

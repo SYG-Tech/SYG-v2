@@ -1,0 +1,680 @@
+/* Environmental Impact Calculator Styles */
+
+.calculator-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.calculator-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.calculator-header h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.calculator-header p {
+  color: var(--dark-gray);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.calculator-icon {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+/* Calculator Form */
+.calculator-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  background-color: var(--white);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.quantity-btn {
+  background-color: var(--background);
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-btn:hover {
+  background-color: var(--light-gray);
+}
+
+.quantity-input {
+  flex: 1;
+  text-align: center;
+  border: none;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  -moz-appearance: textfield;
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calculator-submit {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.calculator-submit button {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.calculator-submit button:hover {
+  background-color: #2a8c5e;
+  transform: translateY(-2px);
+}
+
+.calculator-submit button i {
+  font-size: 1.25rem;
+}
+
+/* Results Section */
+.calculator-results {
+  display: none;
+  margin-top: 3rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.results-header h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.results-summary {
+  background-color: rgba(46, 204, 113, 0.1);
+  border-left: 4px solid #2ecc71;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.summary-icon {
+  font-size: 2.5rem;
+  color: #2ecc71;
+  margin-bottom: 1rem;
+}
+
+.summary-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin-bottom: 0.5rem;
+}
+
+.summary-subtext {
+  color: var(--dark-gray);
+}
+
+.impact-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.impact-card {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.impact-card:hover {
+  transform: translateY(-5px);
+}
+
+.impact-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  background-color: rgba(44, 123, 190, 0.1);
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+}
+
+.impact-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.impact-label {
+  color: var(--dark-gray);
+  margin-bottom: 0.5rem;
+}
+
+.impact-description {
+  font-size: 0.875rem;
+  color: var(--dark-gray);
+}
+
+/* Equivalency Section */
+.equivalency-section {
+  margin-bottom: 2.5rem;
+}
+
+.equivalency-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.equivalency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.equivalency-card {
+  background-color: var(--background);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.equivalency-icon {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.equivalency-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-gray);
+  margin-bottom: 0.5rem;
+}
+
+.equivalency-label {
+  color: var(--dark-gray);
+  font-size: 0.875rem;
+}
+
+/* Share Results Section */
+.share-results {
+  background-color: var(--background);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.share-header {
+  margin-bottom: 1.5rem;
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.share-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.share-button:hover {
+  transform: translateY(-3px);
+}
+
+.share-facebook {
+  background-color: #3b5998;
+}
+
+.share-twitter {
+  background-color: #1da1f2;
+}
+
+.share-linkedin {
+  background-color: #0077b5;
+}
+
+.share-email {
+  background-color: #718096;
+}
+
+.download-certificate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.download-certificate:hover {
+  background-color: #236aa6;
+  transform: translateY(-2px);
+}
+
+/* Educational Content */
+.educational-content {
+  margin-bottom: 2.5rem;
+}
+
+.educational-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.fact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.fact-card {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.fact-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fact-title i {
+  color: var(--accent);
+}
+
+.fact-content {
+  color: var(--dark-gray);
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.fact-link {
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.fact-link:hover {
+  color: var(--accent);
+}
+
+/* Call to Action */
+.calculator-cta {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background-color: var(--primary);
+  border-radius: 12px;
+  color: var(--white);
+}
+
+.calculator-cta h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.calculator-cta p {
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cta-primary {
+  background-color: var(--white);
+  color: var(--primary);
+}
+
+.cta-primary:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+.cta-secondary {
+  background-color: transparent;
+  border: 2px solid var(--white);
+  color: var(--white);
+}
+
+.cta-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Progress Bar */
+.progress-container {
+  margin-bottom: 2rem;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: var(--light-gray);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #2ecc71;
+  border-radius: 5px;
+  width: 0;
+  transition: width 1s ease;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--dark-gray);
+}
+
+/* Loading State */
+.calculator-loading {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  font-size: 2rem;
+  color: var(--primary);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-top: 1rem;
+  color: var(--dark-gray);
+}
+
+/* Tooltips */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip-icon {
+  color: var(--primary);
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.5rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.875rem;
+  font-weight: normal;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Achievements Section */
+.achievements {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.achievement-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.achievement-badge {
+  width: 100px;
+  text-align: center;
+}
+
+.badge-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 0.5rem;
+  background-color: var(--background);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent);
+  position: relative;
+}
+
+.badge-icon.locked {
+  color: var(--light-gray);
+}
+
+.badge-icon.locked::after {
+  content: "\f023";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--white);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: var(--dark-gray);
+  border: 2px solid var(--light-gray);
+}
+
+.badge-name {
+  font-size: 0.875rem;
+  color: var(--dark-gray);
+  margin-bottom: 0.25rem;
+}
+
+.badge-description {
+  font-size: 0.75rem;
+  color: var(--dark-gray);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .calculator-container {
+    padding: 1.5rem;
+  }
+  
+  .impact-metrics {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .equivalency-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  
+  .share-buttons {
+    flex-wrap: wrap;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .achievement-badges {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .calculator-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .impact-value {
+    font-size: 1.5rem;
+  }
+  
+  .equivalency-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .fact-cards {
+    grid-template-columns: 1fr;
+  }
+}

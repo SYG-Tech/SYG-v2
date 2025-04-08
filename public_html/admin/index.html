@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | SellYourGadgets.com</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            display: flex;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .admin-sidebar {
+            width: 250px;
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 2rem 0;
+        }
+        
+        .admin-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .admin-sidebar li {
+            padding: 0.75rem 1.5rem;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-sidebar li:hover, .admin-sidebar li.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--secondary);
+        }
+        
+        .admin-sidebar a {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .admin-sidebar i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .admin-content {
+            flex: 1;
+            padding: 2rem;
+            background-color: var(--background);
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .admin-title {
+            margin: 0;
+            color: var(--primary);
+        }
+        
+        .admin-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .stat-card h3 {
+            font-size: 2rem;
+            margin: 0.5rem 0;
+            color: var(--dark-gray);
+        }
+        
+        .stat-card p {
+            color: var(--gray);
+            margin: 0;
+        }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .admin-table th, .admin-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .admin-table th {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
+        
+        .admin-table tr:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        .admin-form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .admin-form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+        
+        .admin-form-group input, .admin-form-group select, .admin-form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .admin-form-group textarea {
+            min-height: 150px;
+        }
+        
+        .admin-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-edit, .btn-delete, .btn-view {
+            padding: 0.5rem;
+            border-radius: 4px;
+            color: var(--white);
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.875rem;
+        }
+        
+        .btn-view {
+            background-color: var(--primary);
+        }
+        
+        .btn-edit {
+            background-color: var(--secondary);
+        }
+        
+        .btn-delete {
+            background-color: var(--danger);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-processing, .status-in-progress {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+        
+        .status-cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .form-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        
+        .form-content {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .form-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .form-title {
+            margin-top: 0;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index" class="nav-link">Back to Website</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Admin: John Doe</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="admin-container">
+        <div class="admin-sidebar">
+            <ul>
+                <li class="active"><a href="#dashboard" class="tab-link" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#devices" class="tab-link" data-tab="devices"><i class="fas fa-mobile-alt"></i> Manage Devices</a></li>
+                <li><a href="#locations" class="tab-link" data-tab="locations"><i class="fas fa-map-marker-alt"></i> Manage Locations</a></li>
+                <li><a href="#pricing" class="tab-link" data-tab="pricing"><i class="fas fa-dollar-sign"></i> Pricing</a></li>
+                <li><a href="#orders" class="tab-link" data-tab="orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                <li><a href="#users" class="tab-link" data-tab="users"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#settings" class="tab-link" data-tab="settings"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </div>
+        
+        <div class="admin-content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="admin-header">
+                    <h1 class="admin-title">Dashboard</h1>
+                    <div class="admin-date" id="current-date">April 5, 2025</div>
+                </div>
+                
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3 id="total-devices">0</h3>
+                        <p>Total Devices</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3 id="total-revenue">$0</h3>
+                        <p>Total Revenue</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-store"></i>
+                        <h3 id="total-locations">0</h3>
+                        <p>Active Locations</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3 id="completed-orders">0</h3>
+                        <p>Completed Orders</p>
+                    </div>
+                </div>
+                
+                <div class="admin-card">
+                    <h2>Recent Orders</h2>
+                    <table class="admin-table" id="recent-orders-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Customer</th>
+                                <th>Device</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Orders will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Devices Tab -->
+            <div id="devices" class="tab-content">
+                <div class="admin-header">
+                    <h1 class="admin-title">Manage Devices</h1>
+                    <button class="btn btn-primary" id="add-device-btn">Add New Device</button>
+                </div>
+                
+                <div class="admin-card">
+                    <h2>All Devices</h2>
+                    <table class="admin-table" id="devices-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Category</th>
+                                <th>Brand</th>
+                                <th>Model</th>
+                                <th>Storage</th>
+                                <th>Base Price</th>
+                                <th>Date Added</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Devices will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Device Form Container -->
+                <div id="device-form-container" class="form-container">
+                    <div class="form-content">
+                        <span class="form-close" onclick="hideDeviceForm()">&times;</span>
+                        <h2 id="device-form-title" class="form-title">Add New Device</h2>
+                        <form id="add-device-form">
+                            <div class="admin-form-group">
+                                <label for="device-category">Category</label>
+                                <select id="device-category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Smartphones">Smartphones</option>
+                                    <option value="Tablets">Tablets</option>
+                                    <option value="Laptops">Laptops</option>
+                                    <option value="Gaming">Gaming Consoles</option>
+                                    <option value="Wearables">Wearables</option>
+                                    <option value="Cameras">Cameras</option>
+                                    <option value="Audio">Audio Devices</option>
+                                    <option value="Drones">Drones</option>
+                                    <option value="Tools">Power Tools</option>
+                                </select>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="device-brand">Brand</label>
+                                <input type="text" id="device-brand" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="device-model">Model</label>
+                                <input type="text" id="device-model" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="device-storage">Storage</label>
+                                <input type="text" id="device-storage" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="device-condition">Condition Options</label>
+                                <select id="device-condition" multiple required>
+                                    <option value="New">New</option>
+                                    <option value="Like New">Like New</option>
+                                    <option value="Excellent">Excellent</option>
+                                    <option value="Good">Good</option>
+                                    <option value="Fair">Fair</option>
+                                    <option value="Poor">Poor</option>
+                                    <option value="Damaged">Damaged</option>
+                                </select>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="device-price">Base Price ($)</label>
+                                <input type="number" id="device-price" min="0" step="0.01" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="device-image">Image Path</label>
+                                <input type="text" id="device-image" value="../images/smartphone.svg">
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="device-date">Date Added</label>
+                                <input type="date" id="device-date">
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" onclick="hideDeviceForm()">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Device</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Device Details Container -->
+                <div id="device-details-container" class="form-container">
+                    <div class="form-content">
+                        <!-- Device details will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Locations Tab -->
+            <div id="locations" class="tab-content">
+                <div class="admin-header">
+                    <h1 class="admin-title">Manage Locations</h1>
+                    <button class="btn btn-primary" id="add-location-btn">Add New Location</button>
+                </div>
+                
+                <div class="admin-card">
+                    <h2>All Locations</h2>
+                    <table class="admin-table" id="locations-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>Hours</th>
+                                <th>Manager</th>
+                                <th>Date Added</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Locations will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Location Form Container -->
+                <div id="location-form-container" class="form-container">
+                    <div class="form-content">
+                        <span class="form-close" onclick="hideLocationForm()">&times;</span>
+                        <h2 id="location-form-title" class="form-title">Add New Location</h2>
+                        <form id="add-location-form">
+                            <div class="admin-form-group">
+                                <label for="location-name">Location Name</label>
+                                <input type="text" id="location-name" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="location-address">Address</label>
+                                <input type="text" id="location-address" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="location-phone">Phone</label>
+                                <input type="text" id="location-phone" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="location-hours">Hours</label>
+                                <input type="text" id="location-hours" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="location-manager">Manager</label>
+                                <input type="text" id="location-manager" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="location-date">Date Added</label>
+                                <input type="date" id="location-date">
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" onclick="hideLocationForm()">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Location</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Location Details Container -->
+                <div id="location-details-container" class="form-container">
+                    <div class="form-content">
+                        <!-- Location details will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pricing Tab -->
+            <div id="pricing" class="tab-content">
+                <div class="admin-header">
+                    <h1 class="admin-title">Pricing Management</h1>
+                    <div>Last Updated: <span id="pricing-last-updated">N/A</span></div>
+                </div>
+                
+                <div class="admin-card">
+                    <h2>Condition Multipliers</h2>
+                    <p>These multipliers are applied to the base price of a device based on its condition.</p>
+                    <table class="admin-table" id="condition-multipliers-table">
+                        <thead>
+                            <tr>
+                                <th>Condition</th>
+                                <th>Multiplier</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Condition multipliers will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="admin-card">
+                    <h2>Category Bonuses</h2>
+                    <p>These bonuses are applied to specific device categories.</p>
+                    <table class="admin-table" id="category-bonuses-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Bonus Multiplier</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Category bonuses will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Orders Tab -->
+            <div id="orders" class="tab-content">
+                <div class="admin-header">
+                    <h1 class="admin-title">Order Management</h1>
+                </div>
+                
+                <div class="admin-card">
+                    <h2>All Orders</h2>
+                    <table class="admin-table" id="orders-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Customer</th>
+                                <th>Device</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Orders will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Users Tab -->
+            <div id="users" class="tab-content">
+                <div class="admin-header">
+                    <h1 class="admin-title">User Management</h1>
+                    <button class="btn btn-primary" id="add-user-btn">Add New User</button>
+                </div>
+                
+                <div class="admin-card">
+                    <h2>All Users</h2>
+                    <table class="admin-table" id="users-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Last Login</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Users will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Settings Tab -->
+            <div id="settings" class="tab-content">
+                <div class="admin-header">
+                    <h1 class="admin-title">System Settings</h1>
+                    <div>Last Updated: <span id="settings-last-updated">N/A</span></div>
+                </div>
+                
+                <div class="admin-card">
+                    <h2>General Settings</h2>
+                    <form id="settings-form">
+                        <div class="admin-form-group">
+                            <label for="company-name">Company Name</label>
+                            <input type="text" id="company-name" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="contact-email">Contact Email</label>
+                            <input type="email" id="contact-email" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="contact-phone">Contact Phone</label>
+                            <input type="text" id="contact-phone" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="price-match-percentage">Price Match Percentage</label>
+                            <input type="number" id="price-match-percentage" min="0" max="100" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="loyalty-discount-percentage">Loyalty Discount Percentage</label>
+                            <input type="number" id="loyalty-discount-percentage" min="0" max="100" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="save-settings-btn">Save Settings</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="admin-card">
+                    <h2>Data Management</h2>
+                    <p>Export or import data for backup and recovery purposes.</p>
+                    <div class="form-actions">
+                        <button class="btn btn-secondary" id="export-data-btn">Export All Data</button>
+                        <button class="btn btn-primary" id="import-data-btn">Import Data</button>
+                    </div>
+                    
+                    <!-- Import Data Form -->
+                    <div id="import-data-form" style="display: none; margin-top: 2rem;">
+                        <h3>Import Data</h3>
+                        <div class="admin-form-group">
+                            <label for="import-data-type">Data Type</label>
+                            <select id="import-data-type" required>
+                                <option value="devices">Devices</option>
+                                <option value="locations">Locations</option>
+                                <option value="pricing">Pricing</option>
+                                <option value="orders">Orders</option>
+                                <option value="users">Users</option>
+                                <option value="settings">Settings</option>
+                                <option value="appointments">Appointments</option>
+                                <option value="leads">Leads</option>
+                            </select>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="import-data-file">JSON File</label>
+                            <input type="file" id="import-data-file" accept=".json" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('import-data-form').style.display = 'none'">Cancel</button>
+                            <button type="button" class="btn btn-primary" onclick="importData()">Import</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="../index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                    <p>The best place to sell your used electronics for cash.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index">Home</a></li>
+                        <li><a href="../how-it-works">How It Works</a></li>
+                        <li><a href="../accepted-items">Accepted Items</a></li>
+                        <li><a href="../pricing">Pricing</a></li>
+                        <li><a href="../locations">Locations</a></li>
+                        <li><a href="../mail-in">Mail-In</a></li>
+                        <li><a href="../about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> (800) 555-CASH</p>
+                    <p><i class="fas fa-envelope"></i> info@sellyourgadgets.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main St, New York, NY 10001</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="../js/admin-data-storage.js"></script>
+    <script src="../js/admin-interface.js"></script>
+</body>
+</html>

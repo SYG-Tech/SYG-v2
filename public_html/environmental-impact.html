@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Impact Calculator | SellYourGadgets.com</title>
+    <meta name="description" content="Calculate the positive environmental impact of recycling your electronics. See how selling your devices helps reduce CO2 emissions, conserve water, and save energy.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/environmental-calculator.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Environmental Impact Calculator",
+      "description": "Calculate the positive environmental impact of recycling your electronics. See how selling your devices helps reduce CO2 emissions, conserve water, and save energy.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "SellYourGadgets.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://sellyourgadgets.com/logo.png"
+        }
+      },
+      "mainEntity": {
+        "@type": "SoftwareApplication",
+        "name": "Environmental Impact Calculator",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Environmental Impact Calculator</h1>
+                <p>Discover the positive environmental impact of recycling your electronics. See how your actions help reduce carbon emissions, conserve water, and save energy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="section">
+        <div class="container">
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <div class="calculator-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h2>Calculate Your Environmental Impact</h2>
+                    <p>Select your device details below to see the positive environmental impact of recycling your electronics through SellYourGadgets.com.</p>
+                </div>
+                
+                <!-- Calculator Form -->
+                <form id="calculator-form">
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="device-type">Device Type</label>
+                            <select id="device-type" required>
+                                <option value="">Select Device Type</option>
+                                <option value="smartphone">Smartphone</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="desktop">Desktop Computer</option>
+                                <option value="gaming-console">Gaming Console</option>
+                                <option value="wearable">Wearable Device</option>
+                                <option value="camera">Camera</option>
+                                <option value="audio">Audio Device</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="device-brand">Brand</label>
+                            <select id="device-brand" required>
+                                <option value="">Select Brand</option>
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="device-model">Model</label>
+                            <select id="device-model" required>
+                                <option value="">Select Model</option>
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="device-condition">Condition</label>
+                            <select id="device-condition" required>
+                                <option value="">Select Condition</option>
+                                <option value="like-new">Like New</option>
+                                <option value="good">Good</option>
+                                <option value="fair">Fair</option>
+                                <option value="poor">Poor</option>
+                                <option value="broken">Broken/For Parts</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="device-quantity">Quantity</label>
+                            <div class="quantity-control">
+                                <button type="button" id="decrease-quantity" class="quantity-btn">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" id="device-quantity" class="quantity-input" value="1" min="1" required>
+                                <button type="button" id="increase-quantity" class="quantity-btn">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="calculator-submit">
+                            <button type="submit">
+                                <i class="fas fa-calculator"></i>
+                                Calculate Impact
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+                <!-- Error Message -->
+                <div id="calculator-error" style="display: none; color: #e74c3c; text-align: center; margin-top: 1rem; font-weight: 600;"></div>
+                
+                <!-- Loading State -->
+                <div id="calculator-loading" class="calculator-loading">
+                    <div class="loading-spinner">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                    </div>
+                    <div class="loading-text">Calculating environmental impact...</div>
+                </div>
+                
+                <!-- Results Section -->
+                <div id="calculator-results" class="calculator-results" style="display: none;">
+                    <div class="results-header">
+                        <h3>Your Environmental Impact</h3>
+                    </div>
+                    
+                    <div class="results-summary">
+                        <div class="summary-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="summary-text">By recycling your iPhone 13 Pro, you're making a significant positive impact on the environment!</div>
+                        <div class="summary-subtext">Here's how your actions are helping the planet:</div>
+                    </div>
+                    
+                    <!-- Impact Metrics -->
+                    <div class="impact-metrics">
+                        <div class="impact-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <div class="impact-value" id="co2-saved">80</div>
+                            <div class="impact-label">kg of CO<sub>2</sub> Saved</div>
+                            <div class="impact-description">
+                                CO<sub>2</sub> emissions avoided by recycling instead of manufacturing new devices
+                                <span class="tooltip">
+                                    <i class="fas fa-info-circle tooltip-icon"></i>
+                                    <span class="tooltip-text">Manufacturing new electronics produces significant carbon emissions. Recycling reduces the need for new production.</span>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="impact-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="impact-value" id="energy-saved">60</div>
+                            <div class="impact-label">kWh of Energy Conserved</div>
+                            <div class="impact-description">
+                                Energy saved by reusing materials instead of extracting new ones
+                                <span class="tooltip">
+                                    <i class="fas fa-info-circle tooltip-icon"></i>
+                                    <span class="tooltip-text">Recycling electronics requires significantly less energy than mining and processing raw materials.</span>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="impact-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="impact-value" id="water-saved">3,434</div>
+                            <div class="impact-label">Gallons of Water Saved</div>
+                            <div class="impact-description">
+                                Water conserved by avoiding new resource extraction
+                                <span class="tooltip">
+                                    <i class="fas fa-info-circle tooltip-icon"></i>
+                                    <span class="tooltip-text">Mining and processing raw materials for electronics requires large amounts of water. Recycling significantly reduces water usage.</span>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="impact-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <div class="impact-value" id="materials-saved">1.2</div>
+                            <div class="impact-label">kg of Raw Materials Preserved</div>
+                            <div class="impact-description">
+                                Natural resources conserved through recycling
+                                <span class="tooltip">
+                                    <i class="fas fa-info-circle tooltip-icon"></i>
+                                    <span class="tooltip-text">Electronics contain valuable metals like gold, silver, copper, and rare earth elements. Recycling preserves these finite resources.</span>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="impact-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                            <div class="impact-value" id="ewaste-reduced">0.15</div>
+                            <div class="impact-label">kg of E-Waste Diverted</div>
+                            <div class="impact-description">
+                                Electronic waste kept out of landfills
+                                <span class="tooltip">
+                                    <i class="fas fa-info-circle tooltip-icon"></i>
+                                    <span class="tooltip-text">E-waste in landfills can leach toxic chemicals into soil and water. Proper recycling prevents environmental contamination.</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Toward Goals -->
+                    <div class="progress-container">
+                        <h3 style="text-align: center; margin-bottom: 1rem;">Your Contribution to Our Environmental Goals</h3>
+                        
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-target="25%" style="width: 0;"></div>
+                        </div>
+                        <div class="progress-label">
+                            <span>Your Impact</span>
+                            <span>Our 2025 Goal: 10,000 tons of CO2 saved</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Equivalency Section -->
+                    <div class="equivalency-section">
+                        <div class="equivalency-header">
+                            <h3>What Your Impact Means</h3>
+                            <p>Your recycling effort is equivalent to:</p>
+                        </div>
+                        
+                        <div class="equivalency-grid">
+                            <div class="equivalency-card">
+                                <div class="equivalency-icon">
+                                    <i class="fas fa-tree"></i>
+                                </div>
+                                <div class="equivalency-value" id="trees-equivalent-value">4</div>
+                                <div class="equivalency-label" id="trees-equivalent-label">Trees Planted</div>
+                            </div>
+                            
+                            <div class="equivalency-card">
+                                <div class="equivalency-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <div class="equivalency-value" id="car-equivalent-value">320</div>
+                                <div class="equivalency-label" id="car-equivalent-label">Car Miles Not Driven</div>
+                            </div>
+                            
+                            <div class="equivalency-card">
+                                <div class="equivalency-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="equivalency-value" id="energy-equivalent-value">2</div>
+                                <div class="equivalency-label" id="energy-equivalent-label">Days of Home Energy</div>
+                            </div>
+                            
+                            <div class="equivalency-card">
+                                <div class="equivalency-icon">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="equivalency-value" id="water-equivalent-value">26,000</div>
+                                <div class="equivalency-label" id="water-equivalent-label">Water Bottles Saved</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Share Results -->
+                    <div class="share-results">
+                        <div class="share-header">
+                            <h3>Share Your Impact</h3>
+                            <p>Let others know about the positive difference you're making!</p>
+                        </div>
+                        
+                        <div class="share-buttons">
+                            <a href="#" class="share-button share-facebook" data-share="facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="share-button share-twitter" data-share="twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="share-button share-linkedin" data-share="linkedin">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="share-button share-email" data-share="email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                        
+                        <a href="#" class="download-certificate">
+                            <i class="fas fa-certificate"></i>
+                            Download Impact Certificate
+                        </a>
+                    </div>
+                    
+                    <!-- Educational Content -->
+                    <div class="educational-content">
+                        <div class="educational-header">
+                            <h3>Did You Know?</h3>
+                        </div>
+                        
+                        <div class="fact-cards">
+                            <div class="fact-card">
+                                <div class="fact-title">
+                                    <i class="fas fa-lightbulb"></i>
+                                    E-Waste Is the Fastest Growing Waste Stream
+                                </div>
+                                <div class="fact-content">
+                                    Globally, we generate over 50 million tons of electronic waste annually, and this number is growing by 3-4% each year. Less than 20% is formally recycled.
+                                </div>
+                                <a href="blog" class="fact-link">
+                                    Learn more <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="fact-card">
+                                <div class="fact-title">
+                                    <i class="fas fa-lightbulb"></i>
+                                    Smartphones Contain Valuable Materials
+                                </div>
+                                <div class="fact-content">
+                                    A typical smartphone contains over 60 different elements, including precious metals like gold, silver, and platinum, as well as rare earth elements essential for technology.
+                                </div>
+                                <a href="blog" class="fact-link">
+                                    Learn more <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="fact-card">
+                                <div class="fact-title">
+                                    <i class="fas fa-lightbulb"></i>
+                                    Recycling Creates Jobs
+                                </div>
+                                <div class="fact-content">
+                                    The electronics recycling industry creates up to 30 times more jobs than landfilling the same materials, contributing to local economies while helping the environment.
+                                </div>
+                                <a href="blog" class="fact-link">
+                                    Learn more <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Achievements Section -->
+                    <div class="achievements">
+                        <h3>Your Environmental Achievements</h3>
+                        <p>Earn badges as you increase your positive environmental impact!</p>
+                        
+                        <div class="achievement-badges">
+                            <div class="achievement-badge">
+                                <div class="badge-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <div class="badge-name">Eco Starter</div>
+                                <div class="badge-description">First device recycled</div>
+                            </div>
+                            
+                            <div class="achievement-badge">
+                                <div class="badge-icon locked">
+                                    <i class="fas fa-tree"></i>
+                                </div>
+                                <div class="badge-name">Forest Friend</div>
+                                <div class="badge-description">Saved 10 trees worth of CO2</div>
+                            </div>
+                            
+                            <div class="achievement-badge">
+                                <div class="badge-icon locked">
+                                    <i class="fas fa-water"></i>
+                                </div>
+                                <div class="badge-name">Water Guardian</div>
+                                <div class="badge-description">Saved 100,000 gallons of water</div>
+                            </div>
+                            
+                            <div class="achievement-badge">
+                                <div class="badge-icon locked">
+                                    <i class="fas fa-globe-americas"></i>
+                                </div>
+                                <div class="badge-name">Earth Champion</div>
+                                <div class="badge-description">Recycled 10+ devices</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div class="calculator-cta">
+                        <h3>Ready to Make a Difference?</h3>
+                        <p>Turn your unused electronics into cash while helping the environment. Get an instant quote for your device and start your recycling journey today.</p>
+                        
+                        <div class="cta-buttons">
+                            <a href="pricing" class="cta-button cta-primary">
+                                <i class="fas fa-tag"></i>
+                                Get an Instant Quote
+                            </a>
+                            <a href="schedule-appointment" class="cta-button cta-secondary">
+                                <i class="fas fa-calendar-alt"></i>
+                                Schedule an Appointment
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>We offer the best prices for your used electronics. Fast, easy, and environmentally responsible.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index">Home</a></li>
+                        <li class="footer-link"><a href="how-it-works">How It Works</a></li>
+                        <li class="footer-link"><a href="accepted-items">What We Buy</a></li>
+                        <li class="footer-link"><a href="pricing">Pricing</a></li>
+                        <li class="footer-link"><a href="price-comparison">Price Comparison</a></li>
+                        <li class="footer-link"><a href="loyalty-program">Loyalty Program</a></li>
+                        <li class="footer-link"><a href="locations">Locations</a></li>
+                        <li class="footer-link"><a href="mail-in">Mail-In Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Items</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="items/iphone">Sell iPhone</a></li>
+                        <li class="footer-link"><a href="items/samsung">Sell Samsung Galaxy</a></li>
+                        <li class="footer-link"><a href="items/macbook">Sell MacBook</a></li>
+                        <li class="footer-link"><a href="items/ipad">Sell iPad</a></li>
+                        <li class="footer-link"><a href="items/playstation">Sell PlayStation</a></li>
+                        <li class="footer-link"><a href="items/xbox">Sell Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-phone"></i> (800) 555-CASH</li>
+                        <li class="footer-link"><i class="fas fa-envelope"></i> info@sellyourgadgets.com</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Locations Nationwide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/environmental-calculator.js"></script>
+</body>
+</html>

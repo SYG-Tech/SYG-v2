@@ -1,0 +1,76 @@
+.recommended-badge {
+    background-color: var(--accent);
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    font-weight: normal;
+}
+
+.location-finder-box {
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: center;
+    border: 2px solid var(--primary);
+}
+
+.location-finder-box h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.location-finder-box p {
+    margin-bottom: 1.5rem;
+}
+
+.location-finder-box .btn {
+    margin-top: 0.5rem;
+}
+
+.store-vs-mail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.comparison-column {
+    flex: 1;
+    min-width: 300px;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.comparison-column.recommended {
+    background-color: rgba(var(--primary-rgb), 0.1);
+    border: 2px solid var(--primary);
+}
+
+.comparison-column h3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.comparison-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.comparison-column li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.comparison-column li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+}

@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Management | SellYourGadgets.com Admin</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .admin-title {
+            margin: 0;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .admin-tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+        }
+        
+        .admin-tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .admin-panel {
+            display: none;
+        }
+        
+        .admin-panel.active {
+            display: block;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        
+        .data-table th {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+        
+        .data-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        .data-table tr:hover {
+            background-color: rgba(44, 123, 190, 0.05);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-new {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+        }
+        
+        .status-contacted {
+            background-color: #fff9c4;
+            color: #f57f17;
+        }
+        
+        .status-qualified {
+            background-color: #e8f5e9;
+            color: #1b5e20;
+        }
+        
+        .status-converted {
+            background-color: #d1c4e9;
+            color: #4527a0;
+        }
+        
+        .status-closed {
+            background-color: #efebe9;
+            color: #3e2723;
+        }
+        
+        .action-btn {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+        }
+        
+        .action-btn:hover {
+            background-color: #236aa6;
+        }
+        
+        .export-btn {
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .export-btn:hover {
+            background-color: #3d8b40;
+        }
+        
+        .detail-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .detail-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+        
+        .detail-value {
+            color: var(--gray);
+        }
+        
+        .note-form {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+            padding-top: 1.5rem;
+        }
+        
+        .note-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .note-submit {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .note-submit:hover {
+            background-color: #236aa6;
+        }
+        
+        .notes-list {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+            padding-top: 1.5rem;
+        }
+        
+        .note-item {
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        .note-content {
+            color: var(--dark-gray);
+        }
+        
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-select {
+            padding: 0.5rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            min-width: 150px;
+        }
+        
+        .search-input {
+            padding: 0.5rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            flex-grow: 1;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .page-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            background-color: var(--white);
+            cursor: pointer;
+        }
+        
+        .page-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+        
+        .page-btn:hover:not(.active) {
+            background-color: #f5f5f5;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        .chart-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .chart-title {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--dark-gray);
+        }
+        
+        .chart-canvas {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Admin Dashboard</a></li>
+                    <li class="nav-item"><a href="../index" class="nav-link">Back to Website</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 class="admin-title">Lead Management</h1>
+            <button class="export-btn" id="export-leads-btn">Export Leads</button>
+        </div>
+        
+        <div class="admin-tabs">
+            <div class="admin-tab active" data-panel="leads">Leads</div>
+            <div class="admin-tab" data-panel="appointments">Appointments</div>
+            <div class="admin-tab" data-panel="callbacks">Callback Requests</div>
+            <div class="admin-tab" data-panel="analytics">Analytics</div>
+        </div>
+        
+        <!-- Leads Panel -->
+        <div class="admin-panel active" id="leads-panel">
+            <div class="filter-bar">
+                <select class="filter-select" id="lead-status-filter">
+                    <option value="all">All Statuses</option>
+                    <option value="new">New</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="qualified">Qualified</option>
+                    <option value="converted">Converted</option>
+                    <option value="closed">Closed</option>
+                </select>
+                <select class="filter-select" id="lead-source-filter">
+                    <option value="all">All Sources</option>
+                    <option value="website">Website</option>
+                    <option value="phone">Phone</option>
+                    <option value="appointment">Appointment</option>
+                    <option value="callback">Callback Request</option>
+                    <option value="referral">Referral</option>
+                </select>
+                <input type="text" class="search-input" id="lead-search" placeholder="Search leads...">
+            </div>
+            
+            <table class="data-table" id="leads-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Source</th>
+                        <th>Device</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="leads-table-body">
+                    <!-- Leads will be loaded dynamically -->
+                </tbody>
+            </table>
+            
+            <div class="pagination" id="leads-pagination">
+                <!-- Pagination will be generated dynamically -->
+            </div>
+        </div>
+        
+        <!-- Appointments Panel -->
+        <div class="admin-panel" id="appointments-panel">
+            <div class="filter-bar">
+                <select class="filter-select" id="appointment-status-filter">
+                    <option value="all">All Statuses</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                    <option value="no-show">No Show</option>
+                </select>
+                <select class="filter-select" id="appointment-location-filter">
+                    <option value="all">All Locations</option>
+                    <option value="elizabeth">Elizabeth</option>
+                    <option value="newark">Newark</option>
+                    <option value="jersey-city">Jersey City</option>
+                </select>
+                <input type="text" class="search-input" id="appointment-search" placeholder="Search appointments...">
+            </div>
+            
+            <table class="data-table" id="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Date & Time</th>
+                        <th>Location</th>
+                        <th>Device</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="appointments-table-body">
+                    <!-- Appointments will be loaded dynamically -->
+                </tbody>
+            </table>
+            
+            <div class="pagination" id="appointments-pagination">
+                <!-- Pagination will be generated dynamically -->
+            </div>
+        </div>
+        
+        <!-- Callback Requests Panel -->
+        <div class="admin-panel" id="callbacks-panel">
+            <div class="filter-bar">
+                <select class="filter-select" id="callback-status-filter">
+                    <option value="all">All Statuses</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                    <option value="no-answer">No Answer</option>
+                    <option value="rescheduled">Rescheduled</option>
+                </select>
+                <input type="text" class="search-input" id="callback-search" placeholder="Search callback requests...">
+            </div>
+            
+            <table class="data-table" id="callbacks-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Best Time</th>
+                        <th>Device</th>
+                        <th>Status</th>
+                        <th>Requested</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="callbacks-table-body">
+                    <!-- Callback requests will be loaded dynamically -->
+                </tbody>
+            </table>
+            
+            <div class="pagination" id="callbacks-pagination">
+                <!-- Pagination will be generated dynamically -->
+            </div>
+        </div>
+        
+        <!-- Analytics Panel -->
+        <div class="admin-panel" id="analytics-panel">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-leads-stat">0</div>
+                    <div class="stat-label">Total Leads</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="conversion-rate-stat">0%</div>
+                    <div class="stat-label">Conversion Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="appointments-stat">0</div>
+                    <div class="stat-label">Appointments</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="callbacks-stat">0</div>
+                    <div class="stat-label">Callback Requests</div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h2 class="chart-title">Lead Sources</h2>
+                </div>
+                <canvas id="lead-sources-chart" class="chart-canvas"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h2 class="chart-title">Lead Status Distribution</h2>
+                </div>
+                <canvas id="lead-status-chart" class="chart-canvas"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h2 class="chart-title">Leads Over Time</h2>
+                </div>
+                <canvas id="leads-time-chart" class="chart-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lead Detail Modal -->
+    <div class="detail-modal" id="lead-detail-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="lead-modal-close">&times;</span>
+            <h2 id="lead-detail-name">Lead Details</h2>
+            
+            <div class="detail-grid" id="lead-detail-info">
+                <!-- Lead details will be loaded dynamically -->
+            </div>
+            
+            <div class="notes-list" id="lead-notes-list">
+                <h3>Notes</h3>
+                <!-- Notes will be loaded dynamically -->
+            </div>
+            
+            <div class="note-form">
+                <h3>Add Note</h3>
+                <textarea class="note-input" id="lead-note-input" placeholder="Enter your note here..."></textarea>
+                <button class="note-submit" id="lead-note-submit">Add Note</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Appointment Detail Modal -->
+    <div class="detail-modal" id="appointment-detail-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="appointment-modal-close">&times;</span>
+            <h2 id="appointment-detail-name">Appointment Details</h2>
+            
+            <div class="detail-grid" id="appointment-detail-info">
+                <!-- Appointment details will be loaded dynamically -->
+            </div>
+            
+            <div class="notes-list" id="appointment-notes-list">
+                <h3>Notes</h3>
+                <!-- Notes will be loaded dynamically -->
+            </div>
+            
+            <div class="note-form">
+                <h3>Add Note</h3>
+                <textarea class="note-input" id="appointment-note-input" placeholder="Enter your note here..."></textarea>
+                <button class="note-submit" id="appointment-note-submit">Add Note</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Callback Detail Modal -->
+    <div class="detail-modal" id="callback-detail-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="callback-modal-close">&times;</span>
+            <h2 id="callback-detail-name">Callback Request Details</h2>
+            
+            <div class="detail-grid" id="callback-detail-info">
+                <!-- Callback details will be loaded dynamically -->
+            </div>
+            
+            <div class="notes-list" id="callback-notes-list">
+                <h3>Notes</h3>
+                <!-- Notes will be loaded dynamically -->
+            </div>
+            
+            <div class="note-form">
+                <h3>Add Note</h3>
+                <textarea class="note-input" id="callback-note-input" placeholder="Enter your note here..."></textarea>
+                <button class="note-submit" id="callback-note-submit">Add Note</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="../index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                    <p>The best place to sell your used electronics for cash.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index">Home</a></li>
+                        <li><a href="../how-it-works">How It Works</a></li>
+                        <li><a href="../accepted-items">Accepted Items</a></li>
+                        <li><a href="../pricing">Pricing</a></li>
+                        <li><a href="../locations">Locations</a></li>
+                        <li><a href="../mail-in">Mail-In</a></li>
+                        <li><a href="../about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> (800) 555-CASH</p>
+                    <p><i class="fas fa-envelope"></i> info@sellyourgadgets.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main St, New York, NY 10001</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="../js/admin-data-storage.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('.admin-tab');
+            const panels = document.querySelectorAll('.admin-panel');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const panelId = tab.dataset.panel;
+                    
+                    // Remove active class from all tabs and panels
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding panel
+                    tab.classList.add('active');
+                    document.getElementById(`${panelId}-panel`).classList.add('active');
+                });
+            });
+            
+            // Modal functionality
+            const modals = document.querySelectorAll('.detail-modal');
+            const modalCloses = document.querySelectorAll('.modal-close');
+            
+            modalCloses.forEach(close => {
+                close.addEventListener('click', () => {
+                    modals.forEach(modal => {
+                        modal.classList.remove('active');
+                    });
+                });
+            });
+            
+            // Close modal when clicking outside content
+            modals.forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Load data from localStorage
+            loadLeadsData();
+            loadAppointmentsData();
+            loadCallbacksData();
+            updateAnalytics();
+            
+            // Set up export functionality
+            document.getElementById('export-leads-btn').addEventListener('click', exportLeadsData);
+            
+            // Set up note submission
+            document.getElementById('lead-note-submit').addEventListener('click', addLeadNote);
+            document.getElementById('appointment-note-submit').addEventListener('click', addAppointmentNote);
+            document.getElementById('callback-note-submit').addEventListener('click', addCallbackNote);
+            
+            // Set up search and filters
+            document.getElementById('lead-search').addEventListener('input', filterLeads);
+            document.getElementById('lead-status-filter').addEventListener('change', filterLeads);
+            document.getElementById('lead-source-filter').addEventListener('change', filterLeads);
+            
+            document.getElementById('appointment-search').addEventListener('input', filterAppointments);
+            document.getElementById('appointment-status-filter').addEventListener('change', filterAppointments);
+            document.getElementById('appointment-location-filter').addEventListener('change', filterAppointments);
+            
+            document.getElementById('callback-search').addEventListener('input', filterCallbacks);
+            document.getElementById('callback-status-filter').addEventListener('change', filterCallbacks);
+        });
+        
+        // Sample data initialization (if localStorage is empty)
+        function initializeSampleData() {
+            // Check if leads data exists
+            if (!localStorage.getItem('leads')) {
+                const sampleLeads = [
+                    {
+                        id: 'L1001',
+                        name: 'John Smith',
+                        email: 'john.smith@example.com',
+                        phone: '(555) 123-4567',
+                        source: 'website',
+                        device: 'iPhone 13 Pro',
+                        status: 'new',
+                        date: '2025-04-01',
+                        notes: [
+                            {
+                                text: 'Initial contact through website form',
+                                date: '2025-04-01',
+                                author: 'System'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'L1002',
+                        name: 'Sarah Johnson',
+                        email: 'sarah.j@example.com',
+                        phone: '(555) 987-6543',
+                        source: 'phone',
+                        device: 'Samsung Galaxy S24',
+                        status: 'contacted',
+                        date: '2025-04-02',
+                        notes: [
+                            {
+                                text: 'Called about selling her Samsung phone',
+                                date: '2025-04-02',
+                                author: 'System'
+                            },
+                            {
+                                text: 'Followed up with email quote',
+                                date: '2025-04-03',
+                                author: 'John Doe'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'L1003',
+                        name: 'Michael Brown',
+                        email: 'mbrown@example.com',
+                        phone: '(555) 456-7890',
+                        source: 'appointment',
+                        device: 'MacBook Pro 16"',
+                        status: 'qualified',
+                        date: '2025-04-03',
+                        notes: [
+                            {
+                                text: 'Scheduled appointment to evaluate MacBook',
+                                date: '2025-04-03',
+                                author: 'System'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'L1004',
+                        name: 'Emily Davis',
+                        email: 'emily.d@example.com',
+                        phone: '(555) 234-5678',
+                        source: 'callback',
+                        device: 'iPad Pro 12.9"',
+                        status: 'converted',
+                        date: '2025-04-04',
+                        notes: [
+                            {
+                                text: 'Requested callback about iPad Pro',
+                                date: '2025-04-04',
+                                author: 'System'
+                            },
+                            {
+                                text: 'Called back and provided quote',
+                                date: '2025-04-04',
+                                author: 'Jane Smith'
+                            },
+                            {
+                                text: 'Customer accepted offer and will bring device tomorrow',
+                                date: '2025-04-04',
+                                author: 'Jane Smith'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'L1005',
+                        name: 'David Wilson',
+                        email: 'dwilson@example.com',
+                        phone: '(555) 876-5432',
+                        source: 'referral',
+                        device: 'DJI Mavic 3 Pro',
+                        status: 'closed',
+                        date: '2025-04-05',
+                        notes: [
+                            {
+                                text: 'Referred by John Smith',
+                                date: '2025-04-05',
+                                author: 'System'
+                            },
+                            {
+                                text: 'Completed transaction - $800 for drone',
+                                date: '2025-04-05',
+                                author: 'John Doe'
+                            }
+                        ]
+                    }
+                ];
+                
+                localStorage.setItem('leads', JSON.stringify(sampleLeads));
+            }
+            
+            // Check if appointments data exists
+            if (!localStorage.getItem('appointments')) {
+                const sampleAppointments = [
+                    {
+                        id: 'A1001',
+                        name: 'Michael Brown',
+                        email: 'mbrown@example.com',
+                        phone: '(555) 456-7890',
+                        date: '2025-04-06',
+                        time: '10:00 AM',
+                        location: 'Elizabeth',
+                        device: 'MacBook Pro 16"',
+                        status: 'scheduled',
+                        notes: [
+                            {
+                                text: 'Customer scheduled appointment online',
+                                date: '2025-04-03',
+                                author: 'System'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'A1002',
+                        name: 'Jennifer Lee',
+                        email: 'jlee@example.com',
+                        phone: '(555) 345-6789',
+                        date: '2025-04-05',
+                        time: '2:30 PM',
+                        location: 'Newark',
+                        device: 'iPhone 14 Pro Max',
+                        status: 'completed',
+                        notes: [
+                            {
+                                text: 'Customer scheduled appointment via phone',
+                                date: '2025-04-02',
+                                author: 'System'
+                            },
+                            {
+                                text: 'Completed transaction - $650 for iPhone',
+                                date: '2025-04-05',
+                                author: 'Jane Smith'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'A1003',
+                        name: 'Robert Garcia',
+                        email: 'rgarcia@example.com',
+                        phone: '(555) 567-8901',
+                        date: '2025-04-04',
+                        time: '11:15 AM',
+                        location: 'Jersey City',
+                        device: 'Samsung Galaxy Tab S9',
+                        status: 'cancelled',
+                        notes: [
+                            {
+                                text: 'Customer scheduled appointment online',
+                                date: '2025-04-01',
+                                author: 'System'
+                            },
+                            {
+                                text: 'Customer called to cancel - found better offer',
+                                date: '2025-04-03',
+                                author: 'John Doe'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'A1004',
+                        name: 'Amanda Martinez',
+                        email: 'amartinez@example.com',
+                        phone: '(555) 678-9012',
+                        date: '2025-04-05',
+                        time: '9:45 AM',
+                        location: 'Elizabeth',
+                        device: 'Dell XPS 15',
+                        status: 'no-show',
+                        notes: [
+                            {
+                                text: 'Customer scheduled appointment online',
+                                date: '2025-04-03',
+                                author: 'System'
+                            },
+                            {
+                                text: 'Customer did not show up for appointment',
+                                date: '2025-04-05',
+                                author: 'John Doe'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'A1005',
+                        name: 'Thomas Wright',
+                        email: 'twright@example.com',
+                        phone: '(555) 789-0123',
+                        date: '2025-04-07',
+                        time: '3:00 PM',
+                        location: 'Newark',
+                        device: 'PlayStation 5',
+                        status: 'scheduled',
+                        notes: [
+                            {
+                                text: 'Customer scheduled appointment via phone',
+                                date: '2025-04-05',
+                                author: 'System'
+                            }
+                        ]
+                    }
+                ];
+                
+                localStorage.setItem('appointments', JSON.stringify(sampleAppointments));
+            }
+            
+            // Check if callbacks data exists
+            if (!localStorage.getItem('callbacks')) {
+                const sampleCallbacks = [
+                    {
+                        id: 'C1001',
+                        name: 'Emily Davis',
+                        phone: '(555) 234-5678',
+                        bestTime: 'Afternoon',
+                        device: 'iPad Pro 12.9"',
+                        status: 'completed',
+                        requested: '2025-04-04',
+                        notes: [
+                            {
+                                text: 'Customer requested callback about iPad Pro',
+                                date: '2025-04-04',
+                                author: 'System'
+                            },
+                            {
+                                text: 'Called back and provided quote',
+                                date: '2025-04-04',
+                                author: 'Jane Smith'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'C1002',
+                        name: 'Kevin Thompson',
+                        phone: '(555) 890-1234',
+                        bestTime: 'Morning',
+                        device: 'iPhone 12 Mini',
+                        status: 'pending',
+                        requested: '2025-04-05',
+                        notes: [
+                            {
+                                text: 'Customer requested callback about iPhone',
+                                date: '2025-04-05',
+                                author: 'System'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'C1003',
+                        name: 'Lisa Chen',
+                        phone: '(555) 901-2345',
+                        bestTime: 'Evening',
+                        device: 'MacBook Air M2',
+                        status: 'no-answer',
+                        requested: '2025-04-04',
+                        notes: [
+                            {
+                                text: 'Customer requested callback about MacBook',
+                                date: '2025-04-04',
+                                author: 'System'
+                            },
+                            {
+                                text: 'Attempted callback, no answer, left voicemail',
+                                date: '2025-04-04',
+                                author: 'John Doe'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'C1004',
+                        name: 'Mark Johnson',
+                        phone: '(555) 012-3456',
+                        bestTime: 'Afternoon',
+                        device: 'Samsung Galaxy Watch 6',
+                        status: 'rescheduled',
+                        requested: '2025-04-03',
+                        notes: [
+                            {
+                                text: 'Customer requested callback about Galaxy Watch',
+                                date: '2025-04-03',
+                                author: 'System'
+                            },
+                            {
+                                text: 'Customer asked to call back tomorrow instead',
+                                date: '2025-04-03',
+                                author: 'Jane Smith'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'C1005',
+                        name: 'Nicole Adams',
+                        phone: '(555) 123-4567',
+                        bestTime: 'Morning',
+                        device: 'Google Pixel 7 Pro',
+                        status: 'pending',
+                        requested: '2025-04-05',
+                        notes: [
+                            {
+                                text: 'Customer requested callback about Pixel phone',
+                                date: '2025-04-05',
+                                author: 'System'
+                            }
+                        ]
+                    }
+                ];
+                
+                localStorage.setItem('callbacks', JSON.stringify(sampleCallbacks));
+            }
+        }
+        
+        // Load leads data from localStorage
+        function loadLeadsData() {
+            // Initialize sample data if needed
+            initializeSampleData();
+            
+            // Get leads from localStorage
+            const leads = JSON.parse(localStorage.getItem('leads')) || [];
+            
+            // Clear existing table rows
+            const tableBody = document.getElementById('leads-table-body');
+            tableBody.innerHTML = '';
+            
+            // Add leads to table
+            leads.forEach(lead => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${lead.name}</td>
+                    <td>${lead.email}</td>
+                    <td>${lead.phone}</td>
+                    <td>${capitalizeFirstLetter(lead.source)}</td>
+                    <td>${lead.device}</td>
+                    <td><span class="status-badge status-${lead.status}">${capitalizeFirstLetter(lead.status)}</span></td>
+                    <td>${formatDate(lead.date)}</td>
+                    <td>
+                        <button class="action-btn view-lead" data-id="${lead.id}">View</button>
+                        <button class="action-btn edit-lead" data-id="${lead.id}">Edit</button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Add event listeners to view buttons
+            document.querySelectorAll('.view-lead').forEach(button => {
+                button.addEventListener('click', () => {
+                    const leadId = button.dataset.id;
+                    showLeadDetails(leadId);
+                });
+            });
+            
+            // Add event listeners to edit buttons
+            document.querySelectorAll('.edit-lead').forEach(button => {
+                button.addEventListener('click', () => {
+                    const leadId = button.dataset.id;
+                    editLeadStatus(leadId);
+                });
+            });
+        }
+        
+        // Load appointments data from localStorage
+        function loadAppointmentsData() {
+            // Get appointments from localStorage
+            const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            
+            // Clear existing table rows
+            const tableBody = document.getElementById('appointments-table-body');
+            tableBody.innerHTML = '';
+            
+            // Add appointments to table
+            appointments.forEach(appointment => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${appointment.name}</td>
+                    <td>${appointment.email}</td>
+                    <td>${appointment.phone}</td>
+                    <td>${formatDate(appointment.date)} ${appointment.time}</td>
+                    <td>${appointment.location}</td>
+                    <td>${appointment.device}</td>
+                    <td><span class="status-badge status-${appointment.status}">${capitalizeFirstLetter(appointment.status)}</span></td>
+                    <td>
+                        <button class="action-btn view-appointment" data-id="${appointment.id}">View</button>
+                        <button class="action-btn edit-appointment" data-id="${appointment.id}">Edit</button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Add event listeners to view buttons
+            document.querySelectorAll('.view-appointment').forEach(button => {
+                button.addEventListener('click', () => {
+                    const appointmentId = button.dataset.id;
+                    showAppointmentDetails(appointmentId);
+                });
+            });
+            
+            // Add event listeners to edit buttons
+            document.querySelectorAll('.edit-appointment').forEach(button => {
+                button.addEventListener('click', () => {
+                    const appointmentId = button.dataset.id;
+                    editAppointmentStatus(appointmentId);
+                });
+            });
+        }
+        
+        // Load callbacks data from localStorage
+        function loadCallbacksData() {
+            // Get callbacks from localStorage
+            const callbacks = JSON.parse(localStorage.getItem('callbacks')) || [];
+            
+            // Clear existing table rows
+            const tableBody = document.getElementById('callbacks-table-body');
+            tableBody.innerHTML = '';
+            
+            // Add callbacks to table
+            callbacks.forEach(callback => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${callback.name}</td>
+                    <td>${callback.phone}</td>
+                    <td>${callback.bestTime}</td>
+                    <td>${callback.device}</td>
+                    <td><span class="status-badge status-${callback.status}">${capitalizeFirstLetter(callback.status)}</span></td>
+                    <td>${formatDate(callback.requested)}</td>
+                    <td>
+                        <button class="action-btn view-callback" data-id="${callback.id}">View</button>
+                        <button class="action-btn edit-callback" data-id="${callback.id}">Edit</button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Add event listeners to view buttons
+            document.querySelectorAll('.view-callback').forEach(button => {
+                button.addEventListener('click', () => {
+                    const callbackId = button.dataset.id;
+                    showCallbackDetails(callbackId);
+                });
+            });
+            
+            // Add event listeners to edit buttons
+            document.querySelectorAll('.edit-callback').forEach(button => {
+                button.addEventListener('click', () => {
+                    const callbackId = button.dataset.id;
+                    editCallbackStatus(callbackId);
+                });
+            });
+        }
+        
+        // Show lead details in modal
+        function showLeadDetails(leadId) {
+            const leads = JSON.parse(localStorage.getItem('leads')) || [];
+            const lead = leads.find(l => l.id === leadId);
+            
+            if (lead) {
+                // Set lead name in modal title
+                document.getElementById('lead-detail-name').textContent = lead.name;
+                
+                // Populate lead details
+                const detailInfo = document.getElementById('lead-detail-info');
+                detailInfo.innerHTML = `
+                    <div class="detail-label">ID:</div>
+                    <div class="detail-value">${lead.id}</div>
+                    
+                    <div class="detail-label">Email:</div>
+                    <div class="detail-value">${lead.email}</div>
+                    
+                    <div class="detail-label">Phone:</div>
+                    <div class="detail-value">${lead.phone}</div>
+                    
+                    <div class="detail-label">Source:</div>
+                    <div class="detail-value">${capitalizeFirstLetter(lead.source)}</div>
+                    
+                    <div class="detail-label">Device:</div>
+                    <div class="detail-value">${lead.device}</div>
+                    
+                    <div class="detail-label">Status:</div>
+                    <div class="detail-value"><span class="status-badge status-${lead.status}">${capitalizeFirstLetter(lead.status)}</span></div>
+                    
+                    <div class="detail-label">Date:</div>
+                    <div class="detail-value">${formatDate(lead.date)}</div>
+                `;
+                
+                // Populate notes
+                const notesList = document.getElementById('lead-notes-list');
+                notesList.innerHTML = '<h3>Notes</h3>';
+                
+                if (lead.notes && lead.notes.length > 0) {
+                    lead.notes.forEach(note => {
+                        const noteItem = document.createElement('div');
+                        noteItem.className = 'note-item';
+                        
+                        noteItem.innerHTML = `
+                            <div class="note-header">
+                                <span>${note.author}</span>
+                                <span>${formatDate(note.date)}</span>
+                            </div>
+                            <div class="note-content">${note.text}</div>
+                        `;
+                        
+                        notesList.appendChild(noteItem);
+                    });
+                } else {
+                    notesList.innerHTML += '<p>No notes yet.</p>';
+                }
+                
+                // Set current lead ID for note submission
+                document.getElementById('lead-note-input').dataset.leadId = leadId;
+                
+                // Show modal
+                document.getElementById('lead-detail-modal').classList.add('active');
+            }
+        }
+        
+        // Show appointment details in modal
+        function showAppointmentDetails(appointmentId) {
+            const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            const appointment = appointments.find(a => a.id === appointmentId);
+            
+            if (appointment) {
+                // Set appointment name in modal title
+                document.getElementById('appointment-detail-name').textContent = appointment.name;
+                
+                // Populate appointment details
+                const detailInfo = document.getElementById('appointment-detail-info');
+                detailInfo.innerHTML = `
+                    <div class="detail-label">ID:</div>
+                    <div class="detail-value">${appointment.id}</div>
+                    
+                    <div class="detail-label">Email:</div>
+                    <div class="detail-value">${appointment.email}</div>
+                    
+                    <div class="detail-label">Phone:</div>
+                    <div class="detail-value">${appointment.phone}</div>
+                    
+                    <div class="detail-label">Date & Time:</div>
+                    <div class="detail-value">${formatDate(appointment.date)} ${appointment.time}</div>
+                    
+                    <div class="detail-label">Location:</div>
+                    <div class="detail-value">${appointment.location}</div>
+                    
+                    <div class="detail-label">Device:</div>
+                    <div class="detail-value">${appointment.device}</div>
+                    
+                    <div class="detail-label">Status:</div>
+                    <div class="detail-value"><span class="status-badge status-${appointment.status}">${capitalizeFirstLetter(appointment.status)}</span></div>
+                `;
+                
+                // Populate notes
+                const notesList = document.getElementById('appointment-notes-list');
+                notesList.innerHTML = '<h3>Notes</h3>';
+                
+                if (appointment.notes && appointment.notes.length > 0) {
+                    appointment.notes.forEach(note => {
+                        const noteItem = document.createElement('div');
+                        noteItem.className = 'note-item';
+                        
+                        noteItem.innerHTML = `
+                            <div class="note-header">
+                                <span>${note.author}</span>
+                                <span>${formatDate(note.date)}</span>
+                            </div>
+                            <div class="note-content">${note.text}</div>
+                        `;
+                        
+                        notesList.appendChild(noteItem);
+                    });
+                } else {
+                    notesList.innerHTML += '<p>No notes yet.</p>';
+                }
+                
+                // Set current appointment ID for note submission
+                document.getElementById('appointment-note-input').dataset.appointmentId = appointmentId;
+                
+                // Show modal
+                document.getElementById('appointment-detail-modal').classList.add('active');
+            }
+        }
+        
+        // Show callback details in modal
+        function showCallbackDetails(callbackId) {
+            const callbacks = JSON.parse(localStorage.getItem('callbacks')) || [];
+            const callback = callbacks.find(c => c.id === callbackId);
+            
+            if (callback) {
+                // Set callback name in modal title
+                document.getElementById('callback-detail-name').textContent = callback.name;
+                
+                // Populate callback details
+                const detailInfo = document.getElementById('callback-detail-info');
+                detailInfo.innerHTML = `
+                    <div class="detail-label">ID:</div>
+                    <div class="detail-value">${callback.id}</div>
+                    
+                    <div class="detail-label">Phone:</div>
+                    <div class="detail-value">${callback.phone}</div>
+                    
+                    <div class="detail-label">Best Time:</div>
+                    <div class="detail-value">${callback.bestTime}</div>
+                    
+                    <div class="detail-label">Device:</div>
+                    <div class="detail-value">${callback.device}</div>
+                    
+                    <div class="detail-label">Status:</div>
+                    <div class="detail-value"><span class="status-badge status-${callback.status}">${capitalizeFirstLetter(callback.status)}</span></div>
+                    
+                    <div class="detail-label">Requested:</div>
+                    <div class="detail-value">${formatDate(callback.requested)}</div>
+                `;
+                
+                // Populate notes
+                const notesList = document.getElementById('callback-notes-list');
+                notesList.innerHTML = '<h3>Notes</h3>';
+                
+                if (callback.notes && callback.notes.length > 0) {
+                    callback.notes.forEach(note => {
+                        const noteItem = document.createElement('div');
+                        noteItem.className = 'note-item';
+                        
+                        noteItem.innerHTML = `
+                            <div class="note-header">
+                                <span>${note.author}</span>
+                                <span>${formatDate(note.date)}</span>
+                            </div>
+                            <div class="note-content">${note.text}</div>
+                        `;
+                        
+                        notesList.appendChild(noteItem);
+                    });
+                } else {
+                    notesList.innerHTML += '<p>No notes yet.</p>';
+                }
+                
+                // Set current callback ID for note submission
+                document.getElementById('callback-note-input').dataset.callbackId = callbackId;
+                
+                // Show modal
+                document.getElementById('callback-detail-modal').classList.add('active');
+            }
+        }
+        
+        // Edit lead status
+        function editLeadStatus(leadId) {
+            const leads = JSON.parse(localStorage.getItem('leads')) || [];
+            const leadIndex = leads.findIndex(l => l.id === leadId);
+            
+            if (leadIndex !== -1) {
+                const lead = leads[leadIndex];
+                
+                // Prompt for new status
+                const newStatus = prompt(
+                    `Current status: ${capitalizeFirstLetter(lead.status)}\n\nEnter new status (new, contacted, qualified, converted, closed):`,
+                    lead.status
+                );
+                
+                if (newStatus && ['new', 'contacted', 'qualified', 'converted', 'closed'].includes(newStatus.toLowerCase())) {
+                    // Update lead status
+                    lead.status = newStatus.toLowerCase();
+                    
+                    // Add note about status change
+                    if (!lead.notes) {
+                        lead.notes = [];
+                    }
+                    
+                    lead.notes.push({
+                        text: `Status changed to ${newStatus.toLowerCase()}`,
+                        date: new Date().toISOString().split('T')[0],
+                        author: 'Admin'
+                    });
+                    
+                    // Update leads in localStorage
+                    leads[leadIndex] = lead;
+                    localStorage.setItem('leads', JSON.stringify(leads));
+                    
+                    // Reload leads data
+                    loadLeadsData();
+                    updateAnalytics();
+                }
+            }
+        }
+        
+        // Edit appointment status
+        function editAppointmentStatus(appointmentId) {
+            const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            const appointmentIndex = appointments.findIndex(a => a.id === appointmentId);
+            
+            if (appointmentIndex !== -1) {
+                const appointment = appointments[appointmentIndex];
+                
+                // Prompt for new status
+                const newStatus = prompt(
+                    `Current status: ${capitalizeFirstLetter(appointment.status)}\n\nEnter new status (scheduled, completed, cancelled, no-show):`,
+                    appointment.status
+                );
+                
+                if (newStatus && ['scheduled', 'completed', 'cancelled', 'no-show'].includes(newStatus.toLowerCase())) {
+                    // Update appointment status
+                    appointment.status = newStatus.toLowerCase();
+                    
+                    // Add note about status change
+                    if (!appointment.notes) {
+                        appointment.notes = [];
+                    }
+                    
+                    appointment.notes.push({
+                        text: `Status changed to ${newStatus.toLowerCase()}`,
+                        date: new Date().toISOString().split('T')[0],
+                        author: 'Admin'
+                    });
+                    
+                    // Update appointments in localStorage
+                    appointments[appointmentIndex] = appointment;
+                    localStorage.setItem('appointments', JSON.stringify(appointments));
+                    
+                    // Reload appointments data
+                    loadAppointmentsData();
+                    updateAnalytics();
+                }
+            }
+        }
+        
+        // Edit callback status
+        function editCallbackStatus(callbackId) {
+            const callbacks = JSON.parse(localStorage.getItem('callbacks')) || [];
+            const callbackIndex = callbacks.findIndex(c => c.id === callbackId);
+            
+            if (callbackIndex !== -1) {
+                const callback = callbacks[callbackIndex];
+                
+                // Prompt for new status
+                const newStatus = prompt(
+                    `Current status: ${capitalizeFirstLetter(callback.status)}\n\nEnter new status (pending, completed, no-answer, rescheduled):`,
+                    callback.status
+                );
+                
+                if (newStatus && ['pending', 'completed', 'no-answer', 'rescheduled'].includes(newStatus.toLowerCase())) {
+                    // Update callback status
+                    callback.status = newStatus.toLowerCase();
+                    
+                    // Add note about status change
+                    if (!callback.notes) {
+                        callback.notes = [];
+                    }
+                    
+                    callback.notes.push({
+                        text: `Status changed to ${newStatus.toLowerCase()}`,
+                        date: new Date().toISOString().split('T')[0],
+                        author: 'Admin'
+                    });
+                    
+                    // Update callbacks in localStorage
+                    callbacks[callbackIndex] = callback;
+                    localStorage.setItem('callbacks', JSON.stringify(callbacks));
+                    
+                    // Reload callbacks data
+                    loadCallbacksData();
+                    updateAnalytics();
+                }
+            }
+        }
+        
+        // Add note to lead
+        function addLeadNote() {
+            const noteInput = document.getElementById('lead-note-input');
+            const leadId = noteInput.dataset.leadId;
+            const noteText = noteInput.value.trim();
+            
+            if (noteText && leadId) {
+                const leads = JSON.parse(localStorage.getItem('leads')) || [];
+                const leadIndex = leads.findIndex(l => l.id === leadId);
+                
+                if (leadIndex !== -1) {
+                    const lead = leads[leadIndex];
+                    
+                    // Initialize notes array if it doesn't exist
+                    if (!lead.notes) {
+                        lead.notes = [];
+                    }
+                    
+                    // Add new note
+                    lead.notes.push({
+                        text: noteText,
+                        date: new Date().toISOString().split('T')[0],
+                        author: 'Admin'
+                    });
+                    
+                    // Update leads in localStorage
+                    leads[leadIndex] = lead;
+                    localStorage.setItem('leads', JSON.stringify(leads));
+                    
+                    // Clear input and refresh modal
+                    noteInput.value = '';
+                    showLeadDetails(leadId);
+                }
+            }
+        }
+        
+        // Add note to appointment
+        function addAppointmentNote() {
+            const noteInput = document.getElementById('appointment-note-input');
+            const appointmentId = noteInput.dataset.appointmentId;
+            const noteText = noteInput.value.trim();
+            
+            if (noteText && appointmentId) {
+                const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+                const appointmentIndex = appointments.findIndex(a => a.id === appointmentId);
+                
+                if (appointmentIndex !== -1) {
+                    const appointment = appointments[appointmentIndex];
+                    
+                    // Initialize notes array if it doesn't exist
+                    if (!appointment.notes) {
+                        appointment.notes = [];
+                    }
+                    
+                    // Add new note
+                    appointment.notes.push({
+                        text: noteText,
+                        date: new Date().toISOString().split('T')[0],
+                        author: 'Admin'
+                    });
+                    
+                    // Update appointments in localStorage
+                    appointments[appointmentIndex] = appointment;
+                    localStorage.setItem('appointments', JSON.stringify(appointments));
+                    
+                    // Clear input and refresh modal
+                    noteInput.value = '';
+                    showAppointmentDetails(appointmentId);
+                }
+            }
+        }
+        
+        // Add note to callback
+        function addCallbackNote() {
+            const noteInput = document.getElementById('callback-note-input');
+            const callbackId = noteInput.dataset.callbackId;
+            const noteText = noteInput.value.trim();
+            
+            if (noteText && callbackId) {
+                const callbacks = JSON.parse(localStorage.getItem('callbacks')) || [];
+                const callbackIndex = callbacks.findIndex(c => c.id === callbackId);
+                
+                if (callbackIndex !== -1) {
+                    const callback = callbacks[callbackIndex];
+                    
+                    // Initialize notes array if it doesn't exist
+                    if (!callback.notes) {
+                        callback.notes = [];
+                    }
+                    
+                    // Add new note
+                    callback.notes.push({
+                        text: noteText,
+                        date: new Date().toISOString().split('T')[0],
+                        author: 'Admin'
+                    });
+                    
+                    // Update callbacks in localStorage
+                    callbacks[callbackIndex] = callback;
+                    localStorage.setItem('callbacks', JSON.stringify(callbacks));
+                    
+                    // Clear input and refresh modal
+                    noteInput.value = '';
+                    showCallbackDetails(callbackId);
+                }
+            }
+        }
+        
+        // Filter leads based on search and filters
+        function filterLeads() {
+            const searchTerm = document.getElementById('lead-search').value.toLowerCase();
+            const statusFilter = document.getElementById('lead-status-filter').value;
+            const sourceFilter = document.getElementById('lead-source-filter').value;
+            
+            const leads = JSON.parse(localStorage.getItem('leads')) || [];
+            
+            // Clear existing table rows
+            const tableBody = document.getElementById('leads-table-body');
+            tableBody.innerHTML = '';
+            
+            // Filter and add leads to table
+            leads.filter(lead => {
+                // Check if lead matches search term
+                const matchesSearch = 
+                    lead.name.toLowerCase().includes(searchTerm) ||
+                    lead.email.toLowerCase().includes(searchTerm) ||
+                    lead.phone.toLowerCase().includes(searchTerm) ||
+                    lead.device.toLowerCase().includes(searchTerm);
+                
+                // Check if lead matches status filter
+                const matchesStatus = statusFilter === 'all' || lead.status === statusFilter;
+                
+                // Check if lead matches source filter
+                const matchesSource = sourceFilter === 'all' || lead.source === sourceFilter;
+                
+                return matchesSearch && matchesStatus && matchesSource;
+            }).forEach(lead => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${lead.name}</td>
+                    <td>${lead.email}</td>
+                    <td>${lead.phone}</td>
+                    <td>${capitalizeFirstLetter(lead.source)}</td>
+                    <td>${lead.device}</td>
+                    <td><span class="status-badge status-${lead.status}">${capitalizeFirstLetter(lead.status)}</span></td>
+                    <td>${formatDate(lead.date)}</td>
+                    <td>
+                        <button class="action-btn view-lead" data-id="${lead.id}">View</button>
+                        <button class="action-btn edit-lead" data-id="${lead.id}">Edit</button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Add event listeners to view buttons
+            document.querySelectorAll('.view-lead').forEach(button => {
+                button.addEventListener('click', () => {
+                    const leadId = button.dataset.id;
+                    showLeadDetails(leadId);
+                });
+            });
+            
+            // Add event listeners to edit buttons
+            document.querySelectorAll('.edit-lead').forEach(button => {
+                button.addEventListener('click', () => {
+                    const leadId = button.dataset.id;
+                    editLeadStatus(leadId);
+                });
+            });
+        }
+        
+        // Filter appointments based on search and filters
+        function filterAppointments() {
+            const searchTerm = document.getElementById('appointment-search').value.toLowerCase();
+            const statusFilter = document.getElementById('appointment-status-filter').value;
+            const locationFilter = document.getElementById('appointment-location-filter').value;
+            
+            const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            
+            // Clear existing table rows
+            const tableBody = document.getElementById('appointments-table-body');
+            tableBody.innerHTML = '';
+            
+            // Filter and add appointments to table
+            appointments.filter(appointment => {
+                // Check if appointment matches search term
+                const matchesSearch = 
+                    appointment.name.toLowerCase().includes(searchTerm) ||
+                    appointment.email.toLowerCase().includes(searchTerm) ||
+                    appointment.phone.toLowerCase().includes(searchTerm) ||
+                    appointment.device.toLowerCase().includes(searchTerm);
+                
+                // Check if appointment matches status filter
+                const matchesStatus = statusFilter === 'all' || appointment.status === statusFilter;
+                
+                // Check if appointment matches location filter
+                const matchesLocation = locationFilter === 'all' || appointment.location.toLowerCase() === locationFilter;
+                
+                return matchesSearch && matchesStatus && matchesLocation;
+            }).forEach(appointment => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${appointment.name}</td>
+                    <td>${appointment.email}</td>
+                    <td>${appointment.phone}</td>
+                    <td>${formatDate(appointment.date)} ${appointment.time}</td>
+                    <td>${appointment.location}</td>
+                    <td>${appointment.device}</td>
+                    <td><span class="status-badge status-${appointment.status}">${capitalizeFirstLetter(appointment.status)}</span></td>
+                    <td>
+                        <button class="action-btn view-appointment" data-id="${appointment.id}">View</button>
+                        <button class="action-btn edit-appointment" data-id="${appointment.id}">Edit</button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Add event listeners to view buttons
+            document.querySelectorAll('.view-appointment').forEach(button => {
+                button.addEventListener('click', () => {
+                    const appointmentId = button.dataset.id;
+                    showAppointmentDetails(appointmentId);
+                });
+            });
+            
+            // Add event listeners to edit buttons
+            document.querySelectorAll('.edit-appointment').forEach(button => {
+                button.addEventListener('click', () => {
+                    const appointmentId = button.dataset.id;
+                    editAppointmentStatus(appointmentId);
+                });
+            });
+        }
+        
+        // Filter callbacks based on search and filters
+        function filterCallbacks() {
+            const searchTerm = document.getElementById('callback-search').value.toLowerCase();
+            const statusFilter = document.getElementById('callback-status-filter').value;
+            
+            const callbacks = JSON.parse(localStorage.getItem('callbacks')) || [];
+            
+            // Clear existing table rows
+            const tableBody = document.getElementById('callbacks-table-body');
+            tableBody.innerHTML = '';
+            
+            // Filter and add callbacks to table
+            callbacks.filter(callback => {
+                // Check if callback matches search term
+                const matchesSearch = 
+                    callback.name.toLowerCase().includes(searchTerm) ||
+                    callback.phone.toLowerCase().includes(searchTerm) ||
+                    callback.device.toLowerCase().includes(searchTerm);
+                
+                // Check if callback matches status filter
+                const matchesStatus = statusFilter === 'all' || callback.status === statusFilter;
+                
+                return matchesSearch && matchesStatus;
+            }).forEach(callback => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${callback.name}</td>
+                    <td>${callback.phone}</td>
+                    <td>${callback.bestTime}</td>
+                    <td>${callback.device}</td>
+                    <td><span class="status-badge status-${callback.status}">${capitalizeFirstLetter(callback.status)}</span></td>
+                    <td>${formatDate(callback.requested)}</td>
+                    <td>
+                        <button class="action-btn view-callback" data-id="${callback.id}">View</button>
+                        <button class="action-btn edit-callback" data-id="${callback.id}">Edit</button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Add event listeners to view buttons
+            document.querySelectorAll('.view-callback').forEach(button => {
+                button.addEventListener('click', () => {
+                    const callbackId = button.dataset.id;
+                    showCallbackDetails(callbackId);
+                });
+            });
+            
+            // Add event listeners to edit buttons
+            document.querySelectorAll('.edit-callback').forEach(button => {
+                button.addEventListener('click', () => {
+                    const callbackId = button.dataset.id;
+                    editCallbackStatus(callbackId);
+                });
+            });
+        }
+        
+        // Update analytics
+        function updateAnalytics() {
+            const leads = JSON.parse(localStorage.getItem('leads')) || [];
+            const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            const callbacks = JSON.parse(localStorage.getItem('callbacks')) || [];
+            
+            // Update stats
+            document.getElementById('total-leads-stat').textContent = leads.length;
+            document.getElementById('appointments-stat').textContent = appointments.length;
+            document.getElementById('callbacks-stat').textContent = callbacks.length;
+            
+            // Calculate conversion rate
+            const convertedLeads = leads.filter(lead => lead.status === 'converted' || lead.status === 'closed').length;
+            const conversionRate = leads.length > 0 ? Math.round((convertedLeads / leads.length) * 100) : 0;
+            document.getElementById('conversion-rate-stat').textContent = `${conversionRate}%`;
+        }
+        
+        // Export leads data
+        function exportLeadsData() {
+            const leads = JSON.parse(localStorage.getItem('leads')) || [];
+            const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            const callbacks = JSON.parse(localStorage.getItem('callbacks')) || [];
+            
+            const exportData = {
+                leads: leads,
+                appointments: appointments,
+                callbacks: callbacks,
+                exportDate: new Date().toISOString()
+            };
+            
+            // Create data URL for download
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportData, null, 2));
+            
+            // Create download link
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "sellyourgadgets_leads_export.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        }
+        
+        // Helper function to capitalize first letter
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+        
+        // Helper function to format date
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) return dateString;
+            
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+    </script>
+</body>
+</html>

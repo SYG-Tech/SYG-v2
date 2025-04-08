@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade-In & Loyalty Program - SellYourGadgets.com</title>
+    <meta name="description" content="Earn extra cash and rewards with our Trade-In Bonuses and Loyalty Program when you sell multiple devices.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/location-emphasis.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .loyalty-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .loyalty-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .loyalty-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .loyalty-card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .loyalty-card-title {
+            margin: 0;
+        }
+        
+        .loyalty-card-content {
+            color: var(--dark-gray);
+        }
+        
+        .loyalty-tiers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .loyalty-tier {
+            flex: 1;
+            min-width: 250px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            border-top: 5px solid var(--primary);
+        }
+        
+        .loyalty-tier.silver {
+            border-top-color: #C0C0C0;
+        }
+        
+        .loyalty-tier.gold {
+            border-top-color: #FFD700;
+        }
+        
+        .loyalty-tier.platinum {
+            border-top-color: #E5E4E2;
+        }
+        
+        .tier-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tier-name {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--primary);
+        }
+        
+        .tier-description {
+            color: var(--dark-gray);
+            margin: 0.5rem 0 0;
+        }
+        
+        .tier-benefits {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .tier-benefits li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tier-benefits li i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+        
+        .tier-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .trade-in-calculator {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .calculator-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .calculator-field {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .calculator-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .calculator-field input, .calculator-field select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .calculator-results {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        
+        .calculator-results.active {
+            display: block;
+        }
+        
+        .bonus-amount {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .testimonials {
+            margin: 3rem 0;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .author-info h4 {
+            margin: 0;
+        }
+        
+        .author-info p {
+            margin: 0.25rem 0 0;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Trade-In Bonuses & Loyalty Program</h1>
+                <p>Get rewarded for selling multiple devices and coming back to SellYourGadgets.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trade-In Bonuses Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Trade-In Bonuses</h2>
+                <p>Earn extra cash when you sell multiple devices at once</p>
+            </div>
+            
+            <div class="loyalty-cards">
+                <div class="loyalty-card">
+                    <div class="loyalty-card-header">
+                        <div class="loyalty-card-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="loyalty-card-title">Multi-Device Bonus</h3>
+                    </div>
+                    <div class="loyalty-card-content">
+                        <p>Selling multiple devices? Get an additional bonus on top of our already competitive prices:</p>
+                        <ul>
+                            <li>2 devices: <strong>+5% bonus</strong> on total payout</li>
+                            <li>3 devices: <strong>+7% bonus</strong> on total payout</li>
+                            <li>4+ devices: <strong>+10% bonus</strong> on total payout</li>
+                        </ul>
+                        <p>Bring all your devices to our store or ship them together for maximum value!</p>
+                    </div>
+                </div>
+                
+                <div class="loyalty-card">
+                    <div class="loyalty-card-header">
+                        <div class="loyalty-card-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="loyalty-card-title">Trade & Upgrade Bonus</h3>
+                    </div>
+                    <div class="loyalty-card-content">
+                        <p>Trading in your old device for a newer model? We offer special bonuses when you sell your old device and purchase a refurbished one from us:</p>
+                        <ul>
+                            <li><strong>+15% bonus</strong> on your trade-in value when applied to a refurbished device purchase</li>
+                            <li><strong>Free accessories</strong> with your refurbished device purchase (case, screen protector, charger)</li>
+                            <li><strong>Extended 90-day warranty</strong> on your refurbished device purchase</li>
+                        </ul>
+                        <p>Ask our store associates about available refurbished inventory!</p>
+                    </div>
+                </div>
+                
+                <div class="loyalty-card">
+                    <div class="loyalty-card-header">
+                        <div class="loyalty-card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="loyalty-card-title">Referral Bonus</h3>
+                    </div>
+                    <div class="loyalty-card-content">
+                        <p>Know someone who wants to sell their devices? Refer them to us and earn:</p>
+                        <ul>
+                            <li><strong>$20 bonus</strong> for each friend who sells a device valued at $100+</li>
+                            <li><strong>$50 bonus</strong> for each friend who sells multiple devices with a combined value of $300+</li>
+                        </ul>
+                        <p>Simply have your friend mention your name or email when they sell their device, and we'll credit your account with the bonus!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="trade-in-calculator">
+                <h3>Trade-In Bonus Calculator</h3>
+                <p>See how much extra you could earn by selling multiple devices:</p>
+                
+                <div class="calculator-form">
+                    <div class="calculator-field">
+                        <label for="device-count">Number of Devices</label>
+                        <select id="device-count">
+                            <option value="1">1 Device</option>
+                            <option value="2">2 Devices</option>
+                            <option value="3">3 Devices</option>
+                            <option value="4">4+ Devices</option>
+                        </select>
+                    </div>
+                    <div class="calculator-field">
+                        <label for="estimated-value">Estimated Total Value ($)</label>
+                        <input type="number" id="estimated-value" placeholder="Enter estimated value" min="0">
+                    </div>
+                </div>
+                
+                <button id="calculate-bonus" class="btn btn-primary">Calculate Bonus</button>
+                
+                <div id="calculator-results" class="calculator-results">
+                    <h4>Your Bonus Calculation</h4>
+                    <p>Based on selling <span id="result-device-count">2</span> devices with a total value of <span id="result-value">$500</span>:</p>
+                    <ul>
+                        <li>Base payout: <span id="result-base">$500</span></li>
+                        <li>Bonus percentage: <span id="result-percentage">5%</span></li>
+                        <li>Bonus amount: <span id="result-bonus" class="bonus-amount">$25</span></li>
+                        <li>Total payout: <span id="result-total" class="bonus-amount">$525</span></li>
+                    </ul>
+                    <p><strong>That's an extra <span id="result-extra">$25</span> in your pocket!</strong></p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="locations" class="btn btn-primary"><i class="fas fa-map-marker-alt"></i> Find Nearest Store</a>
+                        <a href="mail-in" class="btn btn-secondary">Mail In Your Devices</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Loyalty Program Section -->
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Loyalty Program</h2>
+                <p>Earn rewards and exclusive benefits every time you sell with us</p>
+            </div>
+            
+            <p>At SellYourGadgets.com, we value our repeat customers. Our loyalty program rewards you for coming back to us whenever you have devices to sell. The more you sell, the more benefits you unlock!</p>
+            
+            <div class="loyalty-tiers">
+                <div class="loyalty-tier silver">
+                    <div class="tier-header">
+                        <h3 class="tier-name">Silver</h3>
+                        <p class="tier-description">After selling 1-2 devices</p>
+                    </div>
+                    <ul class="tier-benefits">
+                        <li><i class="fas fa-check-circle"></i> 5% bonus on all future trade-ins</li>
+                        <li><i class="fas fa-check-circle"></i> Priority processing for mail-in devices</li>
+                        <li><i class="fas fa-check-circle"></i> Free shipping kit for mail-in devices</li>
+                        <li><i class="fas fa-check-circle"></i> Email notifications about special promotions</li>
+                    </ul>
+                    <div class="tier-footer">
+                        <p>You're automatically enrolled after your first device sale!</p>
+                    </div>
+                </div>
+                
+                <div class="loyalty-tier gold">
+                    <div class="tier-header">
+                        <h3 class="tier-name">Gold</h3>
+                        <p class="tier-description">After selling 3-5 devices</p>
+                    </div>
+                    <ul class="tier-benefits">
+                        <li><i class="fas fa-check-circle"></i> <strong>7% bonus</strong> on all future trade-ins</li>
+                        <li><i class="fas fa-check-circle"></i> Priority processing for mail-in devices</li>
+                        <li><i class="fas fa-check-circle"></i> Free shipping kit for mail-in devices</li>
+                        <li><i class="fas fa-check-circle"></i> Email notifications about special promotions</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Exclusive access to pre-release promotions</strong></li>
+                        <li><i class="fas fa-check-circle"></i> <strong>10% discount on refurbished device purchases</strong></li>
+                    </ul>
+                    <div class="tier-footer">
+                        <p>Gold status never expires!</p>
+                    </div>
+                </div>
+                
+                <div class="loyalty-tier platinum">
+                    <div class="tier-header">
+                        <h3 class="tier-name">Platinum</h3>
+                        <p class="tier-description">After selling 6+ devices</p>
+                    </div>
+                    <ul class="tier-benefits">
+                        <li><i class="fas fa-check-circle"></i> <strong>10% bonus</strong> on all future trade-ins</li>
+                        <li><i class="fas fa-check-circle"></i> Priority processing for mail-in devices</li>
+                        <li><i class="fas fa-check-circle"></i> Free shipping kit for mail-in devices</li>
+                        <li><i class="fas fa-check-circle"></i> Email notifications about special promotions</li>
+                        <li><i class="fas fa-check-circle"></i> Exclusive access to pre-release promotions</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>15% discount</strong> on refurbished device purchases</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>VIP in-store service</strong> with no waiting</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Free data transfer service</strong> with device purchase</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Annual bonus offer</strong> exclusive to Platinum members</li>
+                    </ul>
+                    <div class="tier-footer">
+                        <p>Our highest tier with maximum benefits!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="location-finder-box">
+                <h3><i class="fas fa-map-marker-alt"></i> Visit Us to Start Earning Rewards</h3>
+                <p>Come to our store to sell your devices and start earning loyalty rewards today!</p>
+                <a href="locations" class="btn btn-primary">Find Nearest Store</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Loyal Customers Say</h2>
+            </div>
+            
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "I've sold 5 devices to SellYourGadgets.com over the past two years. Their loyalty program is amazing - I got an extra $75 on my last trade-in just for being a Gold member! The staff always remembers me when I come in, and I never have to wait in line."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <h4>John D.</h4>
+                            <p>Gold Member since 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "The multi-device bonus is a game-changer! I brought in my old iPhone, iPad, and MacBook all at once and got a 7% bonus on top of their already great prices. That was an extra $120 in my pocket that other buyback companies weren't offering."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah M.</h4>
+                            <p>Silver Member</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "As a Platinum member, I get VIP treatment every time I visit. Last month I traded in my old phone and got 10% extra plus a 15% discount on a refurbished iPhone 14 Pro. The free data transfer service saved me hours of hassle. I'll never sell my devices anywhere else!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RL</div>
+                        <div class="author-info">
+                            <h4>Robert L.</h4>
+                            <p>Platinum Member since 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <h3>Ready to Start Earning Rewards?</h3>
+                <p>Visit our store or mail in your devices today to join our loyalty program!</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="locations" class="btn btn-primary"><i class="fas fa-map-marker-alt"></i> Find Nearest Store</a>
+                    <a href="pricing" class="btn btn-secondary">Get a Price Estimate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>Get the best value for your used electronics. Visit our stores or mail in your devices for free.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index">Home</a></li>
+                        <li><a href="how-it-works">How It Works</a></li>
+                        <li><a href="accepted-items">What We Buy</a></li>
+                        <li><a href="pricing">Pricing</a></li>
+                        <li><a href="price-comparison">Price Comparison</a></li>
+                        <li><a href="locations">Locations</a></li>
+                        <li><a href="mail-in">Mail-In</a></li>
+                        <li><a href="about">About/FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Items</h3>
+                    <ul>
+                        <li><a href="items/iphone">iPhone</a></li>
+                        <li><a href="items/samsung">Samsung Galaxy</a></li>
+                        <li><a href="items/macbook">MacBook</a></li>
+                        <li><a href="items/ipad">iPad</a></li>
+                        <li><a href="items/playstation">PlayStation</a></li>
+                        <li><a href="items/xbox">Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 211 Broad Street, Elizabeth, NJ</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@sellyourgadgets.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const deviceCountSelect = document.getElementById('device-count');
+            const estimatedValueInput = document.getElementById('estimated-value');
+            const calculateButton = document.getElementById('calculate-bonus');
+            const calculatorResults = document.getElementById('calculator-results');
+            
+            const resultDeviceCount = document.getElementById('result-device-count');
+            const resultValue = document.getElementById('result-value');
+            const resultBase = document.getElementById('result-base');
+            const resultPercentage = document.getElementById('result-percentage');
+            const resultBonus = document.getElementById('result-bonus');
+            const resultTotal = document.getElementById('result-total');
+            const resultExtra = document.getElementById('result-extra');
+            
+            calculateButton.addEventListener('click', function() {
+                const deviceCount = parseInt(deviceCountSelect.value);
+                const estimatedValue = parseFloat(estimatedValueInput.value);
+                
+                if (isNaN(estimatedValue) || estimatedValue <= 0) {
+                    alert('Please enter a valid estimated value.');
+                    return;
+                }
+                
+                let bonusPercentage = 0;
+                
+                // Determine bonus percentage based on device count
+                switch(deviceCount) {
+                    case 1:
+                        bonusPercentage = 0;
+                        break;
+                    case 2:
+                        bonusPercentage = 5;
+                        break;
+                    case 3:
+                        bonusPercentage = 7;
+                        break;
+                    case 4:
+                        bonusPercentage = 10;
+                        break;
+                    default:
+                        bonusPercentage = 0;
+                }
+                
+                const bonusAmount = estimatedValue * (bonusPercentage / 100);
+                const totalPayout = estimatedValue + bonusAmount;
+                
+                // Update results
+                resultDeviceCount.textContent = deviceCount;
+                resultValue.textContent = '$' + estimatedValue.toFixed(2);
+                resultBase.textContent = '$' + estimatedValue.toFixed(2);
+                resultPercentage.textContent = bonusPercentage + '%';
+                resultBonus.textContent = '$' + bonusAmount.toFixed(2);
+                resultTotal.textContent = '$' + totalPayout.toFixed(2);
+                resultExtra.textContent = '$' + bonusAmount.toFixed(2);
+                
+                // Show results
+                calculatorResults.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

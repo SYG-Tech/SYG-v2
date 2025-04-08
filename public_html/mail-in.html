@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail-In Service | SellYourGadgets.com</title>
+    <meta name="description" content="Sell your electronics from home with our free mail-in service. Get a free shipping label, send your device, and receive payment within 2 business days.">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .steps-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step-row {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .step-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-row:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 100px;
+            left: 50px;
+            height: calc(100% - 100px + 3rem);
+            width: 2px;
+            background-color: var(--light-gray);
+        }
+        
+        .step-number {
+            flex: 0 0 100px;
+            height: 100px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-right: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-col {
+            flex: 1;
+        }
+        
+        .packaging-tips {
+            background-color: var(--background);
+            padding: 3rem 0;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .tip-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+        }
+        
+        .tip-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .tracking-section {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .tracking-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .tracking-form {
+            display: flex;
+            max-width: 500px;
+            margin: 2rem auto 0;
+        }
+        
+        .tracking-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .tracking-button {
+            background-color: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            padding: 0 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .tracking-button:hover {
+            background-color: #e68a00;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Mail-In Service</h1>
+                <p>Can't visit one of our stores? No problem! Our mail-in service makes it easy to sell your electronics from anywhere in the country.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Our Mail-In Service Works</h2>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step-row">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Request a Free Shipping Label</h3>
+                        <p>Fill out our online form with your contact information and details about the device(s) you want to sell. We'll generate a free shipping label for you.</p>
+                    </div>
+                </div>
+                
+                <div class="step-row">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Package Your Device</h3>
+                        <p>Securely package your device(s) following our packaging guidelines. Make sure to remove all personal data and disable any activation locks.</p>
+                    </div>
+                </div>
+                
+                <div class="step-row">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Ship Your Package</h3>
+                        <p>Attach the shipping label to your package and drop it off at any USPS location or schedule a free pickup. Your package is fully insured during transit.</p>
+                    </div>
+                </div>
+                
+                <div class="step-row">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Device Evaluation</h3>
+                        <p>Once we receive your device, our technicians will inspect it and determine its value based on model, condition, and market demand.</p>
+                    </div>
+                </div>
+                
+                <div class="step-row">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Get Paid Fast</h3>
+                        <p>We'll send you an offer via email. Once you accept, we'll process your payment within 24 hours via your preferred payment method.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shipping Label Form Section -->
+    <section class="section" style="background-color: var(--background);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get Your Free Shipping Label</h2>
+            </div>
+            
+            <div class="form-container">
+                <form id="shipping-label-form">
+                    <h3 style="margin-bottom: 1.5rem;">Contact Information</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <h3 style="margin: 2rem 0 1.5rem;">Shipping Address</h3>
+                    
+                    <div class="form-group">
+                        <label for="address">Street Address</label>
+                        <input type="text" id="address" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <select id="state" class="form-control" required>
+                                    <option value="">Select State</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <!-- Add all states here -->
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="zip">ZIP Code</label>
+                                <input type="text" id="zip" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 2rem 0 1.5rem;">Device Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="device-type">Device Type</label>
+                        <select id="device-type" class="form-control" required>
+                            <option value="">Select Device Type</option>
+                            <option value="smartphone">Smartphone</option>
+                            <option value="tablet">Tablet</option>
+                            <option value="laptop">Laptop</option>
+                            <option value="desktop">Desktop Computer</option>
+                            <option value="gaming">Gaming Console</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="brand">Brand</label>
+                                <select id="brand" class="form-control" required>
+                                    <option value="">Select Brand</option>
+                                    <option value="apple">Apple</option>
+                                    <option value="samsung">Samsung</option>
+                                    <option value="google">Google</option>
+                                    <option value="sony">Sony</option>
+                                    <option value="microsoft">Microsoft</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="model">Model</label>
+                                <input type="text" id="model" class="form-control" placeholder="e.g., iPhone 13 Pro, Galaxy S22" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="condition">Device Condition</label>
+                        <select id="condition" class="form-control" required>
+                            <option value="">Select Condition</option>
+                            <option value="excellent">Excellent - Like new, no scratches</option>
+                            <option value="good">Good - Minor wear and tear</option>
+                            <option value="fair">Fair - Noticeable scratches or dents</option>
+                            <option value="poor">Poor - Significant damage but functional</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comments">Additional Comments (Optional)</label>
+                        <textarea id="comments" class="form-control" rows="4" placeholder="Please provide any additional details about your device that might be helpful."></textarea>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button type="submit" class="btn btn-cta">Generate Shipping Label</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packaging Tips Section -->
+    <section class="packaging-tips">
+        <div class="container">
+            <div class="section-title">
+                <h2>Packaging Guidelines</h2>
+            </div>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Use a Sturdy Box</h3>
+                    <p>Package your device in a sturdy cardboard box that's slightly larger than the device to allow for cushioning material.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                    </div>
+                    <h3>Add Cushioning</h3>
+                    <p>Use bubble wrap, packing peanuts, or crumpled paper to protect your device from impacts during shipping.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-battery-half"></i>
+                    </div>
+                    <h3>Battery Safety</h3>
+                    <p>For devices with lithium batteries, ensure they are partially charged (30-50%) and properly secured to prevent damage.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-tape"></i>
+                    </div>
+                    <h3>Secure the Package</h3>
+                    <p>Use strong packing tape to seal all openings and seams of the box. Reinforce the bottom and top with an H-pattern.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3>Attach Label Properly</h3>
+                    <p>Securely attach the shipping label to the top of the package. Cover the label with clear tape to protect it from damage.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Data Security</h3>
+                    <p>Perform a factory reset on your device to remove all personal data before shipping. Disable any activation locks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section class="tracking-section">
+        <div class="container">
+            <div class="tracking-content">
+                <h2>Track Your Package</h2>
+                <p>Already sent your device? Enter your tracking number to check the status of your shipment.</p>
+                
+                <div class="tracking-form">
+                    <input type="text" class="tracking-input" placeholder="Enter tracking number">
+                    <button class="tracking-button">Track</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Options Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Payment Options</h2>
+            </div>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 2rem; justify-content: center;">
+                <div style="flex: 1; min-width: 250px; max-width: 300px; text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Direct Deposit</h3>
+                    <p>Receive payment directly to your bank account within 1-2 business days after accepting our offer.</p>
+                </div>
+                
+                <div style="flex: 1; min-width: 250px; max-width: 300px; text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                    <h3>PayPal</h3>
+                    <p>Get paid instantly to your PayPal account as soon as you accept our offer.</p>
+                </div>
+                
+                <div style="flex: 1; min-width: 250px; max-width: 300px; text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">
+                        <i class="fab fa-venmo"></i>
+                    </div>
+                    <h3>Venmo</h3>
+                    <p>Receive payment to your Venmo account within minutes of accepting our offer.</p>
+                </div>
+                
+                <div style="flex: 1; min-width: 250px; max-width: 300px; text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">
+                        <i class="fas fa-money-check"></i>
+                    </div>
+                    <h3>Check</h3>
+                    <p>Receive a check by mail within 3-5 business days after accepting our offer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" style="background-color: var(--background);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="margin-bottom: 1.5rem;">
+                    <h3>How long does the mail-in process take?</h3>
+                    <p>From the time you ship your device, the entire process typically takes 5-7 business days. This includes shipping time (1-3 days), device evaluation (1 day), and payment processing (1 day after offer acceptance).</p>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h3>Is my device insured during shipping?</h3>
+                    <p>Yes, all devices shipped using our prepaid labels are fully insured up to $1,000. For higher-value items, please contact our customer service for special arrangements.</p>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h3>What if I don't agree with the offered price?</h3>
+                    <p>If you're not satisfied with our offer, we'll return your device to you free of charge. Simply decline the offer when you receive it, and we'll ship your device back within 1-2 business days.</p>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h3>Can I send multiple devices in one package?</h3>
+                    <p>Yes, you can send multiple devices in one package. Please make sure to list all devices when generating your shipping label and package them securely to prevent damage during transit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section cta" style="background-color: var(--primary); color: var(--white); text-align: center;">
+        <div class="container">
+            <h2>Ready to Sell Your Electronics?</h2>
+            <p style="margin-bottom: 2rem;">Get your free shipping label today and turn your unused electronics into cash!</p>
+            <a href="#shipping-label-form" class="btn btn-cta">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>We offer the best prices for your used electronics. Fast, easy, and environmentally responsible.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index">Home</a></li>
+                        <li class="footer-link"><a href="how-it-works">How It Works</a></li>
+                        <li class="footer-link"><a href="accepted-items">What We Buy</a></li>
+                        <li class="footer-link"><a href="pricing">Pricing</a></li>
+                        <li class="footer-link"><a href="locations">Locations</a></li>
+                        <li class="footer-link"><a href="mail-in">Mail-In Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Items</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="items/iphone">Sell iPhone</a></li>
+                        <li class="footer-link"><a href="items/samsung">Sell Samsung Galaxy</a></li>
+                        <li class="footer-link"><a href="items/macbook">Sell MacBook</a></li>
+                        <li class="footer-link"><a href="items/ipad">Sell iPad</a></li>
+                        <li class="footer-link"><a href="items/playstation">Sell PlayStation</a></li>
+                        <li class="footer-link"><a href="items/xbox">Sell Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-phone"></i> (800) 555-CASH</li>
+                        <li class="footer-link"><i class="fas fa-envelope"></i> info@electronicsbuyback.com</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Locations Nationwide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // Simple form submission handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('shipping-label-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you! Your shipping label request has been submitted. You will receive an email with your shipping label shortly.');
+                    form.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

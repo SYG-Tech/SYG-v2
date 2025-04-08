@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule an Appointment | SellYourGadgets.com</title>
+    <meta name="description" content="Schedule an in-store appointment to sell your electronics for cash instantly. Choose your preferred location, date, and time for a personalized buyback experience.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/appointment.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Schema.org markup for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "SellYourGadgets.com Appointment",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "SellYourGadgets.com",
+            "image": "https://sellyourgadgets.com/images/logo.png",
+            "telephone": "800-555-CASH",
+            "priceRange": "$$$"
+        },
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Schedule an In-Store Appointment</h1>
+                <p>Skip the wait and get personalized service by scheduling an appointment at your preferred location. Our experts will be ready to evaluate your devices and offer you the best possible price.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Scheduling Section -->
+    <section class="section">
+        <div class="container">
+            <div class="appointment-container">
+                <!-- Appointment Progress Steps -->
+                <div class="appointment-steps">
+                    <div class="step active" id="step-1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Select Location</div>
+                    </div>
+                    <div class="step" id="step-2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Choose Date & Time</div>
+                    </div>
+                    <div class="step" id="step-3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Device Information</div>
+                    </div>
+                    <div class="step" id="step-4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Your Information</div>
+                    </div>
+                    <div class="step" id="step-5">
+                        <div class="step-number">5</div>
+                        <div class="step-label">Confirmation</div>
+                    </div>
+                </div>
+
+                <!-- Appointment Form Container -->
+                <div class="appointment-form-container">
+                    <!-- Step 1: Location Selection -->
+                    <div class="form-step active" id="form-step-1">
+                        <h2>Select Your Preferred Location</h2>
+                        <p>Choose the store location where you'd like to sell your electronics.</p>
+                        
+                        <div class="search-box" style="margin: 1.5rem 0;">
+                            <input type="text" class="search-input" id="location-search" placeholder="Enter your zip code or city to find the nearest location">
+                            <button class="search-button" id="search-location-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="location-grid">
+                            <div class="location-option" data-location-id="chicago">
+                                <h3>Chicago Downtown</h3>
+                                <div class="location-details">
+                                    <p><i class="fas fa-map-marker-alt"></i> 123 Michigan Ave, Chicago, IL 60601</p>
+                                    <p><i class="fas fa-phone"></i> (312) 555-1234</p>
+                                    <p><i class="fas fa-clock"></i> Mon-Fri: 10am-8pm, Sat: 10am-6pm, Sun: 12pm-5pm</p>
+                                </div>
+                                <div style="font-weight: 600; color: var(--secondary); margin-bottom: 1rem;">
+                                    <i class="fas fa-check-circle"></i> Next available: Today at 2:30 PM
+                                </div>
+                            </div>
+                            
+                            <div class="location-option" data-location-id="newyork">
+                                <h3>New York - Manhattan</h3>
+                                <div class="location-details">
+                                    <p><i class="fas fa-map-marker-alt"></i> 789 5th Avenue, New York, NY 10022</p>
+                                    <p><i class="fas fa-phone"></i> (212) 555-9012</p>
+                                    <p><i class="fas fa-clock"></i> Mon-Fri: 9am-8pm, Sat: 10am-7pm, Sun: 11am-6pm</p>
+                                </div>
+                                <div style="font-weight: 600; color: var(--secondary); margin-bottom: 1rem;">
+                                    <i class="fas fa-check-circle"></i> Next available: Today at 3:00 PM
+                                </div>
+                            </div>
+                            
+                            <div class="location-option" data-location-id="losangeles">
+                                <h3>Los Angeles - Beverly Hills</h3>
+                                <div class="location-details">
+                                    <p><i class="fas fa-map-marker-alt"></i> 456 Rodeo Dr, Beverly Hills, CA 90210</p>
+                                    <p><i class="fas fa-phone"></i> (310) 555-5678</p>
+                                    <p><i class="fas fa-clock"></i> Mon-Fri: 10am-8pm, Sat: 10am-7pm, Sun: 11am-6pm</p>
+                                </div>
+                                <div style="font-weight: 600; color: var(--secondary); margin-bottom: 1rem;">
+                                    <i class="fas fa-check-circle"></i> Next available: Today at 1:00 PM
+                                </div>
+                            </div>
+                            
+                            <div class="location-option" data-location-id="miami">
+                                <h3>Miami - South Beach</h3>
+                                <div class="location-details">
+                                    <p><i class="fas fa-map-marker-alt"></i> 1001 Ocean Drive, Miami Beach, FL 33139</p>
+                                    <p><i class="fas fa-phone"></i> (305) 555-3456</p>
+                                    <p><i class="fas fa-clock"></i> Mon-Fri: 10am-8pm, Sat-Sun: 11am-7pm</p>
+                                </div>
+                                <div style="font-weight: 600; color: var(--secondary); margin-bottom: 1rem;">
+                                    <i class="fas fa-check-circle"></i> Next available: Today at 4:15 PM
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="appointment-actions">
+                            <a href="locations" class="appointment-back-btn">
+                                <i class="fas fa-arrow-left"></i> Back to Locations
+                            </a>
+                            <button class="appointment-next-btn" id="location-next-btn" disabled>
+                                Continue to Date & Time <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Date & Time Selection -->
+                    <div class="form-step" id="form-step-2">
+                        <h2>Select Date & Time</h2>
+                        <p>Choose your preferred appointment date and time slot.</p>
+                        
+                        <div class="calendar-container">
+                            <div class="calendar">
+                                <div class="calendar-header">
+                                    <h3 id="current-month">April 2025</h3>
+                                    <div class="calendar-nav">
+                                        <button class="calendar-nav-btn" id="prev-month-btn">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <button class="calendar-nav-btn" id="next-month-btn">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="calendar-grid" id="calendar-days">
+                                    <div class="calendar-day-header">Sun</div>
+                                    <div class="calendar-day-header">Mon</div>
+                                    <div class="calendar-day-header">Tue</div>
+                                    <div class="calendar-day-header">Wed</div>
+                                    <div class="calendar-day-header">Thu</div>
+                                    <div class="calendar-day-header">Fri</div>
+                                    <div class="calendar-day-header">Sat</div>
+                                    
+                                    <!-- Calendar days will be generated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 1.5rem;">
+                                <h3>Available Time Slots for <span id="selected-date">April 5, 2025</span></h3>
+                                <div class="time-slots" id="time-slots-container">
+                                    <!-- Time slots will be generated by JavaScript -->
+                                    <div class="time-slot">9:00 AM</div>
+                                    <div class="time-slot">9:30 AM</div>
+                                    <div class="time-slot">10:00 AM</div>
+                                    <div class="time-slot">10:30 AM</div>
+                                    <div class="time-slot">11:00 AM</div>
+                                    <div class="time-slot">11:30 AM</div>
+                                    <div class="time-slot">12:00 PM</div>
+                                    <div class="time-slot">12:30 PM</div>
+                                    <div class="time-slot">1:00 PM</div>
+                                    <div class="time-slot">1:30 PM</div>
+                                    <div class="time-slot">2:00 PM</div>
+                                    <div class="time-slot">2:30 PM</div>
+                                    <div class="time-slot high-demand">3:00 PM</div>
+                                    <div class="time-slot high-demand">3:30 PM</div>
+                                    <div class="time-slot">4:00 PM</div>
+                                    <div class="time-slot">4:30 PM</div>
+                                    <div class="time-slot">5:00 PM</div>
+                                    <div class="time-slot">5:30 PM</div>
+                                    <div class="time-slot">6:00 PM</div>
+                                    <div class="time-slot">6:30 PM</div>
+                                    <div class="time-slot">7:00 PM</div>
+                                    <div class="time-slot">7:30 PM</div>
+                                </div>
+                                <p style="margin-top: 1rem; color: var(--dark-gray); font-size: 0.875rem;">
+                                    <i class="fas fa-bolt"></i> High demand time slots are marked with a lightning icon
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="appointment-actions">
+                            <button class="appointment-back-btn" id="datetime-back-btn">
+                                <i class="fas fa-arrow-left"></i> Back to Location Selection
+                            </button>
+                            <button class="appointment-next-btn" id="datetime-next-btn" disabled>
+                                Continue to Device Information <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Device Information -->
+                    <div class="form-step" id="form-step-3">
+                        <h2>Device Information</h2>
+                        <p>Tell us about the device(s) you're planning to sell. This helps us prepare for your appointment and provide an estimated value.</p>
+                        
+                        <div class="device-form">
+                            <div class="form-group">
+                                <label class="form-label" for="device-type">Device Type</label>
+                                <select class="form-select" id="device-type">
+                                    <option value="">Select Device Type</option>
+                                    <option value="smartphone">Smartphone</option>
+                                    <option value="tablet">Tablet</option>
+                                    <option value="laptop">Laptop</option>
+                                    <option value="desktop">Desktop Computer</option>
+                                    <option value="gaming">Gaming Console</option>
+                                    <option value="camera">Camera</option>
+                                    <option value="drone">Drone</option>
+                                    <option value="smartwatch">Smartwatch</option>
+                                    <option value="audio">Audio Equipment</option>
+                                    <option value="tools">Power Tools</option>
+                                    <option value="other">Other Electronics</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="device-brand">Brand</label>
+                                <select class="form-select" id="device-brand">
+                                    <option value="">Select Brand</option>
+                                    <!-- Options will be updated by JavaScript based on device type -->
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="device-model">Model</label>
+                                <select class="form-select" id="device-model">
+                                    <option value="">Select Model</option>
+                                    <!-- Options will be updated by JavaScript based on brand -->
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Condition</label>
+                                <div class="form-check">
+                                    <input type="radio" name="condition" id="condition-new" value="new" class="form-check-input">
+                                    <label for="condition-new">New/Like New - Perfect working condition, no scratches or damage</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="condition" id="condition-excellent" value="excellent" class="form-check-input">
+                                    <label for="condition-excellent">Excellent - Perfect working condition with minor cosmetic flaws</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="condition" id="condition-good" value="good" class="form-check-input">
+                                    <label for="condition-good">Good - Working perfectly with noticeable wear</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="condition" id="condition-fair" value="fair" class="form-check-input">
+                                    <label for="condition-fair">Fair - Working with significant cosmetic damage</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="condition" id="condition-broken" value="broken" class="form-check-input">
+                                    <label for="condition-broken">Broken - Not working but repairable</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="condition" id="condition-parts" value="parts" class="form-check-input">
+                                    <label for="condition-parts">For Parts - Not working and not repairable</label>
+                                </div>
+                            </div>
+                            
+                            <button type="button" id="add-device-btn" class="btn btn-primary" style="margin-top: 1rem;">
+                                <i class="fas fa-plus"></i> Add This Device
+                            </button>
+                        </div>
+                        
+                        <div class="device-list" id="device-list">
+                            <!-- Added devices will appear here -->
+                        </div>
+                        
+                        <button type="button" id="add-another-device-btn" class="add-device-btn">
+                            <i class="fas fa-plus-circle"></i> Add Another Device
+                        </button>
+                        
+                        <div class="estimated-value" id="estimated-value-container" style="display: none;">
+                            <div class="estimated-value-label">Estimated Total Value</div>
+                            <div class="estimated-value-amount" id="estimated-value">$0.00</div>
+                            <div class="estimated-value-note">Final value will be determined upon in-store inspection</div>
+                        </div>
+                        
+                        <div class="appointment-actions">
+                            <button class="appointment-back-btn" id="device-back-btn">
+                                <i class="fas fa-arrow-left"></i> Back to Date & Time
+                            </button>
+                            <button class="appointment-next-btn" id="device-next-btn" disabled>
+                                Continue to Your Information <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Customer Information -->
+                    <div class="form-step" id="form-step-4">
+                        <h2>Your Information</h2>
+                        <p>Please provide your contact details so we can confirm your appointment and have everything ready for your visit.</p>
+                        
+                        <div class="customer-form">
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label class="form-label" for="first-name">First Name</label>
+                                        <input type="text" class="form-input" id="first-name" placeholder="Your first name">
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label class="form-label" for="last-name">Last Name</label>
+                                        <input type="text" class="form-input" id="last-name" placeholder="Your last name">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label class="form-label" for="phone">Phone Number</label>
+                                        <input type="tel" class="form-input" id="phone" placeholder="Your phone number">
+                                        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--dark-gray);">
+                                            This is our primary way to contact you about your appointment
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label class="form-label" for="email">Email Address</label>
+                                        <input type="email" class="form-input" id="email" placeholder="Your email address">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="referral-source">How did you hear about us?</label>
+                                <select class="form-select" id="referral-source">
+                                    <option value="">Select an option</option>
+                                    <option value="search">Search Engine (Google, Bing, etc.)</option>
+                                    <option value="social">Social Media</option>
+                                    <option value="friend">Friend or Family</option>
+                                    <option value="ad">Online Advertisement</option>
+                                    <option value="tv">TV Advertisement</option>
+                                    <option value="radio">Radio</option>
+                                    <option value="print">Newspaper/Magazine</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="special-requests">Special Requests or Questions</label>
+                                <textarea class="form-textarea" id="special-requests" rows="3" placeholder="Any special requests or questions for our team?"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" id="sms-consent" class="form-check-input">
+                                    <label for="sms-consent">I consent to receive text message notifications about my appointment</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="marketing-consent" class="form-check-input">
+                                    <label for="marketing-consent">I'd like to receive promotional offers and updates from SellYourGadgets.com</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="appointment-actions">
+                            <button class="appointment-back-btn" id="customer-back-btn">
+                                <i class="fas fa-arrow-left"></i> Back to Device Information
+                            </button>
+                            <button class="appointment-next-btn" id="customer-next-btn" disabled>
+                                Complete Appointment <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 5: Confirmation -->
+                    <div class="form-step" id="form-step-5">
+                        <div class="confirmation-container">
+                            <div class="confirmation-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h2 class="confirmation-title">Your Appointment is Confirmed!</h2>
+                            <p>We've sent a confirmation email and text message with all the details.</p>
+                            
+                            <div class="confirmation-details">
+                                <div class="confirmation-detail">
+                                    <div class="confirmation-detail-label">Location:</div>
+                                    <div class="confirmation-detail-value" id="confirm-location">Chicago Downtown</div>
+                                </div>
+                                <div class="confirmation-detail">
+                                    <div class="confirmation-detail-label">Date & Time:</div>
+                                    <div class="confirmation-detail-value" id="confirm-datetime">April 5, 2025 at 2:30 PM</div>
+                                </div>
+                                <div class="confirmation-detail">
+                                    <div class="confirmation-detail-label">Appointment ID:</div>
+                                    <div class="confirmation-detail-value" id="confirm-id">APT-12345</div>
+                                </div>
+                                <div class="confirmation-detail">
+                                    <div class="confirmation-detail-label">Estimated Value:</div>
+                                    <div class="confirmation-detail-value" id="confirm-value">$350.00</div>
+                                </div>
+                            </div>
+                            
+                            <p style="margin-top: 1.5rem;">
+                                <strong>What to bring to your appointment:</strong>
+                            </p>
+                            <ul style="text-align: left; max-width: 500px; margin: 1rem auto;">
+                                <li>Your device(s) with all accessories (if available)</li>
+                                <li>Valid government-issued photo ID</li>
+                                <li>Any original packaging (not required but may increase value)</li>
+                                <li>Proof of ownership (receipt, if available)</li>
+                            </ul>
+                            
+                            <div>
+                                <p style="margin-top: 1.5rem; margin-bottom: 0.5rem;">
+                                    <strong>Need to make changes?</strong>
+                                </p>
+                                <p style="color: var(--dark-gray);">
+                                    Call us at (800) 555-CASH or click the button below to modify or cancel your appointment.
+                                </p>
+                            </div>
+                            
+                            <div class="confirmation-actions">
+                                <a href="#" class="btn btn-secondary" id="add-to-calendar-btn">
+                                    <i class="fas fa-calendar-plus"></i> Add to Calendar
+                                </a>
+                                <a href="index" class="btn btn-primary">
+                                    <i class="fas fa-home"></i> Return to Homepage
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section cta" style="background-color: var(--primary); color: var(--white); text-align: center;">
+        <div class="container">
+            <h2>Questions About Selling Your Electronics?</h2>
+            <p style="margin-bottom: 2rem;">Our experts are ready to help you get the best value for your devices.</p>
+            <div class="hero-buttons" style="justify-content: center;">
+                <a href="tel:8005552274" class="btn btn-cta">
+                    <i class="fas fa-phone"></i> Call Us Now
+                </a>
+                <a href="locations" class="btn btn-secondary">Find a Store</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>We offer the best prices for your used electronics. Fast, easy, and environmentally responsible.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index">Home</a></li>
+                        <li class="footer-link"><a href="how-it-works">How It Works</a></li>
+                        <li class="footer-link"><a href="accepted-items">What We Buy</a></li>
+                        <li class="footer-link"><a href="pricing">Pricing</a></li>
+                        <li class="footer-link"><a href="locations">Locations</a></li>
+                        <li class="footer-link"><a href="mail-in">Mail-In Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Items</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="items/iphone">Sell iPhone</a></li>
+                        <li class="footer-link"><a href="items/samsung">Sell Samsung Galaxy</a></li>
+                        <li class="footer-link"><a href="items/macbook">Sell MacBook</a></li>
+                        <li class="footer-link"><a href="items/ipad">Sell iPad</a></li>
+                        <li class="footer-link"><a href="items/playstation">Sell PlayStation</a></li>
+                        <li class="footer-link"><a href="items/xbox">Sell Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-phone"></i> (800) 555-CASH</li>
+                        <li class="footer-link"><i class="fas fa-envelope"></i> info@electronicsbuyback.com</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Locations Nationwide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/appointment.js"></script>
+</body>
+</html>

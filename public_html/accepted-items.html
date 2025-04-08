@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Buy - SellYourGadgets.com</title>
+    <meta name="description" content="See all the electronics we buy including smartphones, laptops, tablets, gaming consoles and more. Get top dollar for your Apple, Samsung and other popular devices.">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .brand-section {
+            padding: 3rem 0;
+            background-color: var(--white);
+        }
+        
+        .brand-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .brand-item {
+            width: 150px;
+            text-align: center;
+        }
+        
+        .brand-logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
+        }
+        
+        .device-category {
+            padding: 3rem 0;
+        }
+        
+        .device-category:nth-child(odd) {
+            background-color: var(--background);
+        }
+        
+        .device-category:nth-child(even) {
+            background-color: var(--white);
+        }
+        
+        .device-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .device-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .device-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .device-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background-color: var(--white);
+        }
+        
+        .device-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .device-content {
+            padding: 1.5rem;
+        }
+        
+        .device-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .device-models {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+        
+        .condition-section {
+            background-color: var(--white);
+            padding: 3rem 0;
+        }
+        
+        .condition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .condition-card {
+            background-color: var(--background);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .condition-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>What We Buy</h1>
+                <p>We purchase a wide range of electronics in any condition. From the latest models to older devices, we offer competitive prices for your used electronics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Brands Section -->
+    <section class="brand-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Brands We Buy</h2>
+            </div>
+            <div class="brand-grid">
+                <div class="brand-item">
+                    <img src="images/brands/apple.svg" alt="Apple" class="brand-logo">
+                    <h3>Apple</h3>
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/samsung.svg" alt="Samsung" class="brand-logo">
+                    <h3>Samsung</h3>
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/google.svg" alt="Google" class="brand-logo">
+                    <h3>Google</h3>
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/sony.svg" alt="Sony" class="brand-logo">
+                    <h3>Sony</h3>
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/xbox.svg" alt="Xbox" class="brand-logo">
+                    <h3>Xbox</h3>
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/nintendo.svg" alt="Nintendo" class="brand-logo">
+                    <h3>Nintendo</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smartphones Section -->
+    <section class="device-category">
+        <div class="container">
+            <div class="section-title">
+                <h2>Smartphones</h2>
+            </div>
+            <div class="device-list">
+                <div class="device-card">
+                    <a href="items/iphone" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/smartphone.svg" alt="iPhone">
+                        </div>
+                        <div class="device-content">
+                            <h3>iPhone</h3>
+                            <div class="device-models">
+                                <p>iPhone 15 Pro Max, iPhone 15 Pro, iPhone 15, iPhone 15 Plus, iPhone 14 series, iPhone 13 series, iPhone 12 series, iPhone 11 series, iPhone X series, iPhone 8 series, and older models</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/samsung" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/smartphone.svg" alt="Samsung Galaxy">
+                        </div>
+                        <div class="device-content">
+                            <h3>Samsung Galaxy</h3>
+                            <div class="device-models">
+                                <p>Galaxy S24 Ultra, Galaxy S24+, Galaxy S24, Galaxy S23 series, Galaxy S22 series, Galaxy S21 series, Galaxy S20 series, Galaxy Note series, Galaxy Z Fold, Galaxy Z Flip, and older models</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/google-pixel" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/smartphone.svg" alt="Google Pixel">
+                        </div>
+                        <div class="device-content">
+                            <h3>Google Pixel</h3>
+                            <div class="device-models">
+                                <p>Pixel 8 Pro, Pixel 8, Pixel 7 series, Pixel 6 series, Pixel 5, Pixel 4 series, and older models</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/other-smartphones" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/smartphone.svg" alt="Other Smartphones">
+                        </div>
+                        <div class="device-content">
+                            <h3>Other Brands</h3>
+                            <div class="device-models">
+                                <p>OnePlus, Motorola, LG, Sony, Huawei, Xiaomi, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tablets Section -->
+    <section class="device-category">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tablets</h2>
+            </div>
+            <div class="device-list">
+                <div class="device-card">
+                    <a href="items/ipad" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/tablet.svg" alt="iPad">
+                        </div>
+                        <div class="device-content">
+                            <h3>iPad</h3>
+                            <div class="device-models">
+                                <p>iPad Pro, iPad Air, iPad mini, iPad (standard), and older models</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/samsung-tablets" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/tablet.svg" alt="Samsung Tablets">
+                        </div>
+                        <div class="device-content">
+                            <h3>Samsung Tablets</h3>
+                            <div class="device-models">
+                                <p>Galaxy Tab S9 series, Galaxy Tab S8 series, Galaxy Tab S7 series, Galaxy Tab A series, and older models</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/other-tablets" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/tablet.svg" alt="Other Tablets">
+                        </div>
+                        <div class="device-content">
+                            <h3>Other Tablets</h3>
+                            <div class="device-models">
+                                <p>Microsoft Surface, Amazon Fire, Lenovo Tab, Google Pixel Tablet, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Laptops Section -->
+    <section class="device-category">
+        <div class="container">
+            <div class="section-title">
+                <h2>Laptops & Computers</h2>
+            </div>
+            <div class="device-list">
+                <div class="device-card">
+                    <a href="items/macbook" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/laptop.svg" alt="MacBooks">
+                        </div>
+                        <div class="device-content">
+                            <h3>Apple MacBooks</h3>
+                            <div class="device-models">
+                                <p>MacBook Pro, MacBook Air, iMac, Mac mini, Mac Studio, Mac Pro, and older models</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/windows-laptops" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/laptop.svg" alt="Windows Laptops">
+                        </div>
+                        <div class="device-content">
+                            <h3>Windows Laptops</h3>
+                            <div class="device-models">
+                                <p>Dell XPS, HP Spectre, Lenovo ThinkPad, Microsoft Surface, ASUS ZenBook, Acer Aspire, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/gaming-laptops" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/laptop.svg" alt="Gaming Laptops">
+                        </div>
+                        <div class="device-content">
+                            <h3>Gaming Laptops</h3>
+                            <div class="device-models">
+                                <p>Alienware, ASUS ROG, MSI, Razer Blade, Acer Predator, HP Omen, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/desktop-computers" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/laptop.svg" alt="Desktop Computers">
+                        </div>
+                        <div class="device-content">
+                            <h3>Desktop Computers</h3>
+                            <div class="device-models">
+                                <p>Custom builds, gaming PCs, all-in-ones, and workstations</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gaming Consoles & Games Section -->
+    <section class="device-category">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gaming Consoles & Games</h2>
+                <p>We buy all major gaming consoles, video games, and gaming accessories.</p>
+            </div>
+            <div class="device-list">
+                <div class="device-card">
+                    <a href="items/playstation" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/gaming.svg" alt="PlayStation">
+                        </div>
+                        <div class="device-content">
+                            <h3>PlayStation</h3>
+                            <div class="device-models">
+                                <p>PS5, PS4 Pro, PS4, PS3, and older models</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/xbox" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/gaming.svg" alt="Xbox">
+                        </div>
+                        <div class="device-content">
+                            <h3>Xbox</h3>
+                            <div class="device-models">
+                                <p>Xbox Series X, Xbox Series S, Xbox One X, Xbox One S, Xbox One, and older models</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/nintendo" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/gaming.svg" alt="Nintendo">
+                        </div>
+                        <div class="device-content">
+                            <h3>Nintendo</h3>
+                            <div class="device-models">
+                                <p>Nintendo Switch, Switch Lite, Switch OLED, Wii U, Wii, and older models</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/video-games" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/games.svg" alt="Video Games">
+                        </div>
+                        <div class="device-content">
+                            <h3>Video Games</h3>
+                            <div class="device-models">
+                                <p>All platforms, new and used games, limited editions, and collections</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Drones & Camera Equipment Section -->
+    <section class="device-category">
+        <div class="container">
+            <div class="section-title">
+                <h2>Drones & Camera Equipment</h2>
+                <p>We purchase drones, cameras, and photography equipment from all major brands.</p>
+            </div>
+            <div class="device-list">
+                <div class="device-card">
+                    <a href="items/drones" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/drone.svg" alt="Consumer Drones">
+                        </div>
+                        <div class="device-content">
+                            <h3>Consumer Drones</h3>
+                            <div class="device-models">
+                                <p>DJI, Autel, Parrot, Holy Stone, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/drones" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/drone.svg" alt="Professional Drones">
+                        </div>
+                        <div class="device-content">
+                            <h3>Professional Drones</h3>
+                            <div class="device-models">
+                                <p>DJI Inspire, Matrice, Phantom, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/cameras" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/smartphone.svg" alt="Digital Cameras">
+                        </div>
+                        <div class="device-content">
+                            <h3>Digital Cameras</h3>
+                            <div class="device-models">
+                                <p>DSLR, Mirrorless, Point & Shoot, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/cameras" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/smartphone.svg" alt="Video Equipment">
+                        </div>
+                        <div class="device-content">
+                            <h3>Video Equipment</h3>
+                            <div class="device-models">
+                                <p>Camcorders, Action Cameras, Lenses, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Power Tools & Equipment Section -->
+    <section class="device-category">
+        <div class="container">
+            <div class="section-title">
+                <h2>Power Tools & Equipment</h2>
+                <p>We buy power tools and equipment from all major brands in any condition.</p>
+            </div>
+            <div class="device-list">
+                <div class="device-card">
+                    <div class="device-image">
+                        <img src="images/tools.svg" alt="Cordless Power Tools">
+                    </div>
+                    <div class="device-content">
+                        <h3>Cordless Power Tools</h3>
+                        <div class="device-models">
+                            <p>Drills, Saws, Sanders, Impact Drivers, and more</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="device-card">
+                    <div class="device-image">
+                        <img src="images/tools.svg" alt="Corded Power Tools">
+                    </div>
+                    <div class="device-content">
+                        <h3>Corded Power Tools</h3>
+                        <div class="device-models">
+                            <p>All major brands and types</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="device-card">
+                    <div class="device-image">
+                        <img src="images/tools.svg" alt="Tool Batteries & Chargers">
+                    </div>
+                    <div class="device-content">
+                        <h3>Tool Batteries & Chargers</h3>
+                        <div class="device-models">
+                            <p>All voltages and brands</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="device-card">
+                    <div class="device-image">
+                        <img src="images/tools.svg" alt="Tool Sets & Kits">
+                    </div>
+                    <div class="device-content">
+                        <h3>Tool Sets & Kits</h3>
+                        <div class="device-models">
+                            <p>Complete sets and individual tools</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Electronics Section -->
+    <section class="device-category">
+        <div class="container">
+            <div class="section-title">
+                <h2>Other Electronics</h2>
+            </div>
+            <div class="device-list">
+                <div class="device-card">
+                    <a href="items/smartwatch" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/smartphone.svg" alt="Smartwatches">
+                        </div>
+                        <div class="device-content">
+                            <h3>Smartwatches</h3>
+                            <div class="device-models">
+                                <p>Apple Watch, Samsung Galaxy Watch, Fitbit, Garmin, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/cameras" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/smartphone.svg" alt="Cameras">
+                        </div>
+                        <div class="device-content">
+                            <h3>Cameras</h3>
+                            <div class="device-models">
+                                <p>DSLR, Mirrorless, Point-and-Shoot, Action Cameras, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/audio-devices" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/smartphone.svg" alt="Audio Devices">
+                        </div>
+                        <div class="device-content">
+                            <h3>Audio Devices</h3>
+                            <div class="device-models">
+                                <p>Headphones, Earbuds, Speakers, Sound Systems, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="device-card">
+                    <a href="items/smart-home" style="text-decoration: none; color: inherit;">
+                        <div class="device-image">
+                            <img src="images/smartphone.svg" alt="Smart Home">
+                        </div>
+                        <div class="device-content">
+                            <h3>Smart Home</h3>
+                            <div class="device-models">
+                                <p>Smart Speakers, Displays, Thermostats, Security Systems, and more</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Condition Requirements Section -->
+    <section class="condition-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Device Condition Guidelines</h2>
+            </div>
+            <p style="text-align: center; margin-bottom: 2rem;">We buy devices in ALL conditions, including new, used, broken, and for parts - as long as they don't have iCloud lock.</p>
+            <div class="condition-grid">
+                <div class="condition-card">
+                    <div class="condition-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>New</h3>
+                    <p>Brand new or like-new condition with no signs of use. Original packaging and accessories are a plus but not required.</p>
+                </div>
+                <div class="condition-card">
+                    <div class="condition-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Excellent</h3>
+                    <p>Like new condition with no visible scratches or damage. All features work perfectly, and battery health is excellent (80%+ capacity).</p>
+                </div>
+                <div class="condition-card">
+                    <div class="condition-icon">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <h3>Good</h3>
+                    <p>Minor wear and tear, light scratches that don't affect the screen visibility. All features work properly, and battery health is good.</p>
+                </div>
+                <div class="condition-card">
+                    <div class="condition-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Fair</h3>
+                    <p>Noticeable scratches or dents, but the device is fully functional. May have some battery wear or minor functional issues.</p>
+                </div>
+                <div class="condition-card">
+                    <div class="condition-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Poor</h3>
+                    <p>Significant damage like cracked screens or severe dents. May have functional issues but still powers on and is identifiable.</p>
+                </div>
+                <div class="condition-card">
+                    <div class="condition-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Broken / For Parts</h3>
+                    <p>Non-functional or severely damaged devices. We still buy these as long as they don't have iCloud lock or similar account restrictions.</p>
+                </div>
+            </div>
+            <div class="alert-box" style="background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 1rem; border-radius: 8px; margin-top: 2rem; text-align: center;">
+                <i class="fas fa-exclamation-circle" style="margin-right: 0.5rem;"></i>
+                <strong>Important:</strong> We cannot accept devices with iCloud lock or other account restrictions. Please remove these before selling.
+            </div>
+        </div>
+    </section>
+
+    <!-- Items We Don't Accept Section -->
+    <section class="section" style="background-color: var(--background);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Items We Don't Accept</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <ul style="list-style-type: none; padding: 0;">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-times-circle" style="color: #e74c3c; margin-right: 1rem; font-size: 1.5rem;"></i>
+                        <span>Counterfeit or replica devices</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-times-circle" style="color: #e74c3c; margin-right: 1rem; font-size: 1.5rem;"></i>
+                        <span>Devices reported as lost or stolen</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-times-circle" style="color: #e74c3c; margin-right: 1rem; font-size: 1.5rem;"></i>
+                        <span>Devices with activation locks that cannot be removed</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-times-circle" style="color: #e74c3c; margin-right: 1rem; font-size: 1.5rem;"></i>
+                        <span>Devices with water damage that won't power on</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-times-circle" style="color: #e74c3c; margin-right: 1rem; font-size: 1.5rem;"></i>
+                        <span>Devices that have been disassembled or are missing major components</span>
+                    </li>
+                </ul>
+                <p style="margin-top: 2rem; text-align: center;">Not sure if we'll accept your device? <a href="contact" style="color: var(--primary);">Contact us</a> with details, and we'll let you know.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section cta" style="background-color: var(--primary); color: var(--white); text-align: center;">
+        <div class="container">
+            <h2>Ready to Sell Your Electronics?</h2>
+            <p style="margin-bottom: 2rem;">Get a price estimate or visit one of our locations today.</p>
+            <div class="hero-buttons" style="justify-content: center;">
+                <a href="pricing" class="btn btn-cta">Get a Price Estimate</a>
+                <a href="locations" class="btn btn-secondary">Find a Store</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>We offer the best prices for your used electronics. Fast, easy, and environmentally responsible.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index">Home</a></li>
+                        <li class="footer-link"><a href="how-it-works">How It Works</a></li>
+                        <li class="footer-link"><a href="accepted-items">What We Buy</a></li>
+                        <li class="footer-link"><a href="pricing">Pricing</a></li>
+                        <li class="footer-link"><a href="locations">Locations</a></li>
+                        <li class="footer-link"><a href="mail-in">Mail-In Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Items</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="items/iphone">Sell iPhone</a></li>
+                        <li class="footer-link"><a href="items/samsung">Sell Samsung Galaxy</a></li>
+                        <li class="footer-link"><a href="items/macbook">Sell MacBook</a></li>
+                        <li class="footer-link"><a href="items/ipad">Sell iPad</a></li>
+                        <li class="footer-link"><a href="items/playstation">Sell PlayStation</a></li>
+                        <li class="footer-link"><a href="items/xbox">Sell Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-phone"></i> (800) 555-CASH</li>
+                        <li class="footer-link"><i class="fas fa-envelope"></i> info@electronicsbuyback.com</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Locations Nationwide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

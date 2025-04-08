@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Price Estimator | SellYourGadgets.com</title>
+    <meta name="description" content="Get a binding price quote for your used electronics. Our enhanced buyback calculator provides guaranteed offers valid for up to 30 days.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/enhanced-estimator.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Enhanced Price Estimator</h1>
+                <p>Get a binding quote for your used electronics. Our enhanced calculator provides guaranteed offers valid for up to 30 days.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Price Estimator Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get Your Guaranteed Price</h2>
+            </div>
+            
+            <div class="enhanced-estimator-container">
+                <!-- Progress Bar -->
+                <div class="estimator-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Device</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Brand</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Model</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Storage</div>
+                    </div>
+                    <div class="progress-step" data-step="5">
+                        <div class="step-number">5</div>
+                        <div class="step-label">Condition</div>
+                    </div>
+                    <div class="progress-step" data-step="6">
+                        <div class="step-number">6</div>
+                        <div class="step-label">Quote</div>
+                    </div>
+                </div>
+                
+                <!-- Step 1: Device Selection -->
+                <div class="estimator-step-container active" data-step="1">
+                    <h3>Select Your Device Type</h3>
+                    <div class="option-grid">
+                        <div class="option-card" data-device="smartphone">
+                            <div class="option-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4>Smartphone</h4>
+                        </div>
+                        <div class="option-card" data-device="tablet">
+                            <div class="option-icon">
+                                <i class="fas fa-tablet-alt"></i>
+                            </div>
+                            <h4>Tablet</h4>
+                        </div>
+                        <div class="option-card" data-device="laptop">
+                            <div class="option-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <h4>Laptop</h4>
+                        </div>
+                        <div class="option-card" data-device="desktop">
+                            <div class="option-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h4>Desktop</h4>
+                        </div>
+                        <div class="option-card" data-device="gaming">
+                            <div class="option-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h4>Gaming Console</h4>
+                        </div>
+                        <div class="option-card" data-device="camera">
+                            <div class="option-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <h4>Camera</h4>
+                        </div>
+                        <div class="option-card" data-device="audio">
+                            <div class="option-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <h4>Audio</h4>
+                        </div>
+                        <div class="option-card" data-device="wearable">
+                            <div class="option-icon">
+                                <i class="fas fa-watch"></i>
+                            </div>
+                            <h4>Wearable</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="estimator-navigation">
+                        <div></div> <!-- Empty div for flex spacing -->
+                        <button class="btn btn-primary btn-next-step" data-current-step="1">Next Step</button>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Brand Selection -->
+                <div class="estimator-step-container" data-step="2">
+                    <h3>Select Brand</h3>
+                    <p>Choose the manufacturer of your device.</p>
+                    
+                    <div class="select-container">
+                        <select id="brand-select">
+                            <option value="">Select Brand</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="estimator-navigation">
+                        <button class="btn btn-secondary btn-prev-step" data-current-step="2">Previous</button>
+                        <button class="btn btn-primary btn-next-step" data-current-step="2">Next Step</button>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Model Selection -->
+                <div class="estimator-step-container" data-step="3">
+                    <h3>Select Model</h3>
+                    <p>Choose your specific device model.</p>
+                    
+                    <div class="model-grid">
+                        <!-- Example models for iPhone - will be dynamically populated -->
+                        <div class="model-card" data-model="iphone15promax">
+                            <img src="images/devices/iphone15promax.png" alt="iPhone 15 Pro Max" class="model-image">
+                            <h4>iPhone 15 Pro Max</h4>
+                        </div>
+                        <div class="model-card" data-model="iphone15pro">
+                            <img src="images/devices/iphone15pro.png" alt="iPhone 15 Pro" class="model-image">
+                            <h4>iPhone 15 Pro</h4>
+                        </div>
+                        <div class="model-card" data-model="iphone15">
+                            <img src="images/devices/iphone15.png" alt="iPhone 15" class="model-image">
+                            <h4>iPhone 15</h4>
+                        </div>
+                        <div class="model-card" data-model="iphone14promax">
+                            <img src="images/devices/iphone14promax.png" alt="iPhone 14 Pro Max" class="model-image">
+                            <h4>iPhone 14 Pro Max</h4>
+                        </div>
+                        <div class="model-card" data-model="iphone14pro">
+                            <img src="images/devices/iphone14pro.png" alt="iPhone 14 Pro" class="model-image">
+                            <h4>iPhone 14 Pro</h4>
+                        </div>
+                        <div class="model-card" data-model="iphone14">
+                            <img src="images/devices/iphone14.png" alt="iPhone 14" class="model-image">
+                            <h4>iPhone 14</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="estimator-navigation">
+                        <button class="btn btn-secondary btn-prev-step" data-current-step="3">Previous</button>
+                        <button class="btn btn-primary btn-next-step" data-current-step="3">Next Step</button>
+                    </div>
+                </div>
+                
+                <!-- Step 4: Storage/Configuration -->
+                <div class="estimator-step-container" data-step="4">
+                    <h3>Select Storage Capacity</h3>
+                    <p>Choose the storage size of your device.</p>
+                    
+                    <div class="select-container">
+                        <select id="storage-select">
+                            <option value="">Select Storage</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="estimator-navigation">
+                        <button class="btn btn-secondary btn-prev-step" data-current-step="4">Previous</button>
+                        <button class="btn btn-primary btn-next-step" data-current-step="4">Next Step</button>
+                    </div>
+                </div>
+                
+                <!-- Step 5: Condition Assessment -->
+                <div class="estimator-step-container" data-step="5">
+                    <h3>Assess Device Condition</h3>
+                    <p>Please answer the following questions about your device's condition for an accurate quote.</p>
+                    
+                    <div class="condition-assessment">
+                        <!-- Screen Condition -->
+                        <div class="condition-question" data-condition-type="screen">
+                            <h4>Screen Condition</h4>
+                            <div class="condition-options">
+                                <div class="condition-option" data-condition-value="perfect">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                                    </div>
+                                    <h4>Perfect</h4>
+                                    <p>No scratches or marks</p>
+                                </div>
+                                <div class="condition-option" data-condition-value="minor">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-search" style="color: #4CAF50;"></i>
+                                    </div>
+                                    <h4>Minor Scratches</h4>
+                                    <p>Only visible when screen is off</p>
+                                </div>
+                                <div class="condition-option" data-condition-value="noticeable">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-eye" style="color: #FF9800;"></i>
+                                    </div>
+                                    <h4>Noticeable Scratches</h4>
+                                    <p>Visible during use</p>
+                                </div>
+                                <div class="condition-option" data-condition-value="cracked">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i>
+                                    </div>
+                                    <h4>Cracked</h4>
+                                    <p>Screen has cracks</p>
+                                </div>
+                            </div>
+                            <div class="condition-help">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Inspect your screen under good lighting to check for scratches.</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Body Condition -->
+                        <div class="condition-question" data-condition-type="body">
+                            <h4>Body/Case Condition</h4>
+                            <div class="condition-options">
+                                <div class="condition-option" data-condition-value="perfect">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                                    </div>
+                                    <h4>Perfect</h4>
+                                    <p>No scratches or dents</p>
+                                </div>
+                                <div class="condition-option" data-condition-value="minor">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-search" style="color: #4CAF50;"></i>
+                                    </div>
+                                    <h4>Minor Wear</h4>
+                                    <p>Light scratches, not noticeable</p>
+                                </div>
+                                <div class="condition-option" data-condition-value="noticeable">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-eye" style="color: #FF9800;"></i>
+                                    </div>
+                                    <h4>Noticeable Wear</h4>
+                                    <p>Visible scratches or small dents</p>
+                                </div>
+                                <div class="condition-option" data-condition-value="damaged">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i>
+                                    </div>
+                                    <h4>Damaged</h4>
+                                    <p>Significant dents or damage</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Functional Condition -->
+                        <div class="condition-question" data-condition-type="functional">
+                            <h4>Functional Condition</h4>
+                            <div class="condition-options">
+                                <div class="condition-option" data-condition-value="perfect">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                                    </div>
+                                    <h4>Perfect</h4>
+                                    <p>Everything works flawlessly</p>
+                                </div>
+                                <div class="condition-option" data-condition-value="minor">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-search" style="color: #4CAF50;"></i>
+                                    </div>
+                                    <h4>Minor Issues</h4>
+                                    <p>Small issues that don't affect use</p>
+                                </div>
+                                <div class="condition-option" data-condition-value="issues">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-eye" style="color: #FF9800;"></i>
+                                    </div>
+                                    <h4>Functional Issues</h4>
+                                    <p>Problems that affect usage</p>
+                                </div>
+                                <div class="condition-option" data-condition-value="broken">
+                                    <div class="condition-icon">
+                                        <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i>
+                                    </div>
+                                    <h4>Non-Functional</h4>
+                                    <p>Device doesn't power on or work</p>
+                                </div>
+                            </div>
+                            <div class="condition-help tooltip">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Test all buttons, cameras, speakers, charging ports, etc.</span>
+                                <span class="tooltiptext">Check that all buttons click properly, cameras focus, speakers produce clear sound, and the charging port connects securely.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="alert-box" style="background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 0.75rem; border-radius: 4px; margin-top: 1rem; font-size: 0.9rem; text-align: center;">
+                            <i class="fas fa-exclamation-circle" style="margin-right: 0.5rem;"></i>
+                            We cannot accept devices with iCloud lock, Google lock, or other account restrictions.
+                        </div>
+                    </div>
+                    
+                    <div class="estimator-navigation">
+                        <button class="btn btn-secondary btn-prev-step" data-current-step="5">Previous</button>
+                        <button class="btn btn-primary btn-next-step" data-current-step="5">Get Your Quote</button>
+                    </div>
+                </div>
+                
+                <!-- Step 6: Binding Quote -->
+                <div class="estimator-step-container" data-step="6">
+                    <div class="binding-quote-container">
+                        <div class="binding-badge">Binding Offer</div>
+                        <h3>Your Guaranteed Quote</h3>
+                        <div class="quote-price" id="estimate-price">$750</div>
+                        <div class="price-range" id="price-range">Price range: $700 - $800</div>
+                        
+                        <div class="quote-details">
+                            <div class="quote-detail-item">
+                                <span>Device:</span>
+                                <span>iPhone 15 Pro, 256GB</span>
+                            </div>
+                            <div class="quote-detail-item">
+                                <span>Condition:</span>
+                                <span>Good</span>
+                            </div>
+                        </div>
+                        
+                        <div class="quote-validity">
+                            <i class="fas fa-lock"></i>
+                            <span>This offer is guaranteed and can be locked in for up to 30 days.</span>
+                        </div>
+                        
+                        <p>To lock in this guaranteed price, please complete the form below. We'll send you a binding quote certificate that you can redeem in-store or by mail.</p>
+                        
+                        <form id="quote-form">
+                            <!-- Hidden fields for quote data -->
+                            <input type="hidden" id="selected-device" value="smartphone">
+                            <input type="hidden" id="selected-model" value="iphone15pro">
+                            <input type="hidden" id="condition-screen" value="">
+                            <input type="hidden" id="condition-body" value="">
+                            <input type="hidden" id="condition-functional" value="">
+                            <input type="hidden" id="quote-amount" value="750">
+                            <input type="hidden" id="delivery-method" value="store">
+                            
+                            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+                                <div style="flex: 1; min-width: 250px;">
+                                    <label for="email-input">Email Address*</label>
+                                    <input type="email" id="email-input" required placeholder="your@email.com" style="width: 100%; padding: 0.75rem; border-radius: 4px; border: 1px solid #ddd;">
+                                </div>
+                                <div style="flex: 1; min-width: 250px;">
+                                    <label for="phone-input">Phone Number*</label>
+                                    <input type="tel" id="phone-input" required placeholder="(123) 456-7890" style="width: 100%; padding: 0.75rem; border-radius: 4px; border: 1px solid #ddd;">
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <label for="quote-validity">Lock in this quote for:</label>
+                                <select id="quote-validity" style="width: 100%; padding: 0.75rem; border-radius: 4px; border: 1px solid #ddd;">
+                                    <option value="14">14 Days</option>
+                                    <option value="30" selected>30 Days</option>
+                                </select>
+                            </div>
+                            
+                            <h4>How would you like to redeem your quote?</h4>
+                            <div class="delivery-options">
+                                <div class="delivery-option selected" data-delivery="store">
+                                    <div class="delivery-icon">
+                                        <i class="fas fa-store"></i>
+                                    </div>
+                                    <h4>In-Store</h4>
+                                    <p>Visit any of our locations for immediate payment</p>
+                                </div>
+                                <div class="delivery-option" data-delivery="mail">
+                                    <div class="delivery-icon">
+                                        <i class="fas fa-shipping-fast"></i>
+                                    </div>
+                                    <h4>Mail-In</h4>
+                                    <p>Ship your device to us with free shipping</p>
+                                </div>
+                            </div>
+                            
+                            <div id="store-fields" style="margin-top: 1.5rem;">
+                                <p>You'll receive a quote certificate by email that you can bring to any of our store locations.</p>
+                            </div>
+                            
+                            <div id="mail-fields" style="margin-top: 1.5rem; display: none;">
+                                <p>You'll receive a quote certificate and prepaid shipping label by email.</p>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-cta" style="width: 100%; margin-top: 1.5rem;">Lock In This Price</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Quote Certificate (hidden initially) -->
+                    <div id="quote-certificate" class="quote-certificate" style="display: none;">
+                        <div class="certificate-watermark">GUARANTEED</div>
+                        <div class="certificate-header">
+                            <div class="certificate-logo">
+                                <img src="images/logo.png" alt="SellYourGadgets.com" style="height: 40px;">
+                            </div>
+                            <div class="certificate-title">BINDING PRICE GUARANTEE</div>
+                            <p>This certificate guarantees the quoted price for your device.</p>
+                        </div>
+                        
+                        <div class="certificate-body">
+                            <div class="certificate-price" id="certificate-price-value">$750</div>
+                            
+                            <div class="certificate-details">
+                                <div class="certificate-detail-row">
+                                    <div class="certificate-detail-label">Device:</div>
+                                    <div class="certificate-detail-value" id="certificate-device">iPhone 15 Pro</div>
+                                </div>
+                                <div class="certificate-detail-row">
+                                    <div class="certificate-detail-label">Storage:</div>
+                                    <div class="certificate-detail-value" id="certificate-storage">256 GB</div>
+                                </div>
+                                <div class="certificate-detail-row">
+                                    <div class="certificate-detail-label">Quote Code:</div>
+                                    <div class="certificate-detail-value">
+                                        <div class="certificate-code" id="certificate-code-value">ABC-12345</div>
+                                    </div>
+                                </div>
+                                <div class="certificate-detail-row">
+                                    <div class="certificate-detail-label">Valid Until:</div>
+                                    <div class="certificate-detail-value" id="certificate-expiry">May 5, 2025</div>
+                                </div>
+                                <div class="certificate-detail-row">
+                                    <div class="certificate-detail-label">Sent To:</div>
+                                    <div class="certificate-detail-value" id="certificate-email">user@example.com</div>
+                                </div>
+                            </div>
+                            
+                            <p style="margin-top: 1.5rem;">Present this code when selling your device in-store or include it with your mail-in package. This quote is valid only if the device matches the condition described during assessment.</p>
+                            
+                            <button id="print-certificate" class="btn btn-primary print-button">
+                                <i class="fas fa-print"></i> Print Certificate
+                            </button>
+                        </div>
+                        
+                        <div class="certificate-footer">
+                            <p>A copy of this certificate has been sent to your email address.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="estimator-navigation">
+                        <button class="btn btn-secondary btn-prev-step" data-current-step="6">Back to Estimator</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Factors Section -->
+    <section class="factors-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Factors That Affect Buyback Value</h2>
+            </div>
+            
+            <div class="factors-grid">
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Age & Model</h3>
+                    <p>Newer models typically have higher buyback values. The release of new models can affect the value of older ones.</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Condition</h3>
+                    <p>Devices in better condition receive higher offers. Scratches, dents, and functional issues can lower the value.</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Storage Capacity</h3>
+                    <p>Higher storage capacity models (e.g., 256GB vs. 64GB) typically have higher buyback values.</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3>Battery Health</h3>
+                    <p>Devices with better battery health receive higher offers. Significant battery wear can lower the value.</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <h3>Carrier Lock Status</h3>
+                    <p>Unlocked devices typically have higher values than carrier-locked ones.</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Accessories</h3>
+                    <p>Including original accessories and packaging can slightly increase the buyback value.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Match Section -->
+    <section class="price-match">
+        <div class="container">
+            <div class="price-match-content">
+                <h2>Price Match Guarantee</h2>
+                <p style="margin-bottom: 1.5rem;">Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%.</p>
+                <a href="price-match" class="btn btn-cta">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>We offer the best prices for your used electronics. Fast, easy, and environmentally responsible.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index">Home</a></li>
+                        <li class="footer-link"><a href="how-it-works">How It Works</a></li>
+                        <li class="footer-link"><a href="accepted-items">What We Buy</a></li>
+                        <li class="footer-link"><a href="pricing">Pricing</a></li>
+                        <li class="footer-link"><a href="price-comparison">Price Comparison</a></li>
+                        <li class="footer-link"><a href="loyalty-program">Loyalty Program</a></li>
+                        <li class="footer-link"><a href="locations">Locations</a></li>
+                        <li class="footer-link"><a href="mail-in">Mail-In Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Items</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="items/iphone">Sell iPhone</a></li>
+                        <li class="footer-link"><a href="items/samsung">Sell Samsung Galaxy</a></li>
+                        <li class="footer-link"><a href="items/macbook">Sell MacBook</a></li>
+                        <li class="footer-link"><a href="items/ipad">Sell iPad</a></li>
+                        <li class="footer-link"><a href="items/playstation">Sell PlayStation</a></li>
+                        <li class="footer-link"><a href="items/xbox">Sell Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-phone"></i> (800) 555-CASH</li>
+                        <li class="footer-link"><i class="fas fa-envelope"></i> info@sellyourgadgets.com</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Locations Nationwide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/enhanced-estimator.js"></script>
+</body>
+</html>

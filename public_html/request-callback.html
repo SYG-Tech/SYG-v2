@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Callback | SellYourGadgets.com</title>
+    <meta name="description" content="Request a callback from our electronics buyback experts. We'll call you at your preferred time to answer questions and provide a quote for your devices.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/click-to-call.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Schema.org markup for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Request a Callback",
+        "description": "Request a callback from our electronics buyback experts",
+        "publisher": {
+            "@type": "Organization",
+            "name": "SellYourGadgets.com",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "800-555-CASH",
+                "contactType": "customer service"
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index" class="logo">SellYour<span>Gadgets</span>.com</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="accepted-items" class="nav-link">What We Buy</a></li>
+                    <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="locations" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="mail-in" class="nav-link">Mail-In</a></li>
+                    
+                    
+                    <li class="nav-item"><a href="about" class="nav-link">About/FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Price Match Banner -->
+    <link rel="stylesheet" href="css/price-match-banner.css">
+    <div class="container">
+        <div class="price-match-banner">
+            <i class="fas fa-medal price-match-icon"></i>
+            Found a better offer elsewhere? We'll match any legitimate competitor's price and add an extra 5%!
+            <a href="price-match">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Request a Callback</h1>
+                <p>Have questions about selling your electronics? Request a callback from our experts at a time that works for you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Callback Request Form Section -->
+    <section class="section">
+        <div class="container">
+            <div class="callback-form-container">
+                <h2 class="callback-form-title">When would you like us to call you?</h2>
+                
+                <form id="callback-form">
+                    <div class="callback-form-row">
+                        <div class="callback-form-col">
+                            <div class="callback-form-group">
+                                <label class="callback-form-label" for="callback-first-name">First Name *</label>
+                                <input type="text" class="callback-form-input" id="callback-first-name" required>
+                            </div>
+                        </div>
+                        <div class="callback-form-col">
+                            <div class="callback-form-group">
+                                <label class="callback-form-label" for="callback-last-name">Last Name *</label>
+                                <input type="text" class="callback-form-input" id="callback-last-name" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="callback-form-row">
+                        <div class="callback-form-col">
+                            <div class="callback-form-group">
+                                <label class="callback-form-label" for="callback-phone">Phone Number *</label>
+                                <input type="tel" class="callback-form-input" id="callback-phone" required>
+                            </div>
+                        </div>
+                        <div class="callback-form-col">
+                            <div class="callback-form-group">
+                                <label class="callback-form-label" for="callback-email">Email Address</label>
+                                <input type="email" class="callback-form-input" id="callback-email">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="callback-form-group">
+                        <label class="callback-form-label" for="callback-best-time">Best Time to Call *</label>
+                        <select class="callback-form-select" id="callback-best-time" required>
+                            <option value="">Select a time</option>
+                            <option value="morning">Morning (9am - 12pm)</option>
+                            <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                            <option value="evening">Evening (5pm - 8pm)</option>
+                            <option value="anytime">Anytime</option>
+                        </select>
+                    </div>
+                    
+                    <div class="callback-form-group">
+                        <label class="callback-form-label" for="callback-device-info">Device Information (Optional)</label>
+                        <input type="text" class="callback-form-input" id="callback-device-info" placeholder="e.g., iPhone 13 Pro, Samsung Galaxy S22, MacBook Pro">
+                    </div>
+                    
+                    <div class="callback-form-group">
+                        <label class="callback-form-label" for="callback-message">Questions or Comments</label>
+                        <textarea class="callback-form-textarea" id="callback-message" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="callback-form-submit">
+                        <i class="fas fa-phone-alt"></i> Request Callback
+                    </button>
+                    
+                    <p class="callback-form-note">
+                        * Required fields. By submitting this form, you agree to be contacted by phone regarding our services.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alternative Options Section -->
+    <section class="section" style="background-color: var(--background);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Need Immediate Assistance?</h2>
+            </div>
+            
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="margin-bottom: 2rem;">
+                    If you need immediate assistance, you can call us directly or visit one of our store locations.
+                </p>
+                
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem;">
+                    <div style="flex: 1; min-width: 250px; max-width: 350px; background-color: var(--white); border-radius: 8px; box-shadow: var(--shadow); padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Call Us Now</h3>
+                        <p style="margin-bottom: 1.5rem;">Our experts are available to take your call during business hours.</p>
+                        <a href="tel:8005552274" class="call-button force-tel">
+                            <i class="fas fa-phone-alt"></i> 800-555-CASH
+                        </a>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 250px; max-width: 350px; background-color: var(--white); border-radius: 8px; box-shadow: var(--shadow); padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3>Visit a Store</h3>
+                        <p style="margin-bottom: 1.5rem;">Stop by one of our locations for an instant quote and same-day payment.</p>
+                        <a href="locations" class="btn btn-primary">
+                            <i class="fas fa-map-marker-alt"></i> Find Nearest Store
+                        </a>
+                    </div>
+                </div>
+                
+                <div style="background-color: var(--primary); color: var(--white); border-radius: 8px; padding: 2rem; text-align: center;">
+                    <h3 style="color: var(--white);">Prefer to schedule an appointment?</h3>
+                    <p style="margin-bottom: 1.5rem;">
+                        Book an in-store appointment and skip the wait. Our experts will be ready for you at your scheduled time.
+                    </p>
+                    <a href="schedule-appointment" class="btn btn-cta">
+                        <i class="fas fa-calendar-alt"></i> Schedule Appointment
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SellYourGadgets.com</h3>
+                    <p>We offer the best prices for your used electronics. Fast, easy, and environmentally responsible.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index">Home</a></li>
+                        <li class="footer-link"><a href="how-it-works">How It Works</a></li>
+                        <li class="footer-link"><a href="accepted-items">What We Buy</a></li>
+                        <li class="footer-link"><a href="pricing">Pricing</a></li>
+                        <li class="footer-link"><a href="locations">Locations</a></li>
+                        <li class="footer-link"><a href="mail-in">Mail-In Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Items</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="items/iphone">Sell iPhone</a></li>
+                        <li class="footer-link"><a href="items/samsung">Sell Samsung Galaxy</a></li>
+                        <li class="footer-link"><a href="items/macbook">Sell MacBook</a></li>
+                        <li class="footer-link"><a href="items/ipad">Sell iPad</a></li>
+                        <li class="footer-link"><a href="items/playstation">Sell PlayStation</a></li>
+                        <li class="footer-link"><a href="items/xbox">Sell Xbox</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-phone"></i> (800) 555-CASH</li>
+                        <li class="footer-link"><i class="fas fa-envelope"></i> info@electronicsbuyback.com</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Locations Nationwide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SellYourGadgets.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/click-to-call.js"></script>
+</body>
+</html>
